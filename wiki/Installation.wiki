@@ -1,9 +1,10 @@
+#summary How to install powermock
 
-= Binary release =
+== Binary release ==
 
  Not yet available...
 
-= Installing from the trunk =
+== Installing from the trunk ==
 
 {{{
 svn checkout https://powermock.svn.sourceforge.net/svnroot/powermock/trunk powermock
@@ -11,7 +12,7 @@ cd powermock
 mvn install
 }}}
 
-= Installing a specific version =
+== Installing a specific version ==
 
 {{{
 svn checkout https://powermock.svn.sourceforge.net/svnroot/powermock/tags/powermock-${version} powermock-${version}
