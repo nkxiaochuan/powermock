@@ -1,0 +1,45 @@
+== Writing tests ==
+
+Write a test like this:
+
+{{{
+@RunWith(PowerMockRunner.class)
+@PrepareForTest( { YourClassWitEgStaticMethod.class })
+public class YourTestCase {
+...
+}
+}}}
+
+Sample code is available in subversion:
+ * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit4/src/test/java/org/powermock/modules/junit4/singleton/StupidSingletonTest.java Mocking static methods]
+ * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit4/src/test/java/org/powermock/modules/junit4/expectnew/ExpectNewDemoTest.java Expect new instance]
+ * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit4/src/test/java/org/powermock/modules/junit4/suppressconstructor/SuppressConstructorDemoTest.java Suppress constructor]
+
+JUnit 3 requires a different setup by creating a suite, since test runners is not available. Please view some examples:
+ * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit3/src/test/java/org/powermock/modules/junit3/singleton/StupidSingletonTest.java Mocking static methods with JUnit 3]
+
+
+== Maven setup ==
+
+ Add the following to your pom.xml:
+
+{{{
+<dependency>
+	<groupId>org.powermock</groupId>
+	<artifactId>powermock-core</artifactId>
+	<version>0.5</version>
+	<scope>test</scope>
+</dependency>
+<dependency>
+	<groupId>org.powermock.modules</groupId>
+	<artifactId>powermock-module-junit4</artifactId>
+	<version>0.5</version>
+	<scope>test</scope>
+</dependency>
+<dependency>
+	<groupId>org.easymock</groupId>
+	<artifactId>easymockclassextension</artifactId>
+	<version>2.2.2</version>
+	<scope>test</scope>
+</dependency>
+}}}
