@@ -21,9 +21,9 @@ A pretty common use-case of when to use PowerMock is when your code is calling a
 	}
 }}}
 	
-The problem with this code is that without byte-code manipulation the DependencyManager.getInstance() (which is a static method) cannot be mocked. There are of course numerous ways to get around this, for example you could refactor the code and use dependency injection of the MyService instance. But why should you have to refactor your existing code ONLY for the sake of testability?
+The problem with this code is that without byte-code manipulation, the DependencyManager.getInstance() method cannot be mocked (because it's static). There are of course numerous ways to get around this, for example you could refactor the code and use dependency injection of the MyService instance. But why should you have to refactor your existing code ONLY for the sake of testability?
 
-PowerMock will provide you with the choice of deciding yourself. In several projects a common approach to make the previous code testable is to wrap the call to the static method to an instance method like this:
+PowerMock will provide you with the choice of deciding for yourself. In several projects a common approach to make the previous code testable is to wrap the call to the static method to an instance method like this:
 	
 {{{
  	public class MyServiceUser {
