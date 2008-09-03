@@ -1,3 +1,9 @@
+== Description ==
+
 http://www.easymock.org/
 
 EasyMock provides MockObjects for interfaces and classes in JUnit tests by generating them on the fly using Java's proxy mechanism. 
+
+== Extension ==
+
+PowerMock extends EasyMock with static mocking and setting expectations on constructors. 
