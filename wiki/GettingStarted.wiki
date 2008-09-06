@@ -43,3 +43,7 @@ JUnit 3 requires a different setup by creating a suite, since test runners is no
 	<scope>test</scope>
 </dependency>
 }}}
+
+== Docs ==
+
+[http://powermock.googlecode.com/svn/docs/powermock-0.7/apidocs/index.html javadocs]
