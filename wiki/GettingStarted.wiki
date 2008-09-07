@@ -40,7 +40,7 @@ JUnit 3 requires a different setup by creating a suite, since test runners is no
    <dependency>
       <groupId>org.easymock</groupId>
       <artifactId>easymockclassextension</artifactId>
-      <version>2.2.2</version>
+      <version>2.3</version>
       <scope>test</scope>
    </dependency>
 <dependencies>
