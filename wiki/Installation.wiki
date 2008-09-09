@@ -20,4 +20,4 @@ cd powermock-${version}
 mvn install
 }}}
 
- Note: Replace ${version} with the version number, such as 0.5. 
+ Note: Replace ${version} with the version number, such as 0.7. 
