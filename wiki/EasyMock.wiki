@@ -2,7 +2,7 @@
 
 http://www.easymock.org/
 
-EasyMock provides MockObjects for interfaces by generating them on the fly using Java's proxy mechanism.
+EasyMock provides MockObjects for interfaces by generating them on the fly using Java's Dynamic Proxy mechanism.
 
 == Extension ==
 
