@@ -15,7 +15,7 @@ Sample code is available in subversion:
  * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit4/src/test/java/org/powermock/modules/junit4/expectnew/ExpectNewDemoTest.java Expect new instance]
  * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit4/src/test/java/org/powermock/modules/junit4/suppressconstructor/SuppressConstructorDemoTest.java Suppress constructor]
 
-JUnit 3 requires a different setup by creating a suite, since test runners is not available. Please view some examples:
+JUnit 3 requires a different setup by creating a suite, since test runners are not available. Please view some examples:
  * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit3/src/test/java/org/powermock/modules/junit3/singleton/StupidSingletonTest.java Mocking static methods with JUnit 3]
 
 
