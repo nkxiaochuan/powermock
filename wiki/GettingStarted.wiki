@@ -46,6 +46,8 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 <dependencies>
 }}}
 
+Note that PowerMock works with EasyMock class extension 2.4 as well.
+
 == Non maven users ==
  
  Download the [http://powermock.googlecode.com/files/powermock-0.7-with-dependencies.zip zipfile] with PowerMock and all its dependencies and add those to your project.
