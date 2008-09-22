@@ -1,3 +1,23 @@
-PowerMock is an open souce framework that can be used to unit test code normally regarded as untestable! Have you ever heard anyone say that you should never use static or final methods in your code because it makes them impossible to test? Have you ever changed a method from private to protected for the sake of testability? Do you have problems with legacy code or complicated frameworks not designed for unit testing?
+PowerMock is an open source framework that can be used to unit test code normally regarded as untestable! Have you ever heard anyone say that you should never use static or final methods in your code because it makes them impossible to test? Have you ever changed a method from private to protected for the sake of testability? Do you have problems with legacy code or complicated frameworks not designed for unit testing?
 
 PowerMock lets you mock static methods, remove static initializers, mock constructors and much more. All this without changing your build process or leaving your IDE! This presentation will give the audience a good understanding on how to easily unit test your code without the limitations of the common mock frameworks such as EasyMock and JMock.
+
+----
+Writing unit tests can be hard and sometimes good design has to be sacrificed for the sole purpose of testability. Often testability corresponds to good design, but this is not always the case. For example final classes and methods cannot be used, private methods sometimes need to be protected or unnecessarily moved to a collaborator, static methods must be avoided completely and so on.
+
+There are several frameworks that can be used to create mock objects to simulate a collaborator behavior. 
+
+When using these framework you must change your code to allow 
+
+However, when writing unit tests even with such tools sometimes
+need static mocking, bypass encapsulation, constructor calls, 
+
+PowerMock is an open source framework that extends EasyMock with more powerful capabilities. 
+
+PowerMock uses a custom classloader and bytecode manipulation to enable mocking of static methods, constructors, final classes and methods, private methods, removal of static initializers and more. By using a custom classloader no changes need to be done to the IDE or continuous integration servers which simplifies adoption.
+ 
+Developers familiar with EasyMock will find PowerMock easy to use, since the entire expectation API is the same, both for static methods and constructors. PowerMock extends the EasyMock API with a small number of methods and annotations to enable the extra features.
+
+When writing unit tests it is often useful to bypass encapsulation and therefore PowerMock includes several features that simplifies reflection. This allows easy access to internal state, but also simplifies partial and private mocking.
+
+PowerMock is available at powermock.org. 
