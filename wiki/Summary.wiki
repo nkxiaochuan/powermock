@@ -6,4 +6,4 @@ Developers familiar with EasyMock will find PowerMock easy to use, since the ent
 
 When writing unit tests it is often useful to bypass encapsulation and therefore PowerMock includes several features that simplifies reflection specifically useful for testing. This allows easy access to internal state, but also simplifies partial and private mocking.
 
-There are similar frameworks as PowerMock, for example jmockit and jeasytest. However, none of them have the same feature set and all of them require changes to the build environment.
+There are similar frameworks as PowerMock, for example [https://jmockit.dev.java.net/ jmockit] and [https://jeasytest.dev.java.net/ jeasytest]. However, none of them have the same feature set and all of them require changes to the build environment.
