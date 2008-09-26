@@ -64,4 +64,4 @@ public void testRegisterService() throws Exception {
 
 See the partial mocking section for information on how to mock only specific static methods of a class. 
 
-The full example is available in subversion under the [http://powermock.googlecode.com/svn/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java Static Mocking] documentation example.
+The full example is available in subversion under the [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java Static Mocking] documentation example.
