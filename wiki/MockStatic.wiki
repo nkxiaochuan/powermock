@@ -3,8 +3,8 @@
 
 === Quick summary ===
 
-  # Use @RunWith(PowerMockRunner.class) annotation at the class-level of the test case.
-  # Use @PrepareForTest(ClassThatContainsStaticMethod.class) annotation at the class-level of the test case.
+  # Use the @RunWith(PowerMockRunner.class) annotation at the class-level of the test case.
+  # Use the @PrepareForTest(ClassThatContainsStaticMethod.class) annotation at the class-level of the test case.
   # Use PowerMock.mockStatic(ClassThatContainsStaticMethod.class) to mock all methods of this class.
   # Use PowerMock.replay(ClassThatContainsStaticMethod.class) to change the class to replay mode.
   # Use PowerMock.verify(ClassThatContainsStaticMethod.class) to change the class to verify mode.
