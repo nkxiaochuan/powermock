@@ -25,7 +25,7 @@ public final class StateHolder {
 }}}
 
 
-In this example we call the class using an instance of the `StateHolder` for `StateFormatter` and it looks like this:
+In this example we imagine having a class called `StateFormatter` that interacts with the `StateHolder` instance. It looks like this:
 
 {{{
 public class StateFormatter {
