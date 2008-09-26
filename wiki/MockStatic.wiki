@@ -1,6 +1,4 @@
-#summary Mocking static methods
 #labels Usage
-
 == Mocking static methods ==
 
 === Quick summary ===
