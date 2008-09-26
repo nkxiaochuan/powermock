@@ -11,64 +11,69 @@
 
 === Example ===
 
-Mocking a static method in PowerMock requires the use of the "mockStatic" method in PowerMock. Let's say you have a class, ServiceRegistrator, with a method called registerService that looks like this:
+Let's assume you're using a third-party library that contains a class called `StateHolder`. For whatever reason this class is final and not only that, the methods are final as well. Imagine also that you need to use this class in your code and you'd still like to be able to unit test your own code in separation. `StateHolder` looks like this:
 
 {{{
-public long registerService(Object service) {
-   final long id = IdGenerator.generateNewId();
-   serviceRegistrations.put(id, service);
-   return id;
+public final class StateHolder {
+
+	public final String getState() {
+		/* Imagine that we query a database for state, 
+                   this is not something we want to do in a unit test */
+		return null;
+	}
+}}}
+
+
+In this example we call the class using an instance of the `StateHolder` for `StateFormatter` and it looks like this:
+
+{{{
+public class StateFormatter {
+
+	private final StateHolder stateHolder;
+
+	public StateFormatter(StateHolder stateHolder) {
+		this.stateHolder = stateHolder;
+	}
+
+	public String getFormattedState() {
+		String safeState = "State information is missing";
+		final String actualState = stateHolder.getState();
+		if (actualState != null) {
+			safeState = actualState;
+		}
+		return safeState;
+	}
 }
 }}}
 
-The point of interest here is the static method call to IdGenerator.generateNewId() which we would like to mock. IdGenerator is a helper class that simply generates a new ID for the service. It looks like this:
+If we are to test the `getFormattedState` method in separation we need to create a mock of the `StateHolder` class and be able to expect the call to `stateHolder.getState()`. PowerMock's `createMock` method can be used to create a mock object of any class even though it's final. This means that you can use expectations as usually. A unit test of `getFormattedState` method looks something like this:
 {{{
-public class IdGenerator {
+        @Test
+	public void testGetFormattedState_actualStateExists() throws Exception {
+		final String expectedState = "state";
 
-   /**
-    * @return A new ID based on the current time.
-    */
-   public static long generateNewId() {
-      return System.currentTimeMillis();
-   }
-}
+                // We use PowerMock.createMock(..) to create the mock object. 
+		StateHolder stateHolderMock = createMock(StateHolder.class);
+		StateFormatter tested = new StateFormatter(stateHolderMock);
+
+		expect(stateHolderMock.getState()).andReturn(expectedState);
+
+                // PowerMock.replay(..) must be used. 
+		replay(stateHolderMock);
+
+		final String actualState = tested.getFormattedState();
+
+                // PowerMock.verify(..) must be used. 
+		verify(stateHolderMock);
+
+		assertEquals(expectedState, actualState);
+	}
 }}}
 
-With PowerMock it's possible to expect the call to IdGenerator.generateNewId() just as you would with any other method using EasyMock once you've told PowerMock to prepare the IdGenerator class for testing. You do this by adding an annotation to the class-level of test case. This is simply done be using @PrepareForTest(IdGenerator.class). You also need to tell JUnit to execute the test using PowerMock which is done by using @RunWith(PowerMockRunner.class). Without these two annotations the test will fail. 
 
-The actual test is then actually quite simple:
-{{{
-@Test
-public void testRegisterService() throws Exception {
-	long expectedId = 42;
+Note that it's imporant to use @
 
-	// We create a new instance of test class under test as usually.
-	ServiceRegistartor tested = new ServiceRegistartor();
-
-	// This is the way to tell PowerMock to mock all static methods of a
-	// given class
-	mockStatic(IdGenerator.class);
-
-	/*
-	 * The static method call to IdGenerator.generateNewId() expectation.
-	 * This is why we need PowerMock.
-	 */
-	expect(IdGenerator.generateNewId()).andReturn(expectedId);
-
-	// Note how we replay the class, not the instance!
-	replay(IdGenerator.class);
-
-	long actualId = tested.registerService(new Object());
-
-	// Note how we verify the class, not the instance!
-	verify(IdGenerator.class);
-
-	// Assert that the ID is correct
-	assertEquals(expectedId, actualId);
-}
-}}}
-
-See the partial mocking section for information on how to mock only specific static methods of a class. 
+See the partial mocking section for information on how to mock only specific methods of a class. 
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
