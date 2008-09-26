@@ -21,6 +21,7 @@ public final class StateHolder {
                    this is not something we want to do in a unit test */
 		return null;
 	}
+}
 }}}
 
 
@@ -76,6 +77,6 @@ Note that you need to specify to PowerMock you like to mock which is done by add
 See the partial mocking section for information on how to mock only specific methods of a class. 
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/ServiceRegistrator.java ServiceRegistrator]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/IdGenerator.java IdGenerator]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/finalmocking/StateFormatterTest.java StateFormatterTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateFormatter.java StateFormatter]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateHolder.java StateHolder]
