@@ -71,16 +71,17 @@ private int myMethod(Integer id) {
 ...
 }}}
 
-This is of course a naive example but you could still use `PowerMock.expectPrivate(..)` to setup the expectation for these methods. For the `myMethod(Integer id)` method you'd do: 
+This is of course a naive example but you could still use `PowerMock.expectPrivate(..)` to setup the expectation for these methods. For the `myMethod(int id)` method you'd do like this to tell it to return a value of `20` when invoked: 
 {{{
-
+expectPrivate(mockObject, "myMethod", new Class<?>[] { int.class },10).andReturn(20);
 }}}
 
-Note that you need to tell PowerMock which classes you like to mock. This is done by adding the `@PrepareForTest` annotation to the class-level of test case, in this case `@PrepareForTest(DataService.class)`. You also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail. 
+Here we explicitly tell PowerMock to expect the call to the `myMethod` that takes an `int` as parameter. But in the majority of cases you don't need to specify the parameter type since PowerMock will find the correct method automatically.
 
-See the partial mocking section for information on how to mock only specific methods of a class. 
+We also need to tell PowerMock which classes to mock. This is done by adding the `@PrepareForTest` annotation to the class-level of test case, in this case `@PrepareForTest(DataService.class)`. You also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail. 
+
+Last but not least the `tested` instance must be replayed and verified using the `PowerMock.replay(tested)` and `PowerMock.verify(tested)` methods.
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/finalmocking/StateFormatterTest.java StateFormatterTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateFormatter.java StateFormatter]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateHolder.java StateHolder]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/privatemocking/DataServiceTest.java DataServiceTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/privatemocking/DataService.java DataService]
