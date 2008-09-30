@@ -74,7 +74,7 @@ If we are to test the `getFormattedState` method in separation we need to create
 
 Note that you need to tell PowerMock which classes you like to mock. This is done by adding the `@PrepareForTest` annotation to the class-level of test case, in this case `@PrepareForTest(StateHolder.class)`. You also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail. 
 
-See the partial mocking section for information on how to mock only specific methods of a class. 
+See the [MockPartial partial mocking] section for information on how to mock only specific methods of a class. 
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/finalmocking/StateFormatterTest.java StateFormatterTest]
