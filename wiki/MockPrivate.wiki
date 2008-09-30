@@ -49,12 +49,34 @@ public class DataService {
 
 So we begin by creating a partial mock of the `DataService` class where we specify that only the `modifyData` method should be mocked, all other methods will behave as though they are not mocked. This is easily done using:
 {{{
-PowerMock.mockMethod(DataService.class, "modifyData");
+DataService tested = PowerMock.mockMethod(DataService.class, "modifyData");
 }}}
 
-Let's say that we're writing a test case for the `replaceData` method and thus we need to expect the method invocation to `modifyData` so that we can test it in separation. 
+Let's say that we're writing a test case for the `replaceData` method and thus we need to expect the method invocation to `modifyData` so that we can test it in separation. Since `modifyData` is private we make use of the `PowerMock.expectPrivate(..)` functionality in PowerMock. To expect the call using a byte-array containing one byte (42) and return `true` we do like this:
+{{{
+byte[] byteArray = new byte[]{42}
+PowerMock.expectPrivate(tested, "modifyData", byteArray).andReturn(true);
+}}}
 
-Note that you need to tell PowerMock which classes you like to mock. This is done by adding the `@PrepareForTest` annotation to the class-level of test case, in this case `@PrepareForTest(StateHolder.class)`. You also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail. 
+Here PowerMock will look-up the `modifyData` method using reflection and record the expected invocation. If there are several overloaded methods matching the supplied method-name then PowerMock will try to figure out which one to expect by matching the argument types of the supplied parameters (in this case `byteArray` which is of type `byte[].class`) with the parameter types of the methods. This will work fine in most situations. For example if the `DataService` class had two methods called `modifyData` one taking a `byte[]` as last parameter and one taking a `char[]` as last parameter the expectation above would still work. However there are cases when PowerMock cannot figure out which method to expect by using this simple syntax for example if an overloaded method is using a primitive type and the other method is using a wrapper type such as:
+{{{
+...
+private int myMethod(int id) {		
+	return 2*id;
+}
+
+private int myMethod(Integer id) {		
+		return 3*id;
+}
+...
+}}}
+
+This is of course a naive example but you could still use `PowerMock.expectPrivate(..)` to setup the expectation for these methods. For the `myMethod(Integer id)` method you'd do: 
+{{{
+
+}}}
+
+Note that you need to tell PowerMock which classes you like to mock. This is done by adding the `@PrepareForTest` annotation to the class-level of test case, in this case `@PrepareForTest(DataService.class)`. You also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail. 
 
 See the partial mocking section for information on how to mock only specific methods of a class. 
 
