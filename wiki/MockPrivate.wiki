@@ -45,7 +45,7 @@ public class DataService {
 }
 }}}
 
-`DataService` has two public methods that both calls a private method called `modifyData`. This method does something that you indeed want to unit test (see the  [BypassEncapsulation bypass encapsulation] section for information on how to test private methods) but only once. You don't want to duplicate the expectation and verification behavior for the logic performed inside the `modifyData` method when testing the `replaceData` and `deleteData` methods. One way to do this is by [MockPartial partially mocking] the `DataService` class in combination by setting up the correct expectations for the `modifyData` method. PowerMock can assist you with both.
+`DataService` has two public methods that both calls a private method called `modifyData`. This method does something that you indeed want to unit test (see the  [BypassEncapsulation bypass encapsulation] section for information on how to test private methods) but only once. You don't want to duplicate the expectation and verification behavior for the logic performed inside the `modifyData` method when testing the `replaceData` and `deleteData` methods. One way to achieve this is by [MockPartial partially mocking] the `DataService` class in combination by setting up the correct expectations for the `modifyData` method. PowerMock can assist you with both.
 
 So we begin by creating a partial mock of the `DataService` class where we specify that only the `modifyData` method should be mocked, all other methods will behave as normally. This is easily done using:
 {{{
