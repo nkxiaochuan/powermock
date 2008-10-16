@@ -82,6 +82,35 @@ We also need to tell PowerMock which classes to mock. This is done by adding the
 
 Last but not least the `tested` instance must be replayed and verified using the `PowerMock.replay(tested)` and `PowerMock.verify(tested)` methods.
 
+The full test looks like this:
+{{{
+@Test
+public void testReplaceData() throws Exception {
+        final String modifyDataMethodName = "modifyData";
+        final byte[] expectedBinaryData = new byte[] { 42 };
+        final String expectedDataId = "id";
+
+        // Mock only the modifyData method
+        DataService tested = createPartialMock(DataService.class, modifyDataMethodName);
+
+        /*
+         * This is the simplest way to expect a non-void method call to a
+         * private method using PowerMock. You simply supply the instance under
+         * test as the first parameter followed by the method name of the method
+         * to expect. The last two parameters are simply the method arguments
+         * that should be expected when invoking the method.
+         */
+        expectPrivate(tested, modifyDataMethodName, expectedDataId,
+                        expectedBinaryData).andReturn(true);
+
+        replay(tested);
+
+        assertTrue(tested.replaceData(expectedDataId, expectedBinaryData));
+
+        verify(tested);
+}
+}}}
+
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/privatemocking/DataServiceTest.java DataServiceTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/privatemocking/DataService.java DataService]
