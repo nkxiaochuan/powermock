@@ -24,6 +24,6 @@ Without PowerMock: Private methods are not an option. Create a new class and mov
 
 === Performance? ===
 
-Dependency injection is too expensive for you so you want static method calls or a static factory instead. For example if you have extremely large number objects or if you are working with Java ME. PowerMock allows you to use static methods for performance and mock
+Dependency injection is too expensive for you so you want static method calls or a static factory instead. For example if you have extremely large number objects or if you are working with Java ME. PowerMock allows you to use static methods for performance and mock.
 
-Without PowerMock: Create Singleton for each service and somehow make sure that during a tests a special instance is created. This sometimes involves breaking the singleton pattern and adding the possibility to change the instance.
+Without PowerMock: Create Singleton for each service and somehow make sure that during a test a special instance is created. This sometimes involves breaking the singleton pattern and adding the possibility to change the instance.
