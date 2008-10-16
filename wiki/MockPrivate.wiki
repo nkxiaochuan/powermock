@@ -92,14 +92,8 @@ public void testReplaceData() throws Exception {
 
         // Mock only the modifyData method
         DataService tested = createPartialMock(DataService.class, modifyDataMethodName);
-
-        /*
-         * This is the simplest way to expect a non-void method call to a
-         * private method using PowerMock. You simply supply the instance under
-         * test as the first parameter followed by the method name of the method
-         * to expect. The last two parameters are simply the method arguments
-         * that should be expected when invoking the method.
-         */
+      
+        // Expect the private method call to "modifyData"
         expectPrivate(tested, modifyDataMethodName, expectedDataId,
                         expectedBinaryData).andReturn(true);
 
