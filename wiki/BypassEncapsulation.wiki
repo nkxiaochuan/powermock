@@ -208,5 +208,9 @@ All of these things can be achieved without using PowerMock, this is just normal
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ServiceHolderTest.java ServiceHolderTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/StateFormatter.java StateFormatter]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/StateHolder.java StateHolder]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ServiceHolder.java ServiceHolder]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportGeneratorTest.java ReportGeneratorTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportGenerator.java ReportGenerator]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportDaoTest.java ReportDaoTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportDaoTest.java ReportDao]
+  * [http://code.google.com/p/powermock/source/browse/trunk/core/src/test/java/org/powermock/WhiteBoxTest.java WhiteboxTest]
