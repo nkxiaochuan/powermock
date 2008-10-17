@@ -115,10 +115,22 @@ Whitebox.setInternalState(tested, "cache", cacheMock, ReportDao.class)
 }}}
 This is because the class under test is now actually a sub-class of `ReportDao` because EasyMock creates a dynamic CGLib proxy which extends the ReportDao at run-time. So if we don't specify the `ReportDao.class` as the point in the class hierarchy where the cache field is located PowerMock will end up trying to looking for the cache field in the CGLib generated proxy where it'll obviously not find it.
 
-=== Testing a private method ===
+=== Invoking a private method ===
+To invoke a private method you can make use of the `Whitebox.invokeMethod(..)` method in PowerMock. For example let's say you have a private method called sum in class `MyClass` which you'd like to test in separation:
+{{{
+private int sum(int a, int b) {
+	return a+b;
+}
+}}}
+To do this you simply do: 
+{{{
+int sum = (Integer) Whitebox.invokeMethod(MyClass.class, "sum", 1, 2);
+}}}
+Printing the sum would then of course display `3`. 
 
 === Instantiate a class with a private constructor ===
 
+=== Note ===
 Note that all of these things can be achieved without using PowerMock, this is just normal Java reflection. However reflection requires much boiler-plate code and can be error prone and thus PowerMock provides you with these utility methods instead. PowerMock gives you a choice on whether to refactor your code and add getter/setter methods for checking/altering internal state or whether to use its utility methods to accomplish the same thing without changing the production code. It's up to you!
 
 === References === 
