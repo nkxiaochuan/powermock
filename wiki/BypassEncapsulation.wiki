@@ -126,7 +126,28 @@ To do this you simply do:
 {{{
 int sum = (Integer) Whitebox.invokeMethod(MyClass.class, "sum", 1, 2);
 }}}
-Printing the sum would then of course display `3`. 
+Printing the sum would then of course display 3. 
+
+This will work fine in most situations. However there are cases when PowerMock cannot figure out which method to invoke by using this simple syntax. For example if an overloaded method is using a primitive type and the other method is using a wrapper type such as:
+{{{
+...
+private int myMethod(int id) {		
+	return 2*id;
+}
+
+private int myMethod(Integer id) {		
+		return 3*id;
+}
+...
+}}}
+
+This is of course a naive example but you could still use `Whitebox.invokeMethod(..)` to call both these methods. For the `myMethod(int id)` case you'd do like this: 
+{{{
+int result = (Integer) Whitebox.invokeMethod(MyClass.class, new Class<?>[]{int.class}, "myMethod", 1);
+}}}
+
+Here we explicitly tell PowerMock to expect the call to the `myMethod` that takes an `int` as parameter. But in the majority of cases you don't need to specify the parameter type since PowerMock will find the correct method automatically.
+
 
 === Instantiate a class with a private constructor ===
 
