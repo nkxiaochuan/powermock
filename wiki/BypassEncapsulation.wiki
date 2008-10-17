@@ -89,7 +89,32 @@ If we instead like to set the state of the `myPrivateString` we'd do like this:
 Whitebox.setInternalState(instanceOfA, "myPrivateString", "this is my private string", B.class);
 }}}
 
-Also note that in order to set the state for a [MockPartial partially mocked] object
+Also note that in order to set the state for a [MockPartial partially mocked] object you'd also need specify the class of the object you're testing. For example let's say you have the following piece of code:
+{{{
+public class ReportDao {
+
+	@Injectable
+	private Cache cache;
+
+	public void deleteReport(final String reportName) {
+		Report report = getReportFromTargetName(reportName);
+		cache.invalidateCache(report);
+		// Imagine that we delete the report from some persistence storage.
+	}
+
+	private Report getReportFromTargetName(final String reportName) {
+		/* Imagine that this method does something that many methods share */
+		return null;
+	}
+}
+}}}
+
+Here we'd like to set the `cache` instance at the same time as we mock the `getReportFromTargetName` method. Without going into any details on how to perform [MockPartial partial mocking], the way to set the instance of `cache` must be done using: 
+{{{
+Whitebox.setInternalState(tested, "cache", cacheMock, ReportDao.class)
+}}}
+Since we've created a partial mock of the `ReportDao` class (since we'd wanted to mock the `getReportFromTargetName` method) the class under test is now actually a sub-class of `ReportDao`. This is because EasyMock creates a dynamic CGLib proxy which extends the ReportDao at run-time. So if we don't specify the `ReportDao.class` as the point in the class hierarchy where the cache field is located PowerMock will end up trying to looking for the cache field in the CGLib generated proxy where it'll obviously not find it.
+
 === Testing a private method ===
 
 === Instantiate a class with a private constructor ===
