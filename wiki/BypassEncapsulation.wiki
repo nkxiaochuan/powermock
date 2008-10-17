@@ -113,7 +113,7 @@ Here we'd like to set the `cache` instance at the same time as we mock the `getR
 {{{
 Whitebox.setInternalState(tested, "cache", cacheMock, ReportDao.class)
 }}}
-Since we've created a partial mock of the `ReportDao` class (since we'd wanted to mock the `getReportFromTargetName` method) the class under test is now actually a sub-class of `ReportDao`. This is because EasyMock creates a dynamic CGLib proxy which extends the ReportDao at run-time. So if we don't specify the `ReportDao.class` as the point in the class hierarchy where the cache field is located PowerMock will end up trying to looking for the cache field in the CGLib generated proxy where it'll obviously not find it.
+This is because the class under test is now actually a sub-class of `ReportDao` because EasyMock creates a dynamic CGLib proxy which extends the ReportDao at run-time. So if we don't specify the `ReportDao.class` as the point in the class hierarchy where the cache field is located PowerMock will end up trying to looking for the cache field in the CGLib generated proxy where it'll obviously not find it.
 
 === Testing a private method ===
 
