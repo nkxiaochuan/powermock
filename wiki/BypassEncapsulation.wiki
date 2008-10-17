@@ -1,2 +1,34 @@
 #labels Usage
-description goes here...
+== Bypass encapsulation ==
+
+=== Quick summary ===
+
+  # Use `Whitebox.setInternalState(..)` to set a private member of an instance.
+  # Use `Whitebox.getInternalState(..)` to get a private member of an instance.
+  # Use `Whitebox.invokeMethod(..)` to invoke a private method of an instance.
+  # Use `Whitebox.invokeConstructor(..)` to create an instance of a class with a private constructor.
+
+=== Example ===
+
+For mutable objects internal state may change after a method has been invoked. When unit testing such objects it's good to have an easy way to get a hold of this state and see if it has updated accordingly. PowerMock supplies several useful reflection utilities specially desgined to be used with unit testing. All of these reflection utilities are located in the `org.powermock.Whitebox` class. 
+
+For example let's say we have a class that looks like this:
+{{{
+public class ServiceHolder {
+
+	private final Set<Object> services = new HashSet<Object>();
+
+	public void addService(Object service) {
+		services.add(service);
+	}
+
+	public void removeService(Object service) {
+		services.remove(service);
+	}
+}
+}}}
+
+=== References === 
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/finalmocking/StateFormatterTest.java StateFormatterTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateFormatter.java StateFormatter]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateHolder.java StateHolder]
