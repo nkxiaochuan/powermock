@@ -3,9 +3,9 @@
 
 === Quick summary ===
 
-  # Use `Whitebox.setInternalState(..)` to set a private member of an instance.
-  # Use `Whitebox.getInternalState(..)` to get a private member of an instance.
-  # Use `Whitebox.invokeMethod(..)` to invoke a private method of an instance.
+  # Use `Whitebox.setInternalState(..)` to set a private member of an instance or class.
+  # Use `Whitebox.getInternalState(..)` to get a private member of an instance or class.
+  # Use `Whitebox.invokeMethod(..)` to invoke a private method of an instance or class.
   # Use `Whitebox.invokeConstructor(..)` to create an instance of a class with a private constructor.
 
 === Example ===
