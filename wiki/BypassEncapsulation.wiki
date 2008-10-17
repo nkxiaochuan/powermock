@@ -10,6 +10,7 @@
 
 === Example ===
 
+=== Access internal state ===
 For mutable objects internal state may change after a method has been invoked. When unit testing such objects it's good to have an easy way to get a hold of this state and see if it has updated accordingly. PowerMock supplies several useful reflection utilities specially designed to be used with unit testing. All of these reflection utilities are located in the `org.powermock.Whitebox` class. 
 
 For demonstration purposes let's say we have a class that looks like this:
