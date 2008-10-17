@@ -10,9 +10,9 @@
 
 === Example ===
 
-For mutable objects internal state may change after a method has been invoked. When unit testing such objects it's good to have an easy way to get a hold of this state and see if it has updated accordingly. PowerMock supplies several useful reflection utilities specially desgined to be used with unit testing. All of these reflection utilities are located in the `org.powermock.Whitebox` class. 
+For mutable objects internal state may change after a method has been invoked. When unit testing such objects it's good to have an easy way to get a hold of this state and see if it has updated accordingly. PowerMock supplies several useful reflection utilities specially designed to be used with unit testing. All of these reflection utilities are located in the `org.powermock.Whitebox` class. 
 
-For example let's say we have a class that looks like this:
+For demonstration purposes let's say we have a class that looks like this:
 {{{
 public class ServiceHolder {
 
@@ -27,6 +27,34 @@ public class ServiceHolder {
 	}
 }
 }}}
+
+Let's say that we'd like to test the `addService` method. Here we'd like to make sure that the state of the `ServiceHolder` has been correctly updated, i.e. a new object has been added to the `services` set. One way of doing this is to add a package-private or protected method called something like `getServices()` which returns the `services` set. But by doing this we've added a method to the `ServiceHolder` class that has no other purpose than making the class testable. This method may possibly also be miss-used elsewhere in the code. Another alternative would be to use the `Whitebox.getInternalState(..)` method in PowerMock to accomplish the same thing without altering the production code. In this simple case the whole test for the `addService` method would look like:
+
+{{{
+@Test
+public void testAddService() throws Exception {
+	ServiceHolder tested = new ServiceHolder();
+	final Object service = new Object();
+
+	tested.addService(service);
+
+        // This is how you get the private services set using PowerMock
+	Set<String> services = (Set<String>) Whitebox.getInternalState(tested,
+			"services");
+
+	assertEquals("Size of the \"services\" Set should be 1", 1, services
+			.size());
+	assertSame("The services Set should didn't contain the expect service",
+			service, services.iterator().next());
+}
+}}}
+
+
+=== Testing a private method ===
+
+=== Instantiate a class with a private constructor ===
+
+Note that all of these things can be achieved without using PowerMock, this is just normal Java reflection. However reflection requires much boiler-plate code and can be error prone and thus PowerMock provide you with these utility methods instead. PowerMock gives you a choice on whether to refactor your code and add getter methods for checking/altering internal state or whether to use its utility methods to accomplish the same thing without changing the production code. It's up to you!
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/finalmocking/StateFormatterTest.java StateFormatterTest]
