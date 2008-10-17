@@ -74,6 +74,23 @@ Whitebox.setInternalState(tested, "reportTemplateService", reportTemplateService
 }}}
 
 
+The set and get internal state methods that we've just seen also has some slightly more advanced use cases. Many times it's useful to modify or read internal state somewhere in the class hierarchy of an object. For example suppose that we have an instance of class A that extends B and B has a field called `myPrivateString` of type `java.lang.String` whose contents we'd like to read. By using `Whitebox.getInternalState(..)` we can do this easily by specifying where in the class hierarchy the field should be read from. In this case we'd write something like:
+{{{
+String myPrivateString = (String) Whitebox.getInternalState(instanceOfA, "myPrivateString", B.class);
+}}}
+
+You can also choose to avoid the cast by specifying the return type:
+{{{
+String myPrivateString = Whitebox.getInternalState(instanceOfA, "myPrivateString", B.class, String.class);
+}}}
+
+If we instead like to set the state of the `myPrivateString` we'd do like this:
+{{{
+Whitebox.setInternalState(instanceOfA, "myPrivateString", "this is my private string", B.class);
+}}}
+
+
+
 === Testing a private method ===
 
 === Instantiate a class with a private constructor ===
