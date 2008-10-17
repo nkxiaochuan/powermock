@@ -89,8 +89,7 @@ If we instead like to set the state of the `myPrivateString` we'd do like this:
 Whitebox.setInternalState(instanceOfA, "myPrivateString", "this is my private string", B.class);
 }}}
 
-
-
+Also note that in order to set the state for a [partially mocked|PartialMock]
 === Testing a private method ===
 
 === Instantiate a class with a private constructor ===
