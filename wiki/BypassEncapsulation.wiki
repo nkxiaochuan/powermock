@@ -50,7 +50,28 @@ public void testAddService() throws Exception {
 }
 }}}
 
+It's just as easy to set internal state of an object. Say for example that we have the following class:
+{{{
+public class ReportGenerator {
 
+	@Injectable
+	private ReportTemplateService reportTemplateService;
+
+	public Report generateReport(String reportId) {
+		String templateId = reportTemplateService.getTemplateId(reportId);
+		/*
+		 * Imagine some other code here that generates the report based on the
+		 * template id.
+		 */
+		return new Report("name");
+	}
+}
+}}}
+
+Here we imagine that we're using a dependency injection framework that automatically supply us with an instance of the `ReportTemplateService` in run-time. For testing this class we have numerous options. We could for example refactor the class to use constructor or setter injection, use java reflection or we could simply create a setter for `reportTemplateService` that should be used _only_ for test purposes (i.e. setting a mock instance). Another approach would be to let PowerMock do the reflection for you by using the `Whitebox.setInternalState(..)` method. In this case it would be really easy:
+{{{
+Whitebox.setInternalState(tested, "reportTemplateService", reportTemplateServiceMock);
+}}}
 
 
 === Testing a private method ===
