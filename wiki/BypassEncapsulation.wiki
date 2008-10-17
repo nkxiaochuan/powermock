@@ -51,6 +51,8 @@ public void testAddService() throws Exception {
 }}}
 
 
+
+
 === Testing a private method ===
 
 === Instantiate a class with a private constructor ===
