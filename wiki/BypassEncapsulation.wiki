@@ -116,7 +116,7 @@ Whitebox.setInternalState(tested, "cache", cacheMock, ReportDao.class)
 This is because the class under test is now actually a sub-class of `ReportDao` because EasyMock creates a dynamic CGLib proxy which extends the ReportDao at run-time. So if we don't specify the `ReportDao.class` as the point in the class hierarchy where the cache field is located, PowerMock will end up trying to looking for the cache field in the CGLib generated proxy where it'll obviously not find it.
 
 === Invoking a private method ===
-To invoke a private method you can make use of the `Whitebox.invokeMethod(..)` method in PowerMock. For example let's say you have a private method called sum in class `MyClass` which you'd like to test in separation:
+To invoke a private method you can make use of the `Whitebox.invokeMethod(..)` method in PowerMock. For example let's say you have a private method called sum in class `myInstance` which you'd like to test in separation:
 {{{
 private int sum(int a, int b) {
 	return a+b;
@@ -124,7 +124,7 @@ private int sum(int a, int b) {
 }}}
 To do this you simply do: 
 {{{
-int sum = (Integer) Whitebox.invokeMethod(MyClass.class, "sum", 1, 2);
+int sum = (Integer) Whitebox.invokeMethod(myInstance, "sum", 1, 2);
 }}}
 Printing the sum would then of course display 3. 
 
@@ -143,10 +143,17 @@ private int myMethod(Integer id) {
 
 This is of course a naive example but you could still use `Whitebox.invokeMethod(..)` to call both these methods. For the `myMethod(int id)` case you'd do like this: 
 {{{
-int result = (Integer) Whitebox.invokeMethod(MyClass.class, new Class<?>[]{int.class}, "myMethod", 1);
+int result = (Integer) Whitebox.invokeMethod(myInstance, new Class<?>[]{int.class}, "myMethod", 1);
 }}}
 
 Here we explicitly tell PowerMock to expect the call to the `myMethod` that takes an `int` as parameter. But in the majority of cases you don't need to specify the parameter type since PowerMock will find the correct method automatically.
+
+You can also invoke class-level (static) methods. Imagine that the `sum` method was also static, in this case we could invoke it by:
+{{{
+int sum = (Integer) Whitebox.invokeMethod(MyClass.class, "sum", 1, 2);
+}}} 
+
+if the method was defined in a class called `MyClass`.
 
 
 === Instantiate a class with a private constructor ===
