@@ -203,7 +203,7 @@ public class PrivateConstructorInstantiationDemo {
 }
 }}}
 
-This is of course a naive example but you could still use `Whitebox.invokeConstructor(..)` to call both these methods. For the `Integer` parameter constructor case you'd do like this: 
+This is of course a naive example but you could still use `Whitebox.invokeConstructor(..)` to call both these constructors. For the `Integer` parameter constructor case you'd do like this: 
 {{{
 PrivateConstructorInstantiationDemo instance = Whitebox.invokeConstructor(PrivateConstructorInstantiationDemo.class, new Class<?>[]{Integer.class}, 43);
 }}}
