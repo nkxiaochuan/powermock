@@ -40,13 +40,12 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
    <dependency>
       <groupId>org.easymock</groupId>
       <artifactId>easymockclassextension</artifactId>
-      <version>2.3</version>
+      <version>2.4</version>
       <scope>test</scope>
    </dependency>
 <dependencies>
 }}}
 
-Note that PowerMock works with EasyMock class extension 2.4 as well.
 
 == Non maven users ==
  
