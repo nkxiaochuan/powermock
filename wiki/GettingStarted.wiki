@@ -34,7 +34,7 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
    <dependency>
       <groupId>org.powermock.modules</groupId>
       <artifactId>powermock-module-junit4</artifactId>
-      <version>0.7</version>
+      <version>0.8</version>
       <scope>test</scope>
    </dependency>
    <dependency>
@@ -49,6 +49,6 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 
 == Non maven users ==
  
- Download the [http://powermock.googlecode.com/files/powermock-0.7-with-dependencies.zip zipfile] with PowerMock and all its dependencies and add those to your project.
+ Download the [http://powermock.googlecode.com/files/powermock-0.8-with-dependencies.zip zipfile] with PowerMock and all its dependencies and add those to your project.
 
  You could also download the jar file with all PowerMock code in a single file and then download the dependencies separately.
