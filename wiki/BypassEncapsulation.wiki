@@ -68,7 +68,7 @@ public class ReportGenerator {
 }
 }}}
 
-Here we imagine that we're using a dependency injection framework that automatically supply us with an instance of the `ReportTemplateService` in run-time. For testing this class we have numerous options. We could for example refactor the class to use constructor or setter injection, use java reflection or we could simply create a setter for `reportTemplateService` that should be used _only_ for test purposes (i.e. setting a mock instance). Another approach would be to let PowerMock do the reflection for you by using the `Whitebox.setInternalState(..)` method. In this case it would be really easy:
+Here we imagine that we're using a dependency injection framework that automatically supply us with an instance of the `ReportTemplateService` in run-time. We have numerous options for testing this class. We could for example refactor the class to use constructor or setter injection, use java reflection or we could simply create a setter for `reportTemplateService` that should be used _only_ for test purposes (i.e. setting a mock instance). Another approach would be to let PowerMock do the reflection for you by using the `Whitebox.setInternalState(..)` method. In this case it would be really easy:
 {{{
 Whitebox.setInternalState(tested, "reportTemplateService", reportTemplateServiceMock);
 }}}
@@ -116,7 +116,7 @@ Whitebox.setInternalState(tested, "cache", cacheMock, ReportDao.class)
 This is because the class under test is now actually a sub-class of `ReportDao` because EasyMock creates a dynamic CGLib proxy which extends the ReportDao at run-time. So if we don't specify the `ReportDao.class` as the point in the class hierarchy where the cache field is located, PowerMock will end up trying to looking for the cache field in the CGLib generated proxy where it'll obviously not find it.
 
 === Invoking a private method ===
-To invoke a private method you can make use of the `Whitebox.invokeMethod(..)` method in PowerMock. For example let's say you have a private method called sum in class in an instance called `myInstance` which you'd like to test in separation:
+To invoke a private method you can make use of the `Whitebox.invokeMethod(..)` method in PowerMock. For example let's say you have a private method called sum in an instance called `myInstance` which you'd like to test in separation:
 {{{
 private int sum(int a, int b) {
 	return a+b;
