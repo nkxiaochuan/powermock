@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><metadata>
   <groupId>org.powermock.examples.hamcrest</groupId>
   <artifactId>powermock-examples-hamcrestexample</artifactId>
-  <version>0.8</version>
+  <version>0.8.1</version>
   <versioning>
     <versions>
-      <version>0.8</version>
+      <version>0.8.1</version>
     </versions>
-    <lastUpdated>20081022191350</lastUpdated>
+    <lastUpdated>20081026124754</lastUpdated>
   </versioning>
 </metadata>
