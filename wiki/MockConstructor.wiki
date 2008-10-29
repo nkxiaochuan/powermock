@@ -42,7 +42,7 @@ The last aspect is the replay and verify behavior. In order to correctly replay 
 {{{
 replay(fileMock, File.class);
 }}}
-The verification procedure is follows the same rules:
+The verification procedure follows the same rules:
 {{{
 verify(fileMock, File.class);
 }}}
