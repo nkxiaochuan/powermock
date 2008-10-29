@@ -108,7 +108,7 @@ expectNew(File.class).andThrow(new IllegalStateException("testing!");
 
 As another example imagine that a method creates two new File objects and you like to return the same mock instance for both. You could do this by:
 {{{
-expect(File.class).andReturn(fileMock).times(2);
+expectNew(File.class).andReturn(fileMock).times(2);
 }}}
 
 === References === 
