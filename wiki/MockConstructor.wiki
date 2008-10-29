@@ -11,6 +11,32 @@
   # Use `PowerMock.verify(mockObject, NewInstanceClass.class)` to change the mock object and class to verify mode.
 
 === Example ===
+Let's say you have a class like this:
+{{{
+public class PersistenceManager {
+
+	public boolean createDirectoryStructure(String directoryPath) {
+		File directory = new File(directoryPath);
+
+		if (directory.exists()) {
+			throw new IllegalArgumentException("\"" + directoryPath + "\" already exists.");
+		}
+
+		return directory.mkdirs();
+	}
+}
+}}}
+
+What's interesting here is the creation of a new File object. This is interesting because in order to get 100% code coverage of this method we need to be able test the method both when the `directory.exists()` query return `true` and `false`. But in order to unit test this method one needs to substitute the File object created in this method for a mock implementation. One way to do this is to extract the call to `new File(..)` to a package private method which is overridden in the test to return a File mock. But with PowerMock you don't have to change the code, instead you can instruct PowerMock to intercept the call to `new File(..)` and return a mock object instead. To do this we start by creating a mock of type File.class as usually:
+{{{
+File fileMock = createMock(File.class);
+}}}
+To expect the call to new File we simply do: 
+{{{
+expectNew(File.class).andReturn(fileMock);
+}}}
+
+
 
 Note that you need to tell PowerMock which classes you like to mock. This is done by adding the `@PrepareForTest` annotation to the class-level of test case, in this case `@PrepareForTest(StateHolder.class)`. You also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail. 
 
