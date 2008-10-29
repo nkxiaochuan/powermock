@@ -1,5 +1,5 @@
 #labels Usage
-== Mock construction of new classes ==
+== Mock construction of new objects ==
 
 === Quick summary ===
 
