@@ -114,4 +114,5 @@ expect(File.class).andReturn(fileMock).times(2);
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/newmocking/PersistenceManagerTest.java PersistenceManagerTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/newmocking/PersistenceManager.java PersistenceManager]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateHolder.java StateHolder]
+  * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit4/src/test/java/org/powermock/modules/junit4/expectnew/ExpectNewDemoTest.java ExpectNewDemoTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/tests/utils/src/main/java/samples/expectnew/ExpectNewDemo.java ExpectNewDemo]
