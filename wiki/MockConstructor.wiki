@@ -1,2 +1,22 @@
 #labels Usage
-description goes here...
+== Mock construction of new classes ==
+
+=== Quick summary ===
+
+  # Use the `@RunWith(PowerMockRunner.class)` annotation at the class-level of the test case.
+  # Use the `@PrepareForTest({ClassThatCreatesTheNewInstance.class, NewInstanceClass.class})` annotation at the class-level of the test case.
+  # Use `PowerMock.createMock(NewInstanceClass.class.class)` to create a mock object of the class that should be constructed (let's call it `mockObject`).
+  # Use `PowerMock.expectNew(NewInstanceClass.class).andReturn(mockObject)` to expect a new construction of an object with type NewInstanceClass.class but instead return the mock object.
+  # Use `PowerMock.replay(mockObject, NewInstanceClass.class)` to change the mock object and class to replay mode.
+  # Use `PowerMock.verify(mockObject, NewInstanceClass.class)` to change the mock object and class to verify mode.
+
+=== Example ===
+
+Note that you need to tell PowerMock which classes you like to mock. This is done by adding the `@PrepareForTest` annotation to the class-level of test case, in this case `@PrepareForTest(StateHolder.class)`. You also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail. 
+
+See the [MockPartial partial mocking] section for information on how to mock only specific methods of a class. 
+
+=== References === 
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/finalmocking/StateFormatterTest.java StateFormatterTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateFormatter.java StateFormatter]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateHolder.java StateHolder]
