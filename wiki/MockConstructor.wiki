@@ -36,11 +36,17 @@ To expect the call to new File we simply do:
 expectNew(File.class).andReturn(fileMock);
 }}}
 
+That's it when it comes to the expectation behavior! There are however some things that must be explained further. First of all you to tell PowerMock which classes to mock, in this case it's the File.class. But for `expectNew` this is not enough. PowerMock also needs to know which class that does the actual `new` call, in this case it's the `PersistenceManager` class that does `new File(..)`. So in order to provide PowerMock with this information we add `@PrepareForTest({PersistenceManager.class, File.class})` at the class-level of test case. As usually you also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail!
 
-
-Note that you need to tell PowerMock which classes you like to mock. This is done by adding the `@PrepareForTest` annotation to the class-level of test case, in this case `@PrepareForTest(StateHolder.class)`. You also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail. 
-
-See the [MockPartial partial mocking] section for information on how to mock only specific methods of a class. 
+The last aspect is the replay and verify behavior. In order to correctly replay the expected behavior we need to replay both the `fileMock` object and the File class. I.e.
+{{{
+replay(fileMock, File.class);
+}}}
+The verification procedure is follows the same rules:
+{{{
+verify(fileMock, File.class);
+}}}
+That's it!
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/newmocking/PersistenceManagerTest.java PersistenceManagerTest]
