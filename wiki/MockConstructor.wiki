@@ -46,7 +46,32 @@ The verification procedure is follows the same rules:
 {{{
 verify(fileMock, File.class);
 }}}
-That's it!
+That's it! The full test simulating when a directory previously didn't exist looks like this:
+{{{
+@RunWith(PowerMockRunner.class)
+@PrepareForTest( { PersistenceManager.class, File.class })
+public class PersistenceManagerTest {
+
+	@Test
+	public void testCreateDirectoryStructure_ok() throws Exception {
+		final String path = "directoryPath";
+		File mFileMock = createMock(File.class);
+
+		PersistenceManager tested = new PersistenceManager();
+
+		expectNew(File.class).andReturn(mFileMock);
+
+		expect(mFileMock.exists()).andReturn(false);
+		expect(mFileMock.mkdirs()).andReturn(true);
+
+		replay(mFileMock, File.class);
+
+		assertTrue(tested.createDirectoryStructure(path));
+
+		verify(mFileMock, File.class);
+	}
+}
+}}}
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/newmocking/PersistenceManagerTest.java PersistenceManagerTest]
