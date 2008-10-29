@@ -14,12 +14,12 @@
 Let's assume you're using a third-party library that contains a class called `StateHolder`. For whatever reason this class is final and not only that, the methods are final as well. Imagine also that you need to use this class in your code and you'd still like to be able to unit test your own code in separation. `StateHolder` looks like this:
 
 {{{
-public final class StateHolder {
+public final class StateHolder extends JdbcDaoSupport {
 
 	public final String getState() {
-		/* Imagine that we query a database for state, 
+		/* Query a database for state, 
                    this is not something we want to do in a unit test */
-		return null;
+		getJdbcTemplate().queryForObject("some sql", String.class);
 	}
 }
 }}}
