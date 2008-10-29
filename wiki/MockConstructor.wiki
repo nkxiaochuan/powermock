@@ -103,7 +103,12 @@ public class PersistenceManagerTest {
 ===More features===
 `expectNew` works similar to the normal `expect` method in EasyMock. This means that you can setup expectations to be invoked a certain number of times or an exception upon instantiation etc. For example let's say that you for some reason would like to throw an IllegalStateException when by the time `new File(..)` is invoked. You can do this by:
 {{{
-epxectNew(File.class).andThrow(new IllegalStateException("testing!");
+expectNew(File.class).andThrow(new IllegalStateException("testing!");
+}}}
+
+As another example imagine that a method creates two new File objects and you like to return the same mock instance for both. You could do this by:
+{{{
+expect(File.class).andReturn(fileMock).times(2);
 }}}
 
 === References === 
