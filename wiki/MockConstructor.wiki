@@ -46,7 +46,9 @@ The verification procedure is follows the same rules:
 {{{
 verify(fileMock, File.class);
 }}}
-That's it! The full test simulating when a directory previously didn't exist looks like this:
+That's it! 
+
+The full test simulating when a directory previously didn't exist looks like this:
 {{{
 @RunWith(PowerMockRunner.class)
 @PrepareForTest( { PersistenceManager.class, File.class })
@@ -60,6 +62,31 @@ public class PersistenceManagerTest {
 		PersistenceManager tested = new PersistenceManager();
 
 		expectNew(File.class).andReturn(fileMock);
+
+		expect(fileMock.exists()).andReturn(false);
+		expect(fileMock.mkdirs()).andReturn(true);
+
+		replay(fileMock, File.class);
+
+		assertTrue(tested.createDirectoryStructure(path));
+
+		verify(fileMock, File.class);
+	}
+}
+}}}
+
+There's also a slightly shorter way to write the test. In simple situations like the example above you can create the mock object of the File class and expect the call to new File at the same time using the `createMockAndExpectNew` method in PowerMock. The test could thus be rewritten as: 
+{{{
+@RunWith(PowerMockRunner.class)
+@PrepareForTest( { PersistenceManager.class, File.class })
+public class PersistenceManagerTest {
+
+	@Test
+	public void testCreateDirectoryStructure_usingCreateMockAndExpectNew() throws Exception {
+		final String path = "directoryPath";
+		File fileMock = createMockAndExpectNew(File.class);
+
+		PersistenceManager tested = new PersistenceManager();
 
 		expect(fileMock.exists()).andReturn(false);
 		expect(fileMock.mkdirs()).andReturn(true);
