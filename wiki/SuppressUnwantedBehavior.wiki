@@ -170,7 +170,7 @@ The problem here is that when the ExampleWithEvilStaticInitializer class is load
 As you can see we don't pass the `ExampleWithEvilStaticInitializer.class` to the `@SuppressStaticInitializationFor` but instead we give it the fully-qualified name of the class instead. The reason is that if we were to pass `ExampleWithEvilStaticInitializer.class` to the annotation the static initializer would run before the test has even started and thus the test would fail. So when removing a static initializer you have to pass the fully-qualified name to the class instead. The whole test would like like:
 {{{
 @RunWith(PowerMockRunner.class)
-@SuppressStaticInitializationFor("powermock.examples.suppress.staticinitializer.ExampleWithEvilStaticInitializer")
+@SuppressStaticInitializationFor("org.mycompany.ExampleWithEvilStaticInitializer")
 public class ExampleWithEvilStaticInitializerTest {
 
 	@Test
