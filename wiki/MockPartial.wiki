@@ -1,2 +1,14 @@
 #labels Usage
-description goes here..
+== Partial Mocking== 
+=== Quick summary ===
+  # Use the `@RunWith(PowerMockRunner.class)` annotation at the class-level of the test case.
+  # Use the `@PrepareForTest(ClassToPartiallyMock.class)` annotation at the class-level of the test case.
+  #Use `PowerMock.createPartialMock(ClassToPartiallyMock.class, "nameOfTheFirstMethodToMock", "nameOfTheSecondMethodToMock")` to create a mock object that only mocks the methods with name `nameOfTheFirstMethodToMock` and `nameOfTheSecondMethodToMock` in this class (let's call it `mockObject`).
+  # Use `PowerMock.replay(mockObject)` to change the mock object to replay mode.
+  # Use `PowerMock.verify(mockObject)` to change the mock object to verify mode. 
+
+=== Example === 
+TODO
+
+=== References === 
+TODO
