@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><metadata>
   <groupId>org.powermock.modules</groupId>
   <artifactId>powermock-modules</artifactId>
-  <version>0.8.5</version>
+  <version>0.9</version>
   <versioning>
     <versions>
-      <version>0.8.5</version>
+      <version>0.9</version>
     </versions>
-    <lastUpdated>20081030154728</lastUpdated>
+    <lastUpdated>20081110081054</lastUpdated>
   </versioning>
 </metadata>
