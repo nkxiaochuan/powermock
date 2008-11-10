@@ -1,4 +1,10 @@
 #labels Usage
+== Quick guide ==
+  # Use `PowerMock.replayAll` to change all mock object and classes created by PowerMock to replay mode.
+  # Use `PowerMock.verifyAll` verify all mock object and classes created by PowerMock.
+
+== Example ==
+
 Since version 0.9 of PowerMock you can use `PowerMock.replayAll(..)` and `PowerMock.verifyAll()` to replay all classes and objects created (or in some cases used) by PowerMock.
 
 So for example let's say you have some code like: 
