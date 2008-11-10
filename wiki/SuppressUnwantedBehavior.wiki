@@ -1,2 +1,10 @@
 #labels Usage
-description goes here...
+== Suppressing Unwanted Behavior ==
+
+=== Quick summary ===
+  # Use the `@RunWith(PowerMockRunner.class)` annotation at the class-level of the test case.
+  # Use the `@PrepareForTest(ClassWithEvilChildConstructor.class)` annotation at the class-level of the test case in combination with `suppressConstructorCode(EvilChild.class)` to suppress all constructors for the EvilChild class.
+  # Use the `Whitebox.newInstance(ClassWithEvilConstructor.class)` method to instantiate a class without invoking the constructor what so ever.
+  # Use the `@SuppressStaticInitializationFor("org.mycompany.ClassWithEvilStaticInitializer")` annotation to remove the static initializer for the the `org.mycompany.ClassWithEvilStaticInitializer` class.
+
+=== Example ===
