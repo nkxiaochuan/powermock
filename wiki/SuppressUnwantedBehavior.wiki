@@ -95,7 +95,7 @@ public class ExampleWithEvilConstructorTest {
 		assertNull(tested.getMessage());
 	}
 }
-Note that you don't need to use the `@RunWith(..)` annotation or pass the class to the `@PrepareForTest` annotation. It doesn't harm you to do so, but it's not necessary. Another important thing to understand is that since the constructor is never executed the `tested.getMessage()` method returns `null`. You can of course change the state of the message field in the tested instance by bypassing the encapsulation. 
+Note that you don't need to use the `@RunWith(..)` annotation or pass the class to the `@PrepareForTest` annotation. It doesn't harm you to do so, but it's not necessary. Another important thing to understand is that since the constructor is never executed the `tested.getMessage()` method returns `null`. You can of course change the state of the message field in the tested instance by [BypassEncapsulation bypassing the encapsulation]. 
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilChildTest.java ExampleWithEvilChildTest]
