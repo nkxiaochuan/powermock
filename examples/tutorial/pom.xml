@@ -6,6 +6,7 @@
   <version>0.9</version>
   <name>tutorial</name>
   <url>http://maven.apache.org</url>
+  <build> 
   <plugins>
          <plugin>            
           <groupId>org.apache.maven.plugins</groupId>
@@ -17,6 +18,7 @@
             </configuration>
          </plugin>
   </plugins>
+  </build>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -68,6 +70,18 @@
   </profiles>
   <build>
     <testSourceDirectory>src/${testcode}/java</testSourceDirectory>
+    <plugins>
+         <plugin>            
+          <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <verbose>true</verbose>
+               <source>1.5</source>
+               <target>1.5</target>
+            </configuration>
+    </plugin>
+  </plugins>
+
   </build>
 </project>
 
