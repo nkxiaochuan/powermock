@@ -9,3 +9,10 @@
   # Use the `@PrepareForTest(ClassWithEvilMethod.class)` annotation at the class-level of the test case in combination with `suppressMethodCode(ClassWithEvilMethod.class, "methodName")` to suppress the method with name "methodName" in the ClassWithEvilMethod class.
 
 === Example ===
+
+=== References === 
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilChildTest.java ExampleWithEvilChildTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilConstructorTest.java ExampleWithEvilConstructorTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/method/ExampleWithEvilMethodTest.java ExampleWithEvilMethodTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/staticinitializer/ExampleWithEvilStaticInitializerTest.java ExampleWithEvilStaticInitializerTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateHolder.java StateHolder]
