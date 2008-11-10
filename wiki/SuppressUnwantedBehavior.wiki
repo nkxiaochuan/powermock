@@ -16,3 +16,7 @@
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/method/ExampleWithEvilMethodTest.java ExampleWithEvilMethodTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/staticinitializer/ExampleWithEvilStaticInitializerTest.java ExampleWithEvilStaticInitializerTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/ExampleWithEvilChild.java ExampleWithEvilChild]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/EvilChild.java EvilChild]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/ExampleWithEvilConstructor.java ExampleWithEvilConstructor]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/method/ExampleWithEvilMethod.java ExampleWithEvilMethod]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/staticinitializer/ExampleWithEvilStaticInitializer.java ExampleWithEvilStaticInitializer]
