@@ -1,10 +1,9 @@
 #labels Usage
-== Quick guide ==
+=== Quick summary ===
   # Use `PowerMock.replayAll` to change all mock object and classes created by PowerMock to replay mode.
   # Use `PowerMock.verifyAll` verify all mock object and classes created by PowerMock.
 
-== Example ==
-
+=== Example ===
 Since version 0.9 of PowerMock you can use `PowerMock.replayAll(..)` and `PowerMock.verifyAll()` to replay all classes and objects created (or in some cases used) by PowerMock.
 
 So for example let's say you have some code like: 
@@ -76,3 +75,6 @@ public void testCreateDirectoryStructure_ok_usingEasyMockToCreateTheFileMock() t
 	verifyAll();
 }
 }}}
+=== References === 
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/newmocking/PersistenceManagerWithReplayAllAndVerifyAllTest.java PersistenceManagerWithReplayAllAndVerifyAllTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/newmocking/PersistenceManager.java PersistenceManager]
