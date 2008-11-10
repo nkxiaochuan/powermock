@@ -143,6 +143,44 @@ public class ExampleWithEvilMethodTest {
 }
 }}}
 
+==== Suppress static initializer ====
+Some times a thrid-party class does something in it's static initializer (also called static constructor) that prevents you from unit testing your own class. It's also possible that your own class does something in a static initializer which you don't want to happen when you unit test your class. PowerMock can then simply suppress the static initialization of that class. You do this by specifying the `@SuppressStaticInitializationFor` annotation at the class-level or method-level of the test. For example let's say you want to unit-test the following class:
+{{{
+public class ExampleWithEvilStaticInitializer {
+
+	static {
+		System.loadLibrary("evil.dll");
+	}
+
+	private final String message;
+
+	public ExampleWithEvilStaticInitializer(String message) {
+		this.message = message;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+}
+}}}
+The problem here is that when the ExampleWithEvilStaticInitializer class is loaded the static code block will be executed and the `System.loadLibrary("evil.dll")` will be executed causing the unit test to fail (if the evil.dll cannot be loaded). To suppress this static initializer we do like this:
+{{{
+@SuppressStaticInitializationFor("org.mycompany.ExampleWithEvilStaticInitializer")
+}}}
+As you can see we don't pass the `ExampleWithEvilStaticInitializer.class` to the `@SuppressStaticInitializationFor` but instead we give it the fully-qualified name of the class instead. The reason is that if we were to pass `ExampleWithEvilStaticInitializer.class` to the annotation the static initializer would run before the test has even started and thus the test would fail. So when removing a static initializer you have to pass the fully-qualified name to the class instead. The whole test would like like:
+{{{
+@RunWith(PowerMockRunner.class)
+@SuppressStaticInitializationFor("powermock.examples.suppress.staticinitializer.ExampleWithEvilStaticInitializer")
+public class ExampleWithEvilStaticInitializerTest {
+
+	@Test
+	public void testSuppressStaticInitializer() throws Exception {
+		final String message = "myMessage";
+		ExampleWithEvilStaticInitializer tested = new ExampleWithEvilStaticInitializer(message);
+		assertEquals(message, tested.getMessage());
+	}
+}
+}}}
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilChildTest.java ExampleWithEvilChildTest]
