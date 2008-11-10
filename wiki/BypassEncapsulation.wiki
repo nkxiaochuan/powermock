@@ -74,7 +74,7 @@ Whitebox.setInternalState(tested, "reportTemplateService", reportTemplateService
 }}}
 
 
-The set and get internal state methods that we've just seen also has some slightly more advanced use cases. Many times it's useful to modify or read internal state somewhere in the class hierarchy of an object. For example suppose that we have an instance of class A that extends B and B has a field called `myPrivateString` of type `java.lang.String` whose contents we'd like to read. By using `Whitebox.getInternalState(..)` we can do this easily by specifying where in the class hierarchy the field should be read from. In this case we'd write something like:
+The set and get internal state methods that we've just seen also has some slightly more advanced use cases. Many times it's useful to modify or read internal state somewhere in the class hierarchy of an object. Normally setInternalState and getInternalState traverses the super-class hierarchy looking for the field in subclasses and returns or set the first field matching the supplied field name. But in some situations you really want to get or set a particular field somewhere in the hierarchy. For example suppose that we have an instance of class A that extends B and both A and B has a field called `myPrivateString` of type `java.lang.String` but in this case we'd like to read the contents of B's field. By using `Whitebox.getInternalState(..)` we can do this easily by specifying where in the class hierarchy the field should be read from. In this case we'd write something like:
 {{{
 String myPrivateString = (String) Whitebox.getInternalState(instanceOfA, "myPrivateString", B.class);
 }}}
@@ -88,32 +88,6 @@ If we instead like to set the state of the `myPrivateString` we'd do like this:
 {{{
 Whitebox.setInternalState(instanceOfA, "myPrivateString", "this is my private string", B.class);
 }}}
-
-Also note that in order to set the state for a [MockPartial partially mocked] object you'd also need specify the class of the object you're testing. For example let's say you have the following piece of code:
-{{{
-public class ReportDao {
-
-	@Injectable
-	private Cache cache;
-
-	public void deleteReport(final String reportName) {
-		Report report = getReportFromTargetName(reportName);
-		cache.invalidateCache(report);
-		// Imagine that we delete the report from some persistence storage.
-	}
-
-	private Report getReportFromTargetName(final String reportName) {
-		/* Imagine that this method does something that many methods share */
-		return null;
-	}
-}
-}}}
-
-Here we'd like to set the `cache` instance at the same time as we mock the `getReportFromTargetName` method. Without going into any details on how to perform [MockPartial partial mocking], the way to set the instance of `cache` must be done using: 
-{{{
-Whitebox.setInternalState(tested, "cache", cacheMock, ReportDao.class)
-}}}
-This is because the class under test is now actually a sub-class of `ReportDao` because EasyMock creates a dynamic CGLib proxy which extends the ReportDao at run-time. So if we don't specify the `ReportDao.class` as the point in the class hierarchy where the cache field is located, PowerMock will end up trying to looking for the cache field in the CGLib generated proxy where it'll obviously not find it.
 
 === Invoking a private method ===
 To invoke a private method you can make use of the `Whitebox.invokeMethod(..)` method in PowerMock. For example let's say you have a private method called sum in an instance called `myInstance` which you'd like to test in separation:
