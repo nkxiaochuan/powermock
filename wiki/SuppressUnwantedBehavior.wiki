@@ -120,7 +120,7 @@ public class ExampleWithEvilMethod {
 	}
 }
 }}}
-If the `System.loadLibrary("evil.dll");` is when testing the `getMessage()` method the test will fail. One simple way to avoid this is to simply suppress the `getEvilMessage` method. You do this by using the `suppressMethodCode` method of the PowerMock API, in this case you would do:
+If the `System.loadLibrary("evil.dll")` statement is executed when testing the `getMessage()` method the test will fail. One simple way to avoid this is to simply suppress the `getEvilMessage` method. You do this by using the `suppressMethodCode` method of the PowerMock API, in this case you would do:
 {{{
 suppressMethodCode(ExampleWithEvilMethod.class, "getEvilMessage");
 }}}
