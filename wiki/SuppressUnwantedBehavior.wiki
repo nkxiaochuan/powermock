@@ -99,6 +99,46 @@ public class ExampleWithEvilConstructorTest {
 }}}
 Note that you don't need to use the `@RunWith(..)` annotation or pass the class to the `@PrepareForTest` annotation. It doesn't hurt to do so, but it's not necessary. Another important thing to understand is that since the constructor is never executed the `tested.getMessage()` method returns `null`. You can of course change the state of the message field in the tested instance by [BypassEncapsulation bypassing the encapsulation]. 
 
+==== Suppress method ====
+In some cases you simply want to suppress a method and make it return some default value, in other cases you may _need_ to suppress or mock a method because it does something that prevents you from unit-testing your own class. Look at the following made-up example:
+{{{
+public class ExampleWithEvilMethod {
+
+	private final String message;
+
+	public ExampleWithEvilMethod(String message) {
+		this.message = message;
+	}
+
+	public String getMessage() {
+		return message + getEvilMessage();
+	}
+
+	private String getEvilMessage() {
+		System.loadLibrary("evil.dll");
+		return "evil!";
+	}
+}
+}}}
+If the `System.loadLibrary("evil.dll");` is when testing the `getMessage()` method the test will fail. One simple way to avoid this is to simply suppress the `getEvilMessage` method. You do this by using the `suppressMethodCode` method of the PowerMock API, in this case you would do:
+{{{
+suppressMethodCode(ExampleWithEvilMethod.class, "getEvilMessage");
+}}}
+The full test looks like this: 
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(ExampleWithEvilMethod.class)
+public class ExampleWithEvilMethodTest {
+
+	@Test
+	public void testSuppressMethod() throws Exception {
+		suppressMethodCode(ExampleWithEvilMethod.class, "getEvilMessage");
+		final String message = "myMessage";
+		ExampleWithEvilMethod tested = new ExampleWithEvilMethod(message);
+		assertEquals(message, tested.getMessage());
+	}
+}
+
+
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilChildTest.java ExampleWithEvilChildTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilConstructorTest.java ExampleWithEvilConstructorTest]
