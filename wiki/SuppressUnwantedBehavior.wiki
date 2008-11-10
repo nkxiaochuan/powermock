@@ -9,6 +9,34 @@
   # Use the `@PrepareForTest(ClassWithEvilMethod.class)` annotation at the class-level of the test case in combination with `suppressMethodCode(ClassWithEvilMethod.class, "methodName")` to suppress the method with name "methodName" in the ClassWithEvilMethod class.
 
 === Example ===
+Sometimes you want or even need to suppress the behavior of certain constructors, methods or static initializers in order to unit test your own code. A classic example is when your class need to extend from another class in third-party framework of some kind. The problem arise when this 3rd party class does something in its constructor that prevents you from unit testing your own code. For example the framework may try to load a dll or access the network or file system for some reason. Let's take a look at some examples of this. 
+
+==== Suppress constructors of super classes ====
+As an example let's look at a class called `ExampleWithEvilChild`, it's really simple:
+{{{
+public class ExampleWithEvilChild extends EvilChild {
+
+	private final String message;
+
+	public ExampleWithEvilChild(String message) {
+		this.message = message;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+}
+}}}
+This seems like an easy class to unit test (so easy in fact that you should probably not test it, but let's do it anyway for demonstration purposes). But wait, let's look at what the `EvilChild` class looks like:
+{{{
+public class EvilChild {
+
+	public EvilChild() {
+		System.loadLibrary("evil.dll");
+	}
+}
+}}}
+This child class tries to load a dll file which will not be present when you run a unit test for the `ExampleWithEvilChild` class. PowerMock to the rescue!
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilChildTest.java ExampleWithEvilChildTest]
