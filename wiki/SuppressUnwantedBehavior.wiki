@@ -6,5 +6,6 @@
   # Use the `@PrepareForTest(ClassWithEvilChildConstructor.class)` annotation at the class-level of the test case in combination with `suppressConstructorCode(EvilChild.class)` to suppress all constructors for the EvilChild class.
   # Use the `Whitebox.newInstance(ClassWithEvilConstructor.class)` method to instantiate a class without invoking the constructor what so ever.
   # Use the `@SuppressStaticInitializationFor("org.mycompany.ClassWithEvilStaticInitializer")` annotation to remove the static initializer for the the `org.mycompany.ClassWithEvilStaticInitializer` class.
+ # Use the `@PrepareForTest(ClassWithEvilMethod.class)` annotation at the class-level of the test case in combination with `suppressMethodCode(ClassWithEvilMethod.class, "methodName")` to suppress the method with name "methodName" in the ClassWithEvilMethod class.
 
 === Example ===
