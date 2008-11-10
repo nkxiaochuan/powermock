@@ -1,2 +1,3 @@
 #labels Usage
-Todo..
+# Check out the tutorial project from subversion using:
+ svn co http://
