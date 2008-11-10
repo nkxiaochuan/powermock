@@ -15,4 +15,4 @@
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilConstructorTest.java ExampleWithEvilConstructorTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/method/ExampleWithEvilMethodTest.java ExampleWithEvilMethodTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/staticinitializer/ExampleWithEvilStaticInitializerTest.java ExampleWithEvilStaticInitializerTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/finalmocking/StateHolder.java StateHolder]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/ExampleWithEvilChild.java ExampleWithEvilChild]
