@@ -41,10 +41,13 @@ This child class tries to load a dll file which will not be present when you run
 suppressConstructorCode(EvilChild.class);
 }}}
 You must also prepare the ExampleWithEvilChild for testing (because it is from this class that the constructor of the EvilChild is called). You do this by passing the `ExampleWithEvilChild.class` to the `@PrepareForTest` annotation: 
+
 {{{
 @PrepareForTest(ExampleWithEvilChild.class)
 }}}
+
 The full test looks like this: 
+
 {{{
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(ExampleWithEvilChild.class)
@@ -125,6 +128,7 @@ If the `System.loadLibrary("evil.dll")` statement is executed when testing the `
 suppressMethodCode(ExampleWithEvilMethod.class, "getEvilMessage");
 }}}
 The full test looks like this: 
+{{{
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(ExampleWithEvilMethod.class)
 public class ExampleWithEvilMethodTest {
@@ -137,6 +141,7 @@ public class ExampleWithEvilMethodTest {
 		assertEquals(message, tested.getMessage());
 	}
 }
+}}}
 
 
 === References === 
