@@ -4,7 +4,7 @@
 === Quick summary ===
 
   # Use the `@RunWith(PowerMockRunner.class)` annotation at the class-level of the test case.
-  # Use the `@PrepareForTest({ClassThatCreatesTheNewInstance.class, NewInstanceClass.class})` annotation at the class-level of the test case.
+  # Use the `@PrepareForTest(ClassThatCreatesTheNewInstance.class)` annotation at the class-level of the test case.
   # Use `PowerMock.createMock(NewInstanceClass.class)` to create a mock object of the class that should be constructed (let's call it `mockObject`).
   # Use `PowerMock.expectNew(NewInstanceClass.class).andReturn(mockObject)` to expect a new construction of an object of type `NewInstanceClass.class` but instead return the mock object.
   # Use `PowerMock.replay(mockObject, NewInstanceClass.class)` to change the mock object and class to replay mode.
@@ -33,10 +33,10 @@ File fileMock = createMock(File.class);
 }}}
 To expect the call to new File we simply do: 
 {{{
-expectNew(File.class).andReturn(fileMock);
+expectNew(File.class, "directoryPath").andReturn(fileMock);
 }}}
 
-That's it when it comes to the expectation behavior! There are however some things that must be explained further. First of all you need to tell PowerMock which classes to mock, in this case it's the File.class. But for `expectNew` this is not enough. PowerMock also needs to know which class that does the actual `new` call, in this case it's the `PersistenceManager` class that does `new File(..)`. So in order to provide PowerMock with this information we add `@PrepareForTest({PersistenceManager.class, File.class})` at the class-level of test case. As usually you also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail!
+The "directoryPath" is the constructor parameter passed to the File constructor. That's it when it comes to the expectation behavior! There are however some things that must be explained further. First of all you need to tell PowerMock which classes to prepare for test and in this case this means the class that does the actual `new` call, in this case it's the `PersistenceManager` class that does `new File(..)`. So in order to provide PowerMock with this information we add `@PrepareForTest(PersistenceManager.class)` at the class-level of test case. The reason why we're not preparing File.class is that the a new instance of the File is never created when doing `expectNew`, PowerMock just intercepts the call to new from the class that _does_ `new` and thus you need to prepare the PersistenceManager class in this example. As usually you also need to tell JUnit to execute the test using PowerMock which is done by using the `@RunWith(PowerMockRunner.class)` annotation. Without these two annotations the test will fail!
 
 The last aspect is the replay and verify behavior. In order to correctly replay the expected behavior we need to replay both the `fileMock` object and the File class. I.e.
 {{{
@@ -51,7 +51,7 @@ That's it!
 The full test simulating when a directory previously didn't exist looks like this:
 {{{
 @RunWith(PowerMockRunner.class)
-@PrepareForTest( { PersistenceManager.class, File.class })
+@PrepareForTest( PersistenceManager.class )
 public class PersistenceManagerTest {
 
 	@Test
@@ -61,7 +61,7 @@ public class PersistenceManagerTest {
 
 		PersistenceManager tested = new PersistenceManager();
 
-		expectNew(File.class).andReturn(fileMock);
+		expectNew(File.class, path).andReturn(fileMock);
 
 		expect(fileMock.exists()).andReturn(false);
 		expect(fileMock.mkdirs()).andReturn(true);
@@ -78,13 +78,13 @@ public class PersistenceManagerTest {
 There's also a slightly shorter way to write the test. In simple situations like the example above you can create the mock object of the File class and expect the call to new File at the same time using the `createMockAndExpectNew` method in PowerMock. The test could thus be rewritten as: 
 {{{
 @RunWith(PowerMockRunner.class)
-@PrepareForTest( { PersistenceManager.class, File.class })
+@PrepareForTest( PersistenceManager.class)
 public class PersistenceManagerTest {
 
 	@Test
 	public void testCreateDirectoryStructure_usingCreateMockAndExpectNew() throws Exception {
 		final String path = "directoryPath";
-		File fileMock = createMockAndExpectNew(File.class);
+		File fileMock = createMockAndExpectNew(File.class, path);
 
 		PersistenceManager tested = new PersistenceManager();
 
@@ -103,12 +103,12 @@ public class PersistenceManagerTest {
 ===More features===
 `expectNew` works similar to the normal `expect` method in EasyMock. This means that you can setup expectations to be invoked a certain number of times or throw an exception upon instantiation etc. For example let's say that you for some reason would like to throw an IllegalStateException by the time `new File(..)` is invoked. You can do this by:
 {{{
-expectNew(File.class).andThrow(new IllegalStateException("testing!");
+expectNew(File.class, "path").andThrow(new IllegalStateException("testing!");
 }}}
 
 As another example imagine that a method creates two new File objects and you like to return the same mock instance for both. You could do this by:
 {{{
-expectNew(File.class).andReturn(fileMock).times(2);
+expectNew(File.class, "path").andReturn(fileMock).times(2);
 }}}
 
 === References === 
