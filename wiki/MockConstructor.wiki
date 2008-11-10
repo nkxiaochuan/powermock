@@ -48,6 +48,8 @@ verify(fileMock, File.class);
 }}}
 That's it! 
 
+If you're using PowerMock >= 0.9 you could alternatively use the `replayAll` and `verifyAll` methods instead. This will automatically replay and verify all class- and object mocks created by PowerMock.
+
 The full test simulating when a directory previously didn't exist looks like this:
 {{{
 @RunWith(PowerMockRunner.class)
