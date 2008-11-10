@@ -59,6 +59,43 @@ public class ExampleWithEvilChildTest {
 	}
 }
 }}}
+If the super class has several constructors it's possible to tell PowerMock to only suppress a specific one. Let's say you have a class called `ClassWithSeveralConstructors` that has one constructor that takes a `String` and another constructor that takes an `int` as an argument and you only want to suppress the `String` constructor. You can do this using the
+{{{
+suppressSpecificConstructor(ClassWithSeveralConstructors.class, String.class);
+}}}
+method.
+
+==== Suppress own constructor ====
+The example above only works when suppressing superclass constructors, you cannot do this for the class under test. If this is what you want, e.g. if your own code does something in its constructor that makes it difficult to unit test you can use the `Whitebox.newInstance` method. This instantiates the class without invoking the constructor at all. For example let's say you want to unit-test the following class:
+{{{
+public class ExampleWithEvilConstructor {
+
+	private final String message;
+
+	public ExampleWithEvilConstructor(String message) {
+		System.loadLibrary("evil.dll");
+		this.message = message;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+}
+}}}
+To instantiate this class we make use of the `Whitebox.newInstance` method:
+{{{
+ExampleWithEvilConstructor tested = Whitebox.newInstance(ExampleWithEvilConstructor.class);
+}}}
+The full test looks like this:
+public class ExampleWithEvilConstructorTest {
+
+	@Test
+	public void testSuppressOwnConstructor() throws Exception {
+		ExampleWithEvilConstructor tested = Whitebox.newInstance(ExampleWithEvilConstructor.class);
+		assertNull(tested.getMessage());
+	}
+}
+Note that you don't need to use the `@RunWith(..)` annotation or pass the class to the `@PrepareForTest` annotation. It doesn't harm you to do so, but it's not necessary. Another important thing to understand is that since the constructor is never executed the `tested.getMessage()` method returns `null`. You can of course change the state of the message field in the tested instance by bypassing the encapsulation. 
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilChildTest.java ExampleWithEvilChildTest]
