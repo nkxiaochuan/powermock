@@ -1,0 +1,94 @@
+Change log 0.9 (under development)
+----------------------------------
+* Structural refactoring to remove Structure 101 XS: moved WhiteBox implementation to separate class in core and moved IndicateReloadClass
+* By default Whitebox.getInternalState and Whitebox.setInternalState now traverses the class hierarchy when looking for a field.
+* Better error message if a NPE is caught in a subclass of a class being prepared for test.
+* The PrepareForTest annotation now manipulates the full (super) class hierachy by default. This makes it easier to perform mocking of super class methods.
+* A new annotation called PrepareOnlyThisForTest has been added and works in the same way that PrepareForTest previously did, i.e. ONLY the specified classes are prepared and not the entire hierarchy.
+* Fixed a bug that made it impossible to invoke vararg constructors.
+* createMockAndExpectNew now takes expected arguments as the second parameter.
+* expectNew takes expected arguments as the second parameter.
+* Invocations of var arg methods, constructors and expectPrivate now works for sub-types of the declared parameter types.
+* More consistent error messages when expectNew fails. Error messages now takes the parameters into account.
+* Renamed mockStaticMethodX to mockStaticPartialX
+* Added javadoc to the release phase
+* The JUnit4 legacy runner now throws NoTestsRemainException if no tests are found in the test case. 
+* All JUnit4 runners now executes the setUp method before each test and the tearDown method after each test if the test class extends from TestCase.
+* Fixed an issue in the getAllChunkEntries method of the AbstractTestSuiteChunkerImpl class that caused test methods to be executed in a different order when running in a test suite than running the test stand alone.
+* Fixed a serious issue when the suppress static constructor state disappeared between chunking sessions. Fixed this for all versions of JUnit 4. This means that chunking and suppression of static initializers now work as expected.
+* The PowerMock API methods with a syntax like createPartialMockX are renamed to createXPartialMock, e.g. createPartialMockNice is renamed to createNicePartialMock to be more consistent with the normal createMock methods.
+* Added createNicePartialMockAndInvokeDefaultConstructor and createStrictPartialMockAndInvokeDefaultConstructor to the PowerMock API.
+* Updated the tutorial projects with TODO's. It should now be much easier to understand what shall be done.
+* Changed the clean-up mechanisms of PowerMock.replay(..) and PowerMock.verify(..). Should no longer clear unnecessary state.
+* Implemented two new PowerMock API methods: replayAll and verifyAll(). These can be used to replay and verify all classes and mocks created by the PowerMock API without having to explicitly specify each and everyone.
+
+Change log 0.8.5 (2008-10-30)
+-----------------------------
+* Fixed so that it's now possible to mock abstract methods
+* WhiteBox.getMethod(..) now also returns protected and package-private methods.
+* Whitebox.invokeMethod can now execute methods in a super class.
+* Whitebox.invokeMethod no longer throws NullPointerException when an argument is null when the method cannot be found
+* It's is now possible to use sub-types of method parameters when using Whitebox.invokeMethod.
+* Tests methods starting with "test" are now executed only if the method is annotated with @Test or if the test class extends from TestCase.
+* Tests are now executed in the order that they are defined in the test case.
+                                                                            
+Change log 0.8.1 (released 2008-10-26)
+--------------------------------------
+* Added PowerMock API method "createPartialMockAndInvokeDefaultConstructor" that invokes a default constructor after mock creation (even if it's private).
+* createPartialMock now works as expected
+* Fixed so that it works to mock package private classes (even if they're signed)
+* It now works to set a static final field after the static initializes have been suppressed.
+* Fixed a serious bug that caused classes extending java.lang.Object to be non-mockable.
+                                                                                           
+Change log 0.8 (released 2008-10-22)
+-----------------------------------
+* The junit4 test module now work with JUnit 4.5 (although using the old, now deprecated, approach of JUnit 4.4).
+* Upgraded to EasyMock 2.4
+* Upgraded to JavaAssist 3.8.0.GA
+* WhiteBox invoke method and invoke constructor methods now throws an IllegalArgumentException if the first argument is null.
+* Replay/verify works as expected when mixing classes and instance mocks.
+* Better error message when expectNew fails due to too few calls to new when a method was invoked using reflection.
+* Implemented support for nice mocks.
+* Added more documentation
+* expectNew(..).andThrow(..) now works with checked exceptions
+* Added WhiteBox functionality to instantiate a class without invoking its constructor without using byte-code manipulation. Works in multiple JVM's.
+* mockMethodX is renamed to createPartialMockX        
+* Fixed the error message that was thrown when a constructor was not found when using mocks as arguments with createPartialMock.
+* Suppress constructor code now works as expected
+* mockConstruction(..) was removed. You should always use expectNew(..) instead. There's a utility method in PowerMock called createMockAndExpectNew that can be used as a substitute for mockConstruction(..). 
+* Better error message when a class is not replayed when doing expectNew.
+* Added support to easy suppress several methods in the same class.
+* doInvokeMethod in PowerMock now catches and deals correctly with InvocationTargetExceptions.
+* It's now possible to run a single test case in junit4
+* Test delegates now implements Sortable
+* Added support for mocking classes in signed jar files
+* EasyMock matchers now works in combination with PowerMock's expectPrivate(..)
+* Added support for invoking var args constructors and methods using Whitebox
+* Added support for expecting private methods with var args parameter
+* PowerMock now supports Hamcrest matchers
+* Exceptions are now propagated correctly from the junit runners.
+                             
+Change log 0.7 (released)
+-------------------------
+* Do not mock hashCode and equals
+* Added ugly hack for cglib classloading issue with maven
+* Fixed problems with mocking methods in superclass and modifying multiple classes with same parent
+* Strict mocking with interface work as expected
+* Added niceReplayAndVerify
+* Added logo and improved documentation structure
+* Follow EasyMock semantics for partial mocking
+* WhiteBox internalstate support for static fields as expected
+* Updated assembly and create sources jar files
+
+Change log 0.6 (released)
+-------------------------
+* Updated to EasyMock 2.3 and classextension 2.3
+* Implemented support for ConstructorArgs
+* Implemented support for StrictMock
+* Added possibility to invoke a private method in a subclass of an instance using Whitebox.
+* Added a support for test classes extending from TestCase when using a custom JUnit runner such as PowerMockRunner. This fix was created for both JUnit4 legacy and JUnit 4.4. 
+* Major internal refactoring.
+* Fixed major classloading and byte-code manipulation issues. Code coverage tools such as EMMA now works.
+* Fixed so that it's now possible to invoke private methods using non-primitive and/or non-wrapper values.
+* Whitebox now throws the correct exceptions to the client and not a wrapped RuntimeException. This means for example that expectNew(..).andThrow(..) works as expected.
+* Fixed a bug in the PowerMock JUnit 4.4 and legacy runner that reported back the wrong number of tests being executed when @Ignore was used. 
