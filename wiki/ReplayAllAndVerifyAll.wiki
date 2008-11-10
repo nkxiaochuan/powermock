@@ -1,2 +1,4 @@
 #labels Usage
-todo
+Since version 0.9 of PowerMock you can use `PowerMock.replayAll(..)` and `PowerMock.verifyAll()` to replay all classes and objects created (or in some cases used) by PowerMock.
+
+So for example let's say 
