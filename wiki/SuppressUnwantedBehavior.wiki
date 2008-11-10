@@ -11,7 +11,7 @@
 === Example ===
 Sometimes you want or even need to suppress the behavior of certain constructors, methods or static initializers in order to unit test your own code. A classic example is when your class need to extend from another class in third-party framework of some kind. The problem arise when this 3rd party class does something in its constructor that prevents you from unit testing your own code. For example the framework may try to load a dll or access the network or file system for some reason. Let's take a look at some examples of this. 
 
-==== Suppress constructors of super classes ====
+==== Suppress super class constructors ====
 As an example let's look at a class called `ExampleWithEvilChild`, it's really simple:
 {{{
 public class ExampleWithEvilChild extends EvilChild {
@@ -36,7 +36,29 @@ public class EvilChild {
 	}
 }
 }}}
-This child class tries to load a dll file which will not be present when you run a unit test for the `ExampleWithEvilChild` class. PowerMock to the rescue!
+This child class tries to load a dll file which will not be present when you run a unit test for the `ExampleWithEvilChild` class. With PowerMock you can just suppress constructor of the EvilChild so that you can unit test the ExampleWithEvilChild class. This is done by using the `suppressConstructorCode` method of the PowerMock API. In this case we would do:
+{{{
+suppressConstructorCode(EvilChild.class);
+}}}
+You must also prepare the ExampleWithEvilChild for testing (because it is from this class that the constructor of the EvilChild is called). You do this by passing the `ExampleWithEvilChild.class` to the `@PrepareForTest` annotation: 
+{{{
+@PrepareForTest(ExampleWithEvilChild.class)
+}}}
+The full test looks like this: 
+{{{
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(ExampleWithEvilChild.class)
+public class ExampleWithEvilChildTest {
+
+	@Test
+	public void testSuppressConstructorOfEvilChild() throws Exception {
+		suppressConstructorCode(EvilChild.class);
+		final String message = "myMessage";
+		ExampleWithEvilChild tested = new ExampleWithEvilChild(message);
+		assertEquals(message, tested.getMessage());
+	}
+}
+}}}
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilChildTest.java ExampleWithEvilChildTest]
