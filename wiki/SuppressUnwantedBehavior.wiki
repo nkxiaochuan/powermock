@@ -36,7 +36,7 @@ public class EvilChild {
 	}
 }
 }}}
-This child class tries to load a dll file which will not be present when you run a unit test for the `ExampleWithEvilChild` class. With PowerMock you can just suppress constructor of the EvilChild so that you can unit test the ExampleWithEvilChild class. This is done by using the `suppressConstructorCode` method of the PowerMock API. In this case we would do:
+This child class tries to load a dll file which will not be present when you run a unit test for the `ExampleWithEvilChild` class. With PowerMock you can just suppress the constructor of the EvilChild so that you can unit test the ExampleWithEvilChild class. This is done by using the `suppressConstructorCode` method of the PowerMock API. In this case we would do:
 {{{
 suppressConstructorCode(EvilChild.class);
 }}}
