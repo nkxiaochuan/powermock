@@ -50,6 +50,12 @@ public void testAddService() throws Exception {
 }
 }}}
 
+Using PowerMock 1.0 or above you can also get the internal state by specifying the type of the field to get. In the above case we could thus write
+{{{
+Set<String> services = Whitebox.getInternalState(tested, Set.class);
+}}}
+to get the `services` field. This is a type-safe way to get internal state and it's also the preferred way for this reason. I situations where you would have several fields of type `Set` in a class you'd still have to revert to using the field name approach.
+
 It's just as easy to set internal state of an object. Say for example that we have the following class:
 {{{
 public class ReportGenerator {
@@ -73,13 +79,23 @@ Here we imagine that we're using a dependency injection framework that automatic
 Whitebox.setInternalState(tested, "reportTemplateService", reportTemplateServiceMock);
 }}}
 
+Using PowerMock 1.0 or above makes it even easier because you can even leave out the field name doing: 
+{{{
+Whitebox.setInternalState(tested, reportTemplateServiceMock);
+}}}
+This is the preferred way since this is more refactor friendly. You may still have to revert to the field name approach if you have several fields in your class with type `ReportTemplateService`.
 
 The set and get internal state methods that we've just seen also has some slightly more advanced use cases. Many times it's useful to modify or read internal state somewhere in the class hierarchy of an object. Normally setInternalState and getInternalState traverses the super-class hierarchy looking for the field in subclasses and returns or set the first field matching the supplied field name. But in some situations you really want to get or set a particular field somewhere in the hierarchy. For example suppose that we have an instance of class A that extends B and both A and B has a field called `myPrivateString` of type `java.lang.String` but in this case we'd like to read the contents of B's field. By using `Whitebox.getInternalState(..)` we can do this easily by specifying where in the class hierarchy the field should be read from. In this case we'd write something like:
 {{{
 String myPrivateString = (String) Whitebox.getInternalState(instanceOfA, "myPrivateString", B.class);
 }}}
+or if you're using PowerMock 1.0 or above:
+{{{
+String myPrivateString = Whitebox.getInternalState(instanceOfA, String.class, B.class);
+}}}
+This also eliminates the cast in most situations.
 
-You can also choose to avoid the cast by specifying the return type:
+Using the first approach there's another way to avoid the cast by specifying the return type:
 {{{
 String myPrivateString = Whitebox.getInternalState(instanceOfA, "myPrivateString", B.class, String.class);
 }}}
@@ -88,6 +104,8 @@ If we instead like to set the state of the `myPrivateString` we'd do like this:
 {{{
 Whitebox.setInternalState(instanceOfA, "myPrivateString", "this is my private string", B.class);
 }}}
+or if you're using PowerMock 1.0 or above:
+Whitebox.setInternalState(instanceOfA, String.class, "this is my private string", B.class);
 
 === Invoking a private method ===
 To invoke a private method you can make use of the `Whitebox.invokeMethod(..)` method in PowerMock. For example let's say you have a private method called sum in an instance called `myInstance` which you'd like to test in separation:
