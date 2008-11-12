@@ -105,7 +105,9 @@ If we instead like to set the state of the `myPrivateString` we'd do like this:
 Whitebox.setInternalState(instanceOfA, "myPrivateString", "this is my private string", B.class);
 }}}
 or if you're using PowerMock 1.0 or above:
+{{{
 Whitebox.setInternalState(instanceOfA, String.class, "this is my private string", B.class);
+}}}
 
 === Invoking a private method ===
 To invoke a private method you can make use of the `Whitebox.invokeMethod(..)` method in PowerMock. For example let's say you have a private method called sum in an instance called `myInstance` which you'd like to test in separation:
