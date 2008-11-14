@@ -2,4 +2,37 @@
 = Frequently asked questions =
 
   # PowerMockRunner throws a `java.lang.NoClassDefFoundError: org/junit/internal/runners/BeforeAndAfterRunner` exception. What's wrong?
-  You're probably using the wrong PowerMockRunner. There's one runner made for JUnit 4.4 and above and a second runner made for JUnit 4.0-4.3 (although the latter also works for some older minor versions of JUnit 4.4). Try switching from the `org.powermock.modules.junit4.PowerMockRunner` to `org.powermock.modules.junit4.legacy.PowerMockRunner` or vice versa. Look at the [GettingStarted getting started] guide to see how to configure this in maven.
+   You're probably using the wrong PowerMockRunner. There's one runner made for JUnit 4.4 and above and a second runner made for JUnit 4.0-4.3 (although the latter also works for some older minor versions of JUnit 4.4). Try switching from the `org.powermock.modules.junit4.PowerMockRunner` to `org.powermock.modules.junit4.legacy.PowerMockRunner` or vice versa. Look at the [GettingStarted getting started] guide to see how to configure this in maven.
+  # Cobertura gives me errors or produces strange results when running PowerMock tests in Maven, how do I solve this?
+    You need to add the following to your pom.xml file:
+{{{ 
+ <build>
+  <plugins>
+     <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+            <forkMode>pertest</forkMode> 
+        </configuration>
+      </plugin>
+     </plugins>
+  </build>
+}}}
+  # I cannot mock classes in the `java.lang` package, why?
+    This is because they're loaded by Java's bootstrap classloader and cannot be byte-code manipulated.
+  # When running a PowerMock test log4j gives me the following error, what now? 
+{{{
+log4j:ERROR A "org.apache.log4j.xml.DOMConfigurator" object is not
+assignable to a "org.apache.log4j.spi.Configurator" variable.
+log4j:ERROR The class "org.apache.log4j.spi.Configurator" was loaded
+by
+log4j:ERROR [org.powermock.core.classloader.MockClassLoader@14a55f2]
+whereas object of type
+log4j:ERROR "org.apache.log4j.xml.DOMConfigurator" was loaded by
+[sun.misc.Launcher$AppClassLoader@92e78c].
+log4j:ERROR Could not instantiate configurator
+[org.apache.log4j.xml.DOMConfigurator].
+}}}
+      There are a couple of different solutions to this:
+        * Create a nice mock of the Logger class and set the the Logger field to this instance. If the field is static suppress the static initializer for the class (using the `@SuppressStaticInitializerFor` annotation) and then set the field.
+        * Specify the Log4j classes in the `@PrepareForTest` annotation
+        * You could try using the `@PrepareEverythingForTest` annotation
