@@ -36,3 +36,5 @@ log4j:ERROR Could not instantiate configurator
         * Create a nice mock of the Logger class and set the the Logger field to this instance. If the field is static suppress the static initializer for the class (using the `@SuppressStaticInitializerFor` annotation) and then set the field.
         * Specify the Log4j classes in the `@PrepareForTest` annotation
         * You could try using the `@PrepareEverythingForTest` annotation
+  # Does PowerMock work with TestNG?
+      At the moment we don't support TestNG. We hope to able to do so in the future.
