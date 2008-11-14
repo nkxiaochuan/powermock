@@ -37,4 +37,4 @@ log4j:ERROR Could not instantiate configurator
         * Specify the Log4j classes in the `@PrepareForTest` annotation
         * You could try using the `@PrepareEverythingForTest` annotation
   # Does PowerMock work with TestNG?
-      At the moment we don't support TestNG. We hope to able to do so in the future.
+      At the moment PowerMock doesn't support TestNG. We hope to able to do so in the future.
