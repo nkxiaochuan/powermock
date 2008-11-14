@@ -2,4 +2,4 @@
 = Frequently asked questions =
 
   # PowerMockRunner throws a `java.lang.NoClassDefFoundError: org/junit/internal/runners/BeforeAndAfterRunner` exception. What's wrong?
-  You're probably using the wrong PowerMockRunner. There's one runner made for JUnit 4.4 and above and a second runner made for JUnit 4.0-4.3 (although the latter also works for some older minor versions of JUnit 4.4). Try switching from the `org.powermock.modules.junit4.PowerMockRunner` to `org.powermock.modules.junit4.legacy.PowerMockRunner` or vice versa.
+  You're probably using the wrong PowerMockRunner. There's one runner made for JUnit 4.4 and above and a second runner made for JUnit 4.0-4.3 (although the latter also works for some older minor versions of JUnit 4.4). Try switching from the `org.powermock.modules.junit4.PowerMockRunner` to `org.powermock.modules.junit4.legacy.PowerMockRunner` or vice versa. Look at the [GettingStarted getting started] guide to see how to configure this in maven.
