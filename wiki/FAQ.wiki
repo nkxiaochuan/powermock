@@ -38,3 +38,5 @@ log4j:ERROR Could not instantiate configurator
         * You could try using the `@PrepareEverythingForTest` annotation
   # Does PowerMock work with TestNG?
       At the moment PowerMock doesn't support TestNG. We hope to able to do so in the future.
+  # Is PowerMock a fork of EasyMock?
+      No. PowerMock extends EasyMock with powerful capabilities such as static mocking.
