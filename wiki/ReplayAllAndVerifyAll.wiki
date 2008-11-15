@@ -50,7 +50,7 @@ Since all classes and mocks were created using the PowerMock API methods PowerMo
 {{{
 File fileMock = EasyMock.createMock(File.class);
 }}}
-Now the test will fail because PowerMock doesn't know of the `fileMock` because this was not created by PowerMock. What you could do then is to pass the mock object into the replayAll method of PowerMock, i.e. 
+Now the test will fail because PowerMock doesn't know of the `fileMock` because it was not created by PowerMock. What you could do then is to pass the mock object into the replayAll method of PowerMock, i.e. 
 {{{
 replayAll(fileMock);
 }}}
