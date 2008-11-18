@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+  <groupId>org.powermock.examples</groupId>
+  <artifactId>powermock-examples-log4j</artifactId>
+  <version>1.0</version>
+  <versioning>
+    <versions>
+      <version>1.0</version>
+    </versions>
+    <lastUpdated>20081118145601</lastUpdated>
+  </versioning>
+</metadata>
