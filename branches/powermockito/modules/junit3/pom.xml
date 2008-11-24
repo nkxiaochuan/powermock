@@ -27,7 +27,7 @@
       </dependency>
       <dependency>
          <groupId>org.powermock</groupId>
-         <artifactId>powermock-core</artifactId>
+         <artifactId>powermock-module-easymock</artifactId>
          <version>${version}</version>
       </dependency>
       <dependency>

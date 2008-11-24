@@ -23,6 +23,8 @@ import java.util.Set;
 
 import org.easymock.classextension.EasyMock;
 import org.easymock.internal.MocksControl.MockType;
+import org.mockito.internal.MockHandler;
+import org.mockito.internal.creation.MethodInterceptorFilter;
 import org.powermock.core.invocationcontrol.method.MethodInvocationControl;
 import org.powermock.core.invocationcontrol.newinstance.NewInvocationControl;
 
@@ -46,14 +48,17 @@ public class MockGateway {
 	private static final Set<Method> suppressMethod = new HashSet<Method>();
 
 	// used for static methods
-	public static synchronized Object methodCall(Class<?> type, String methodName, Object[] args, Class<?>[] sig, String returnTypeAsString)
-			throws Throwable {
+	public static synchronized Object methodCall(Class<?> type,
+			String methodName, Object[] args, Class<?>[] sig,
+			String returnTypeAsString) throws Throwable {
 		return doMethodCall(type, methodName, args, sig, returnTypeAsString);
 	}
 
-	private static Object doMethodCall(Object object, String methodName, Object[] args, Class<?>[] sig, String returnTypeAsString) throws Throwable,
-			NoSuchMethodException {
-		if ((methodName.equals("hashCode") && sig.length == 0) || (methodName.equals("equals") && sig.length == 1)) {
+	private static Object doMethodCall(Object object, String methodName,
+			Object[] args, Class<?>[] sig, String returnTypeAsString)
+			throws Throwable, NoSuchMethodException {
+		if ((methodName.equals("hashCode") && sig.length == 0)
+				|| (methodName.equals("equals") && sig.length == 1)) {
 			return PROCEED;
 		}
 		Object returnValue = null;
@@ -63,11 +68,13 @@ public class MockGateway {
 
 		if (object instanceof Class<?>) {
 			objectType = (Class<?>) object;
-			methodInvocationControl = MockRepository.getClassMethodInvocationControl(objectType);
+			methodInvocationControl = MockRepository
+					.getClassMethodInvocationControl(objectType);
 		} else {
 			final Class<? extends Object> type = object.getClass();
 			objectType = WhiteboxImpl.getUnmockedType(type);
-			methodInvocationControl = MockRepository.getInstanceMethodInvocationControl(object);
+			methodInvocationControl = MockRepository
+					.getInstanceMethodInvocationControl(object);
 		}
 
 		/*
@@ -75,12 +82,22 @@ public class MockGateway {
 		 * original method or suppress the method code otherwise invoke the
 		 * invocation handler.
 		 */
-		if (methodInvocationControl != null && methodInvocationControl.isMocked(WhiteboxImpl.getMethod(objectType, methodName, sig))) {
+		if (methodInvocationControl != null
+				&& methodInvocationControl.isMocked(WhiteboxImpl.getMethod(
+						objectType, methodName, sig))) {
 
-			final InvocationHandler handler = methodInvocationControl.getInvocationHandler();
-			returnValue = handler.invoke(objectType, WhiteboxImpl.getMethod(objectType, methodName, sig), args);
+			final MethodInterceptorFilter<? extends MockHandler<?>> handler = methodInvocationControl
+					.getInvocationHandler();
+			returnValue = handler.intercept(object, WhiteboxImpl.getMethod(
+					objectType, methodName, sig), args, null);
+			if (returnValue == null
+					&& methodInvocationControl.isInVerificationMode()) {
+				returnValue = suppressMethodCode(returnTypeAsString);
+			}
 		} else {
-			final boolean shouldSuppressMethodCode = suppressMethod.contains(WhiteboxImpl.getMethod(objectType, methodName, sig));
+			final boolean shouldSuppressMethodCode = suppressMethod
+					.contains(WhiteboxImpl.getMethod(objectType, methodName,
+							sig));
 			if (shouldSuppressMethodCode) {
 				returnValue = suppressMethodCode(returnTypeAsString);
 			} else {
@@ -91,43 +108,56 @@ public class MockGateway {
 	}
 
 	// used for instance methods
-	public static synchronized Object methodCall(Object instance, String methodName, Object[] args, Class<?>[] sig, String returnTypeAsString)
-			throws Throwable {
+	public static synchronized Object methodCall(Object instance,
+			String methodName, Object[] args, Class<?>[] sig,
+			String returnTypeAsString) throws Throwable {
 		return doMethodCall(instance, methodName, args, sig, returnTypeAsString);
 	}
 
-	public static synchronized Object newInstanceCall(Class<?> type, Object[] args, Class<?>[] sig) throws Throwable {
-		final NewInvocationControl<?> newInvocationControl = MockRepository.getNewInstanceControl(type);
-		if (newInvocationControl != null) {
-			Constructor<?> constructor = WhiteboxImpl.getConstructor(type, sig);
-			if (constructor.isVarArgs()) {
-				/*
-				 * Get the first argument because this contains the actual
-				 * varargs arguments.
-				 */
-				args = (Object[]) args[0];
-			}
-			try {
-				final MockType mockType = WhiteboxImpl.getInternalState(MockRepository.getInstanceMethodInvocationControl(
-						newInvocationControl.getNewInvocationSubstitute()).getInvocationHandler().getControl(), MockType.class);
-				Object result = newInvocationControl.getNewInvocationSubstitute().createInstance(args);
-
-				if (result == null) {
-					if (mockType == MockType.NICE) {
-						result = EasyMock.createNiceMock(newInvocationControl.getType());
-					} else {
-						throw new IllegalStateException("Must replay class " + type.getName() + " to get configured expectation.");
-					}
-				}
-				return result;
-			} catch (AssertionError e) {
-				PowerMockUtils.throwAssertionErrorForNewSubstitutionFailure(e, type);
-			}
-		}
-		// Check if we should suppress the constructor code
-		if (suppressConstructor.contains(WhiteboxImpl.getConstructor(type, sig))) {
-			return WhiteboxImpl.getFirstParentConstructor(type);
-		}
+	public static synchronized Object newInstanceCall(Class<?> type,
+			Object[] args, Class<?>[] sig) throws Throwable {
+		// final NewInvocationControl<?> newInvocationControl = MockRepository
+		// .getNewInstanceControl(type);
+		// if (newInvocationControl != null) {
+		// Constructor<?> constructor = WhiteboxImpl.getConstructor(type, sig);
+		// if (constructor.isVarArgs()) {
+		// /*
+		// * Get the first argument because this contains the actual
+		// * varargs arguments.
+		// */
+		// args = (Object[]) args[0];
+		// }
+		// try {
+		// final MockType mockType = WhiteboxImpl.getInternalState(
+		// MockRepository.getInstanceMethodInvocationControl(
+		// newInvocationControl
+		// .getNewInvocationSubstitute())
+		// .getInvocationHandler().getControl(),
+		// MockType.class);
+		// Object result = newInvocationControl
+		// .getNewInvocationSubstitute().createInstance(args);
+		//
+		// if (result == null) {
+		// if (mockType == MockType.NICE) {
+		// result = EasyMock.createNiceMock(newInvocationControl
+		// .getType());
+		// } else {
+		// throw new IllegalStateException("Must replay class "
+		// + type.getName()
+		// + " to get configured expectation.");
+		// }
+		// }
+		// return result;
+		// } catch (AssertionError e) {
+		// PowerMockUtils.throwAssertionErrorForNewSubstitutionFailure(e,
+		// type);
+		// }
+		// }
+		// // Check if we should suppress the constructor code
+		// if (suppressConstructor
+		// .contains(WhiteboxImpl.getConstructor(type, sig))) {
+		// return WhiteboxImpl.getFirstParentConstructor(type);
+		// }
 		return PROCEED;
 	}
 
@@ -169,8 +199,10 @@ public class MockGateway {
 		}
 	}
 
-	public static synchronized Object constructorCall(Class<?> type, Object[] args, Class<?>[] sig) throws Throwable {
-		final Constructor<?> constructor = WhiteboxImpl.getConstructor(type, sig);
+	public static synchronized Object constructorCall(Class<?> type,
+			Object[] args, Class<?>[] sig) throws Throwable {
+		final Constructor<?> constructor = WhiteboxImpl.getConstructor(type,
+				sig);
 		if (suppressConstructor.contains(constructor)) {
 			return null;
 		}
@@ -181,7 +213,8 @@ public class MockGateway {
 		suppressMethod.add(method);
 	}
 
-	public static synchronized void addConstructorToSuppress(Constructor<?> constructor) {
+	public static synchronized void addConstructorToSuppress(
+			Constructor<?> constructor) {
 		suppressConstructor.add(constructor);
 	}
 }
