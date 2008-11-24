@@ -19,18 +19,23 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.easymock.internal.MockInvocationHandler;
+import org.mockito.internal.MockHandler;
+import org.mockito.internal.creation.MethodInterceptorFilter;
+import org.mockito.internal.progress.MockingProgress;
+import org.mockito.internal.progress.ThreadSafeMockingProgress;
+import org.mockito.internal.verification.api.VerificationMode;
+import org.powermock.core.WhiteboxImpl;
 import org.powermock.core.invocationcontrol.method.MethodInvocationControl;
-
 
 /**
  * The default implementation of the {@link MethodInvocationControl} interface.
  * 
  * @author Johan Haleby
  */
-public class MethodInvocationControlImpl implements MethodInvocationControl {
+public class MethodInvocationControlImpl<T> implements
+		MethodInvocationControl<T> {
 
-	private MockInvocationHandler invocationHandler;
+	private MethodInterceptorFilter<MockHandler<T>> invocationHandler;
 
 	private Set<Method> mockedMethods;
 
@@ -38,14 +43,16 @@ public class MethodInvocationControlImpl implements MethodInvocationControl {
 	 * Initializes internal state.
 	 * 
 	 * @param invocationHandler
-	 *            The mock invocation handler to be associated with this instance.
+	 *            The mock invocation handler to be associated with this
+	 *            instance.
 	 * @param methodsToMock
 	 *            The methods that are mocked for this instance. If
 	 *            <code>methodsToMock</code> is null or empty, all methods for
 	 *            the <code>invocationHandler</code> are considered to be
 	 *            mocked.
 	 */
-	public MethodInvocationControlImpl(MockInvocationHandler invocationHandler,
+	public MethodInvocationControlImpl(
+			MethodInterceptorFilter<MockHandler<T>> invocationHandler,
 			Set<Method> methodsToMock) {
 		if (invocationHandler == null) {
 			throw new IllegalArgumentException(
@@ -63,7 +70,7 @@ public class MethodInvocationControlImpl implements MethodInvocationControl {
 	/**
 	 * {@inheritDoc}
 	 */
-	public MockInvocationHandler getInvocationHandler() {
+	public MethodInterceptorFilter<MockHandler<T>> getInvocationHandler() {
 		return invocationHandler;
 	}
 
@@ -77,7 +84,20 @@ public class MethodInvocationControlImpl implements MethodInvocationControl {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public boolean isMocked(Method method) {
-		return mockedMethods.isEmpty() || mockedMethods.contains(method);
+		return (mockedMethods.isEmpty() || mockedMethods.contains(method));
+	}
+
+	public boolean isInVerificationMode() {
+		try {
+			MockingProgress internalState = (MockingProgress) WhiteboxImpl
+					.invokeMethod(ThreadSafeMockingProgress.class,
+							"threadSafely");
+			return WhiteboxImpl.getInternalState(internalState,
+					VerificationMode.class) == null;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

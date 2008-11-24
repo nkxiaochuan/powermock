@@ -23,7 +23,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.easymock.internal.MockInvocationHandler;
+import org.mockito.internal.MockHandler;
+import org.mockito.internal.creation.MethodInterceptorFilter;
 import org.powermock.core.invocationcontrol.method.MethodInvocationControl;
 import org.powermock.core.invocationcontrol.method.impl.MethodInvocationControlImpl;
 import org.powermock.core.invocationcontrol.newinstance.NewInvocationControl;
@@ -82,37 +83,46 @@ public class MockRepository {
 		}
 	}
 
-	public static synchronized MethodInvocationControl getClassMethodInvocationControl(Class<?> type) {
+	public static synchronized MethodInvocationControl getClassMethodInvocationControl(
+			Class<?> type) {
 		return classMocks.get(type);
 	}
 
-	public static synchronized MethodInvocationControl putClassMethodInvocationControl(Class<?> type, MethodInvocationControl invocationControl) {
+	public static synchronized MethodInvocationControl putClassMethodInvocationControl(
+			Class<?> type, MethodInvocationControl invocationControl) {
 		return classMocks.put(type, invocationControl);
 	}
 
-	public static synchronized MethodInvocationControl putClassMethodInvocationControl(Class<?> type, MockInvocationHandler handler,
+	public static synchronized MethodInvocationControl putClassMethodInvocationControl(
+			Class<?> type, MethodInterceptorFilter<MockHandler<?>> handler,
 			Method... methods) {
-		return putClassMethodInvocationControl(type, new MethodInvocationControlImpl(handler, toSet(methods)));
+		return putClassMethodInvocationControl(type,
+				new MethodInvocationControlImpl(handler, toSet(methods)));
 	}
 
-	public static synchronized MethodInvocationControl removeClassMethodInvocationControl(Class<?> type) {
+	public static synchronized MethodInvocationControl removeClassMethodInvocationControl(
+			Class<?> type) {
 		return classMocks.remove(type);
 	}
 
-	public static synchronized MethodInvocationControl getInstanceMethodInvocationControl(Object instance) {
+	public static synchronized MethodInvocationControl getInstanceMethodInvocationControl(
+			Object instance) {
 		return instanceMocks.get(instance);
 	}
 
-	public static synchronized MethodInvocationControl putInstanceMethodInvocationControl(Object instance, MethodInvocationControl invocationControl) {
+	public static synchronized MethodInvocationControl putInstanceMethodInvocationControl(
+			Object instance, MethodInvocationControl invocationControl) {
 		return instanceMocks.put(instance, invocationControl);
 	}
 
-	public static synchronized MethodInvocationControl putInstanceMethodInvocationControl(Object instance, MockInvocationHandler handler,
-			Method... methods) {
-		return putInstanceMethodInvocationControl(instance, new MethodInvocationControlImpl(handler, toSet(methods)));
+	public static synchronized MethodInvocationControl putInstanceMethodInvocationControl(
+			Object instance, MethodInterceptorFilter<MockHandler<?>> handler, Method... methods) {
+		return putInstanceMethodInvocationControl(instance,
+				new MethodInvocationControlImpl(handler, toSet(methods)));
 	}
 
-	public static synchronized MethodInvocationControl removeInstanceMethodInvocationControl(Class<?> type) {
+	public static synchronized MethodInvocationControl removeInstanceMethodInvocationControl(
+			Class<?> type) {
 		return classMocks.remove(type);
 	}
 
@@ -124,11 +134,13 @@ public class MockRepository {
 		return set;
 	}
 
-	public static synchronized NewInvocationControl<?> getNewInstanceControl(Class<?> type) {
+	public static synchronized NewInvocationControl<?> getNewInstanceControl(
+			Class<?> type) {
 		return newSubstitutions.get(type);
 	}
 
-	public static synchronized NewInvocationControl<?> putNewInstanceControl(Class<?> type, NewInvocationControl<?> control) {
+	public static synchronized NewInvocationControl<?> putNewInstanceControl(
+			Class<?> type, NewInvocationControl<?> control) {
 		return newSubstitutions.put(type, control);
 	}
 
@@ -140,7 +152,8 @@ public class MockRepository {
 	 *            The fully qualified class name for a class that should have
 	 *            its static initializers suppressed.
 	 */
-	public static synchronized void addSuppressStaticInitializer(String className) {
+	public static synchronized void addSuppressStaticInitializer(
+			String className) {
 		suppressStaticInitializers.add(className);
 	}
 
@@ -152,7 +165,8 @@ public class MockRepository {
 	 *            The fully qualified class name for a class that should no
 	 *            longer have its static initializers suppressed.
 	 */
-	public static synchronized void removeSuppressStaticInitializer(String className) {
+	public static synchronized void removeSuppressStaticInitializer(
+			String className) {
 		suppressStaticInitializers.remove(className);
 	}
 
@@ -165,7 +179,8 @@ public class MockRepository {
 	 *            <code>className</code> should have its static initializers
 	 *            suppressed, <code>false</code> otherwise.
 	 */
-	public static synchronized boolean shouldSuppressStaticInitializerFor(String className) {
+	public static synchronized boolean shouldSuppressStaticInitializerFor(
+			String className) {
 		return suppressStaticInitializers.contains(className);
 	}
 
@@ -173,13 +188,15 @@ public class MockRepository {
 	 * @return All classes that should be automatically replayed or verified.
 	 */
 	public static synchronized Set<Object> getObjectsToAutomaticallyReplayAndVerify() {
-		return Collections.unmodifiableSet(objectsToAutomaticallyReplayAndVerify);
+		return Collections
+				.unmodifiableSet(objectsToAutomaticallyReplayAndVerify);
 	}
 
 	/**
 	 * Add classes that should be automatically replayed or verified.
 	 */
-	public static synchronized void addObjectsToAutomaticallyReplayAndVerify(Object... objects) {
+	public static synchronized void addObjectsToAutomaticallyReplayAndVerify(
+			Object... objects) {
 		for (Object mock : objects) {
 			objectsToAutomaticallyReplayAndVerify.add(mock);
 		}
