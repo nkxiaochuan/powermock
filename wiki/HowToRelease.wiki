@@ -1,0 +1,33 @@
+This is an example of what needs to be done to release PowerMock (version 0.9 is used as an example)
+
+  # Update the changelog.txt and add the date when 0.9 was released to the header.
+  # `mvn release:prepare -Prelease`
+   If it fails saying that pom.xml file already exists this is because of a bug in the maven release or SVN tool. 
+   A work-around is to do: 
+     # svn up -r head 
+     # mvn release:prepare -Dresume
+  # Copy the powermock-0.9-full.jar, powermock-0.9-src.zip and powermock-0.9-with-dependencies.zip to a new temp folder. 
+  # Open the powermock-0.9-full.jar and remove all non-powermock stuff.
+  # mvn release:perform
+   If it fails just do mvn release:clean
+  # Check out the tag that was just created to a new folder, e.g. svn/tags/powermock-0.9 to powermock-0.9
+  # If you're on a windows system edit the root pom and temporarily change from file://target/repo to file://c:/target/repo (make sure that c:\target is empty).
+  # In the new powermock-0.9 folder type "mvn deploy -Prelease"
+   If this was successful you should now have a maven repository for the powermock 0.9 version located under c:/target/repo (if windows) or in the target folder (unix)
+  # If you performed step 7, do svn revert pom.xml for the root pom.xml file that you just changed.
+  # Check out the the repo folder from svn to a new folder (repo), i.e. svn/repo
+  # Copy the files and directories generated in 8 to this new folder (overwrite duplicates if necessary)
+  # Enter the repo folder and type `svn add * --force` followed by svn ci -m "Releasing powermock 0.9"
+  # Checkout the docs folder from svn into a new folder called docs, i.e. checkout svn/docs.
+  # Go back to the powermock-0.9 folder and type "mvn site:site -Prelease"
+  # Copy everything from powermock-0.9\target\site\apidocs to the docs\powermock-0.9\apidocs (create this folder) folder you checked out.
+  # Do `svn add * --force` in the docs folder
+  # Now we need to change the mime-type for the html files so that they are readable from the web-site. Goto the parent folder of the docs folder and:
+     * If windows copy the following line to a new bat file:
+        `@for /f %%a IN ('dir docs\powermock-0.9\*.html /s/b') do svn propset svn:mime-type text/html %%a`, then execute this file.
+     * If unix/linux/mac:
+      TODO
+  # Step into the docs folder again and do svn ci -m "Releasing PowerMock 0.9"
+  # At the powermock website, upload the three artifacts copied in step 3 and write an appropriate description. Don't forget to add powermock-0.9-full.jar and powermock-0.9-src.zip as featured.
+  # Update the documentation on the wiki! Don't forget updating all the links etc.
+  # Send an e-mail to the google group mailing list (powermock@googlegroups.com) announcing the new release.
