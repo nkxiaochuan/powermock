@@ -54,7 +54,7 @@ Using PowerMock 1.0 or above you can also get the internal state by specifying t
 {{{
 Set<String> services = Whitebox.getInternalState(tested, Set.class);
 }}}
-to get the `services` field. This is a type-safe way to get internal state and it's also the preferred way for this reason. In situations where you would have several fields of type `Set` in a class you'd still have to revert to using the field name approach.
+to get the `services` field. This is a more type-safe way to get internal state and it's also the preferred way for this reason. In situations where you would have several fields of type `Set` in a class you'd still have to revert to using the field name approach.
 
 It's just as easy to set internal state of an object. Say for example that we have the following class:
 {{{
