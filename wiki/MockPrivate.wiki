@@ -108,6 +108,6 @@ public void testReplaceData() throws Exception {
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/privatemocking/DataServiceTest.java DataServiceTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/privatemocking/DataService.java DataService]
-  * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit4/src/test/java/org/powermock/modules/junit4/privatemocking/PrivateMethodDemoTest.java PrivateMethodDemoTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/modules/junit4/src/test/java/org/powermock/modules/modules-impl/junit4/privatemocking/PrivateMethodDemoTest.java PrivateMethodDemoTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/tests/utils/src/main/java/samples/privatemocking/PrivateMethodDemo.java PrivateMethodDemo]
   
