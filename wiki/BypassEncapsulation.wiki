@@ -214,4 +214,4 @@ All of these things can be achieved without using PowerMock, this is just normal
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportGenerator.java ReportGenerator]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportDaoTest.java ReportDaoTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportDao.java ReportDao]
-  * [http://code.google.com/p/powermock/source/browse/trunk/core/src/test/java/org/powermock/WhiteBoxTest.java WhiteboxTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/reflect/src/main/java/org/powermock/reflect/Whitebox.java WhiteboxTest]
