@@ -16,7 +16,7 @@ Sample code is available in subversion:
  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples/junit4/suppressconstructor/SuppressConstructorDemoTest.java Suppress constructor]
 
 JUnit 3 requires a different setup by creating a suite, since test runners are not available. Please view some examples:
- * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit3-test/src/test/java/org/powermock/modules/junit3/privateandfinal/PrivateFinalTest.java Mocking private methods with JUnit 3]
+ * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit3-test/src/test/java/samples/junit3/privateandfinal/PrivateFinalTest.java Mocking private methods with JUnit 3]
 
 
 == Maven setup ==
