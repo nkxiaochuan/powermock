@@ -11,7 +11,7 @@ public class YourTestCase {
 }}}
 
 Sample code is available in subversion:
- * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/org/powermock/modules/junit4/singleton/MockStaticTest.java Mocking static methods]
+ * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples.junit4/singleton/MockStaticTest.java Mocking static methods]
  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/org/powermock/modules/junit4/expectnew/ExpectNewDemoTest.java Expect new instance]
  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/org/powermock/modules/junit4/suppressconstructor/SuppressConstructorDemoTest.java Suppress constructor]
 
