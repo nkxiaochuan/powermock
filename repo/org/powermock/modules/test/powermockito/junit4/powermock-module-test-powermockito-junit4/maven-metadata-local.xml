@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+  <groupId>org.powermock.modules.test.powermockito.junit4</groupId>
+  <artifactId>powermock-module-test-powermockito-junit4</artifactId>
+  <version>1.1-SNAPSHOT</version>
+  <versioning>
+    <versions>
+      <version>1.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20081205132506</lastUpdated>
+  </versioning>
+</metadata>
