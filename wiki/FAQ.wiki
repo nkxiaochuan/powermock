@@ -33,9 +33,9 @@ log4j:ERROR Could not instantiate configurator
 [org.apache.log4j.xml.DOMConfigurator].
 }}}
       There are a couple of different solutions to this:
-        * Create a nice mock of the Logger class and set the the Logger field to this instance. If the field is static suppress the static initializer for the class (using the `@SuppressStaticInitializerFor` annotation) and then set the field.
-        * Specify the Log4j classes in the `@PrepareForTest` annotation
-        * You could try using the `@PrepareEverythingForTest` annotation
+        # Create a nice mock of the Logger class and set the the Logger field to this instance. If the field is static suppress the static initializer for the class (using the `@SuppressStaticInitializerFor` annotation) and then set the logger field to the mock you just creaed. Next prepare the `org.apache.log4j.Appender` for testing using the @PrepareForTest annotation.          
+        # Follow the same procedure as in the previous step but instead of adding the `org.apache.log4j.Appender` class to the @PrepareForTest you add `"org.apache.log4j.LogManager"` to the `@SuppressStaticInitializerFor` annotation.
+        # You could try using the `@PrepareEverythingForTest` annotation (not recommended).
   # Does PowerMock work with TestNG?
       At the moment PowerMock doesn't support TestNG. We hope to able to do so in the future.
   # Is PowerMock a fork of EasyMock?
