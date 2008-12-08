@@ -19,7 +19,7 @@
 }}}
   # I cannot mock classes in from `java.lang`, `java.net`, `java.io` or other system classes, why?
     This is because they're loaded by Java's bootstrap classloader and cannot be byte-code manipulated by PowerMock's classloader. Unfortunately there's no work-around for this (yet). 
-  # When running a PowerMock test log4j gives me the following error, what now? 
+  # When running a PowerMock test log4j gives me the following (or something similar) error, what now? 
 {{{
 log4j:ERROR A "org.apache.log4j.xml.DOMConfigurator" object is not
 assignable to a "org.apache.log4j.spi.Configurator" variable.
