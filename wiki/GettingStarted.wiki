@@ -43,7 +43,7 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
       <version>2.4</version>
       <scope>test</scope>
    </dependency>
-<dependencies>
+</dependencies>
 }}}
 
  Add the following to your pom.xml if you're using JUnit 4.0-4.3:
@@ -68,7 +68,7 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
       <version>2.4</version>
       <scope>test</scope>
    </dependency>
-<dependencies>
+</dependencies>
 }}}
 
  Add the following to your pom.xml if you're using JUnit 3:
@@ -93,7 +93,7 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
       <version>2.4</version>
       <scope>test</scope>
    </dependency>
-<dependencies>
+</dependencies>
 }}}
 
 == Non maven users ==
