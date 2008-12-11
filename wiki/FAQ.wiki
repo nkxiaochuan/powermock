@@ -1,7 +1,15 @@
 #labels faq
 = Frequently asked questions =
 
-  # PowerMockRunner throws a `java.lang.NoClassDefFoundError: org/junit/internal/runners/BeforeAndAfterRunner` exception. What's wrong?
+  # PowerMockRunner throws a 
+{{{
+java.lang.NoClassDefFoundError: org/junit/internal/runners/BeforeAndAfterRunner
+}}} 
+  or 
+{{{
+java.lang.SecurityException: class "org.junit.internal.runners.TestClass"'s signer information does not match signer information of other classes in the same package
+}}}
+  exception. What's wrong?
    You're probably using the wrong PowerMockRunner. There's one runner made for JUnit 4.4 and above and a second runner made for JUnit 4.0-4.3 (although the latter also works for some older minor versions of JUnit 4.4). Try switching from the `org.powermock.modules.junit4.PowerMockRunner` to `org.powermock.modules.junit4.legacy.PowerMockRunner` or vice versa. Look at the [GettingStarted getting started] guide to see how to configure this in maven.
   # Cobertura gives me errors or produces strange results when running PowerMock tests in Maven, how do I solve this?
     You need to add the following to your pom.xml file:
