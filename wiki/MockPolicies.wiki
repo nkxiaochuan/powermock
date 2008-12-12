@@ -55,7 +55,15 @@ public class Slf4jUserTest {
 }}}
 Note that we don't have do any setup at all to mock slf4j, the `Slf4jMockPolicy` takes care of this.
 
-=== Creating your own mock policies ===
+=== Creating custom mock policies ===
+It's possible to create custom mock policies to deal with similar setup and mock behavior. To do this you need to create a class that implements the [http://code.google.com/p/powermock/source/browse/trunk/core/src/main/java/org/powermock/core/spi/PowerMockPolicy.java org.powermock.core.spi.PowerMockPolicy] interface. It contains to methods: 
+{{{
+void applyClassLoadingPolicy(MockPolicyClassLoadingSettings settings);
+}}}
+and 
+{{{
+void applyInterceptionPolicy(MockPolicyInterceptionSettings settings);
+}}}
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
