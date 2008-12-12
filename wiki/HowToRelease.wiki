@@ -15,7 +15,7 @@ This is an example of what needs to be done to release PowerMock (version 0.9 is
    If this was successful you should now have a maven repository for the powermock 0.9 version located under c:/target/repo (if windows) or in the target folder (unix)
   # If you performed step 6, do svn revert pom.xml for the root pom.xml file that you just changed.
   # Check out the the repo folder from svn to a new folder (repo), i.e. svn/repo
-  # Copy the files and directories generated in 8 to this new folder (overwrite duplicates if necessary)
+  # Copy the files and directories generated in 7 to this new folder (overwrite duplicates if necessary)
   # Enter the repo folder and type `svn add * --force` followed by svn ci -m "Releasing powermock 0.9"
   # Checkout the docs folder from svn into a new folder called docs, i.e. checkout svn/docs.
   # Go back to the powermock-0.9 folder and type "mvn site:site -Prelease"
