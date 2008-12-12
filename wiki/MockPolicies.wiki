@@ -7,6 +7,39 @@
 
 === Example ===
 
+A Mock Policy can be used to make it easier to unit test some code with PowerMock in isolation from a certain framework. A mock policy implementation can for example suppress some methods, suppress static initializers or intercept method calls and change their return value (for example to return a mock object) for a certain framework or set of classes or interfaces. A mock policy can for example be implemented to avoid writing repetitive setup code for your tests. Say that you're using a framework X that in order for you to test it requires that certain methods should always return a mock implementation. Perhaps some static initializers must be suppressed as well. Instead of copying this code between tests it would be a good idea to write a reusable mock policy.
+
+PowerMock 1.1 provides three mock policies out of the box for mocking slf4j, java common-logging and log4j. Let's pick slf4j as an example and let's say you have a class that looks like this:
+{{{
+public class Slf4jUser {
+	private static final Logger log = LoggerFactory.getLogger(Slf4jUser.class);
+
+	public final String getMessage() {
+		log.debug("getMessage!");
+		return "log4j user";
+	}
+}
+}}}
+
+Here we have a problem because the logger gets instantiated in the static initializer of the Slf4jUser class. Sometimes this leads to problems depending on the log configuration so what you want to do in a unit-test is to stub out the log instance. This is fully doable without using mock policies. 
+{{{
+@RunWith(PowerMockRunner.class)
+@SuppressStaticInitializationFor("org.myapp.MyClassUsingLog4J")
+@PrepareForTest( { Appender.class })
+public class MyTest {
+
+  @Before
+  public void setUp() {
+      Logger loggerMock = createNiceMock(Logger.class);
+      Whitebox.setInternalState(MyClassUsingLog4J.class, loggerMock);
+      ...
+  }
+  ...
+}
+}}}
+
+== Creating your own mock policies == 
+
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/ServiceRegistrator.java ServiceRegistrator]
