@@ -79,7 +79,45 @@ A mock policy implementation can for example suppress some methods, suppress sta
 
 Since mock policies can be chained subsequent policies can override behavior of a previous policy. To avoid accidental overrides it's recommended _add_ behavior instead of _setting_ behavior since the latter overrides all previous configurations.
 
-Let's clear things up with an example.
+Let's clear things up with an example. Imagine that we have a class looks like this:
+{{{
+public class Dependency {
+
+	private final DataObject dataObject;
+
+	public Dependency(String data) {
+		dataObject = new DataObject(data);
+	}
+
+	public DataObject getData() {
+		return dataObject;
+	}
+}
+}}}
+Let's say that we'd like to return a custom `DataObject` each time the `getData` method is called, i.e. we want to intercept the call to `getData` and make it return our custom object. To create a reusable mock policy that does exactly this we start by creating a new class called `MyCustomMockPolicy` that implements the `org.powermock.core.spi.PowerMockPolicy` interface. The full code for this can be seen below:
+{{{
+public class MyCustomMockPolicy implements PowerMockPolicy {
+
+	/**
+	 * Add the {@link Dependency} to the list of classes that should be loaded
+	 * by the mock class-loader.
+	 */
+	public void applyClassLoadingPolicy(MockPolicyClassLoadingSettings settings) {
+		settings.addFullyQualifiedNamesOfClassesToLoadByMockClassloader(Dependency.class.getName());
+	}
+
+	/**
+	 * Every time the {@link Dependency#getData()} method is invoked we return a
+	 * custom instance of a {@link DataObject}.
+	 */
+	public void applyInterceptionPolicy(MockPolicyInterceptionSettings settings) {
+		final Method getDataMethod = Whitebox.getMethod(Dependency.class);
+		final DataObject dataObject = new DataObject("Policy generated data object");
+		settings.addSubtituteReturnValue(getDataMethod, dataObject);
+	}
+}
+}}}
+Let's explain it in a bit more detail. Since we want to intercept the `getData()` method call of the `Dependency` class we must prepare it for testing by having the class loaded by the mock class-loader. We tell PowerMock to do so by invoking the `settings.addFullyQualifiedNamesOfClassesToLoadByMockClassloader(..)` method from the `applyClassLoadingPolicy` by passing in the fully-qualified name of the `Dependency` class. 
 
 
 === References === 
