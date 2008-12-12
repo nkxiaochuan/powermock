@@ -7,7 +7,6 @@ This is an example of what needs to be done to release PowerMock (version 0.9 is
      # svn up -r head 
      # mvn release:prepare -Dresume
   # Copy the powermock-0.9-full.jar, powermock-0.9-src.zip and powermock-0.9-with-dependencies.zip to a new temp folder. 
-  # Open the powermock-0.9-full.jar and remove all non-powermock stuff.
   # mvn release:perform
    If it fails just do mvn release:clean
   # Check out the tag that was just created to a new folder, e.g. svn/tags/powermock-0.9 to powermock-0.9
