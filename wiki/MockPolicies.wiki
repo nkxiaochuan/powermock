@@ -21,7 +21,7 @@ public class Slf4jUser {
 }
 }}}
 
-Here we have a problem because the logger gets instantiated in the static initializer of the Slf4jUser class. Sometimes this leads to problems depending on the log configuration so what you want to do in a unit-test is to stub out the log instance. This is fully doable without using mock policies. One way to do this is to start by suppressing the static initializer of the Slf4jUser class from our test. We can the set create a stub or nice mock of the Logger class and inject it to the Slf4jUser instance. But this is not enough, imagine that we've configured slf4j to use log4j as logging back-end then we'll get the following error printed in the console while running the test:
+Here we have a problem because the logger gets instantiated in the static initializer of the Slf4jUser class. Sometimes this leads to problems depending on the log configuration so what you want to do in a unit-test is to stub out the log instance. This is fully doable without using mock policies. One way to do this is to start by suppressing the static initializer of the Slf4jUser class from our test. We can then set create a stub or nice mock of the Logger class and inject it to the Slf4jUser instance. But this is not enough, imagine that we've configured slf4j to use log4j as logging back-end then we'll get the following error printed in the console while running the test:
 
   log4j:ERROR A "org.apache.log4j.RollingFileAppender" object is not assignable to a org.apache.log4j.Appender" variable.
   log4j:ERROR The class "org.apache.log4j.Appender" was loaded by 
