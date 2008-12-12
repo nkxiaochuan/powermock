@@ -183,7 +183,7 @@ public class ExampleWithEvilStaticInitializerTest {
 }
 }}}
 
-== Suppress fields ==
+==== Suppress fields ====
 You can also suppress fields using `PowerMock.suppressField(..)`. For example let's say you have to following class:
 {{{
 public class MyClass {
