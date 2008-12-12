@@ -1,7 +1,7 @@
 This is an example of what needs to be done to release PowerMock (version 0.9 is used as an example)
 
   # Update the changelog.txt and add the date when 0.9 was released to the header.
-  # `mvn release:prepare`
+  # `mvn release:prepare -Prelease`
    If it fails saying that pom.xml file already exists this is because of a bug in the maven release or SVN tool. 
    A work-around is to do: 
      # svn up -r head 
