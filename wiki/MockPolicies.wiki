@@ -21,24 +21,40 @@ public class Slf4jUser {
 }
 }}}
 
-Here we have a problem because the logger gets instantiated in the static initializer of the Slf4jUser class. Sometimes this leads to problems depending on the log configuration so what you want to do in a unit-test is to stub out the log instance. This is fully doable without using mock policies. 
+Here we have a problem because the logger gets instantiated in the static initializer of the Slf4jUser class. Sometimes this leads to problems depending on the log configuration so what you want to do in a unit-test is to stub out the log instance. This is fully doable without using mock policies. One way to do this is to start by suppressing the static initializer of the Slf4jUser class from our test. We can the set create a stub or nice mock of the Logger class and inject it to the Slf4jUser instance. But this is not enough, imagine that we've configured slf4j to use log4j as logging back-end then we'll get the following error printed in the console while running the test:
+
+  log4j:ERROR A "org.apache.log4j.RollingFileAppender" object is not assignable to a org.apache.log4j.Appender" variable.
+  log4j:ERROR The class "org.apache.log4j.Appender" was loaded by 
+  log4j:ERROR [org.powermock.core.classloader.MockClassLoader@aa9835] whereas object of  type
+  log4j:ERROR "org.apache.log4j.RollingFileAppender" was loaded by [sun.misc.Launcher$AppClassLoader@11b86e7].
+  log4j:ERROR Could not instantiate appender named "R".
+
+To avoid this error message we need to prepare the `org.apache.log4j.Appender` for testing. The full test setup would like this this:
 {{{
 @RunWith(PowerMockRunner.class)
-@SuppressStaticInitializationFor("org.myapp.MyClassUsingLog4J")
-@PrepareForTest( { Appender.class })
+@SuppressStaticInitializationFor("org.myapp.Slf4jUser")
+@PrepareForTest( Appender.class)
 public class MyTest {
 
   @Before
   public void setUp() {
       Logger loggerMock = createNiceMock(Logger.class);
-      Whitebox.setInternalState(MyClassUsingLog4J.class, loggerMock);
+      Whitebox.setInternalState(Slf4jUser.class, loggerMock);
       ...
   }
   ...
 }
 }}}
+This setup behavior would have to be copied to all test classes dealing with slf4j. Instead you could use the Slf4j mock policy that take care of doing this setup for you. Your test would then look like: 
+{{{
+@RunWith(PowerMockRunner.class)
+@MockPolicy(Slf4jMockPolicy.class)
+public class Slf4jUserTest {
+     ...
+}}}
+Note that we don't have do any setup at all to mock slf4j, the `Slf4jMockPolicy` takes care of this.
 
-== Creating your own mock policies == 
+=== Creating your own mock policies ===
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
