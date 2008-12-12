@@ -29,7 +29,7 @@ Here we have a problem because the logger gets instantiated in the static initia
   log4j:ERROR "org.apache.log4j.RollingFileAppender" was loaded by [sun.misc.Launcher$AppClassLoader@11b86e7].
   log4j:ERROR Could not instantiate appender named "R".
 
-To avoid this error message we need to prepare the `org.apache.log4j.Appender` for testing. The full test setup would like this this:
+To avoid this error message we need to prepare the `org.apache.log4j.Appender` for testing. The full test setup would look like this:
 {{{
 @RunWith(PowerMockRunner.class)
 @SuppressStaticInitializationFor("org.myapp.Slf4jUser")
