@@ -56,7 +56,7 @@ public class Slf4jUserTest {
 Note that we don't have do any setup at all to mock slf4j, the `Slf4jMockPolicy` takes care of this.
 
 === Creating custom mock policies ===
-It's possible to create custom mock policies to deal with similar setup and mock behavior. To do this you need to create a class that implements the [http://code.google.com/p/powermock/source/browse/trunk/core/src/main/java/org/powermock/core/spi/PowerMockPolicy.java org.powermock.core.spi.PowerMockPolicy] interface. It contains to methods: 
+It's possible to create custom mock policies to deal with similar setup and mock behavior. To do this you need to create a class that implements the [http://code.google.com/p/powermock/source/browse/trunk/core/src/main/java/org/powermock/core/spi/PowerMockPolicy.java org.powermock.core.spi.PowerMockPolicy] interface. It contains two methods: 
 {{{
 void applyClassLoadingPolicy(MockPolicyClassLoadingSettings settings);
 }}}
@@ -64,6 +64,12 @@ and
 {{{
 void applyInterceptionPolicy(MockPolicyInterceptionSettings settings);
 }}}
+A mock policy implementation can for example suppress some methods, suppress static initializers or intercept method calls and change their return value (for example to return a mock object). A mock policy implementation must be stateless. The reason why there are two methods for applying settings is that PowerMock needs to know which classes that should be modified by the mock class loader <i>before</i> these classes have loaded. The first method tells PowerMock which classes that should be loaded and then the second is called from the mock class-loader itself. This means you can create mocks for e.g. final and static methods in the `applyInterceptionPolicy` method which would not have been possible otherwise.
+
+Since mock policies can be chained subsequent policies can override behavior of a previous policy. To avoid accidental overrides it's recommended _add_ behavior instead of _setting_ behavior since the latter overrides all previous configurations.
+
+Let's clear things up with an example.
+
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
