@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>org.powermock</groupId>
+        <artifactId>powermock</artifactId>
+        <version>1.1</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.powermock</groupId>
+    <artifactId>powermock-release</artifactId>
+    <packaging>pom</packaging>
+    <name>powermock-release</name>
+
+    <modules>
+        <module>full</module>
+        <module>src</module>
+        <module>with-dependencies</module>
+    </modules>
+
+</project>
