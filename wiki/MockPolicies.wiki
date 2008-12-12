@@ -1,0 +1,13 @@
+== Mock Policies ==
+
+=== Quick summary ===
+
+  # Use the `@RunWith(PowerMockRunner.class)` annotation at the class-level of the test case.
+  # Use the `@MockPolicy(MyMockPolicy.class)` annotation at the class-level of the test case.
+
+=== Example ===
+
+=== References === 
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/ServiceRegistrator.java ServiceRegistrator]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/IdGenerator.java IdGenerator]
