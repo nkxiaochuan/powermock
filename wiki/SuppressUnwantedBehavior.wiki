@@ -7,6 +7,7 @@
   # Use the `Whitebox.newInstance(ClassWithEvilConstructor.class)` method to instantiate a class without invoking the constructor what so ever.
   # Use the `@SuppressStaticInitializationFor("org.mycompany.ClassWithEvilStaticInitializer")` annotation to remove the static initializer for the the `org.mycompany.ClassWithEvilStaticInitializer` class.
   # Use the `@PrepareForTest(ClassWithEvilMethod.class)` annotation at the class-level of the test case in combination with `suppressMethod(ClassWithEvilMethod.class, "methodName")` to suppress the method with name "methodName" in the ClassWithEvilMethod class.
+  # Use the `@PrepareForTest(ClassWithEvilField.class)` annotation at the class-level of the test case in combination with `suppressField(ClassWithEvilField.class, "fieldName")` to suppress the field with name "fieldName" in the ClassWithEvilField class.
 
 === Example ===
 Sometimes you want or even need to suppress the behavior of certain constructors, methods or static initializers in order to unit test your own code. A classic example is when your class need to extend from another class in third-party framework of some kind. The problem arise when this 3rd party class does something in its constructor that prevents you from unit testing your own code. For example the framework may try to load a dll or access the network or file system for some reason. Let's take a look at some examples of this. 
@@ -181,6 +182,25 @@ public class ExampleWithEvilStaticInitializerTest {
 	}
 }
 }}}
+
+== Suppress fields ==
+You can also suppress fields using `PowerMock.suppressField(..)`. For example let's say you have to following class:
+{{{
+public class MyClass {
+	private MyObject myObject = new MyObject();
+
+
+	public MyObject getMyObject() {
+		return myObject;
+	}
+}
+}}}
+
+To suppress the `myObject` field above you can do:
+{{{
+suppressField(MyClass.class, "myObject");
+}}}
+Invoking the `getMyObject()` will then return `null` for every instance of `MyClass` when it has been prepared for test.
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilChildTest.java ExampleWithEvilChildTest]
