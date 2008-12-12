@@ -143,6 +143,7 @@ public class DependencyUserTest {
 }
 }}}
 
+If the mock policy wouldn't have been applied the `dependencyData.getData()` would returned "some data".
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/policy/MyCustomMockPolicy.java MyCustomMockPolicy]
