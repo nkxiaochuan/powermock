@@ -51,6 +51,7 @@ This setup behavior would have to be copied to all test classes dealing with slf
 @MockPolicy(Slf4jMockPolicy.class)
 public class Slf4jUserTest {
      ...
+}
 }}}
 Note that we don't have do any setup at all to mock slf4j, the `Slf4jMockPolicy` takes care of this.
 
