@@ -30,11 +30,20 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
       <url>http://powermock.googlecode.com/svn/repo/</url>
    </repository>
 </repositories>
+<properties>
+    <powermock.version>1.1</powermock.version>
+</properties>
 <dependencies>
    <dependency>
       <groupId>org.powermock.modules</groupId>
       <artifactId>powermock-module-junit4</artifactId>
-      <version>1.0</version>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+   </dependency>
+   <dependency>
+      <groupId>org.powermock.api</groupId>
+      <artifactId>powermock-api-easymock</artifactId>
+      <version>${powermock.version}</version>
       <scope>test</scope>
    </dependency>
    <dependency>
@@ -55,11 +64,20 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
       <url>http://powermock.googlecode.com/svn/repo/</url>
    </repository>
 </repositories>
+<properties>
+    <powermock.version>1.1</powermock.version>
+</properties>
 <dependencies>
    <dependency>
       <groupId>org.powermock.modules</groupId>
       <artifactId>powermock-module-junit4-legacy</artifactId>
-      <version>1.0</version>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+   </dependency>
+   <dependency>
+      <groupId>org.powermock.api</groupId>
+      <artifactId>powermock-api-easymock</artifactId>
+      <version>${powermock.version}</version>
       <scope>test</scope>
    </dependency>
    <dependency>
@@ -80,11 +98,20 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
       <url>http://powermock.googlecode.com/svn/repo/</url>
    </repository>
 </repositories>
+<properties>
+    <powermock.version>1.1</powermock.version>
+</properties>
 <dependencies>
    <dependency>
       <groupId>org.powermock.modules</groupId>
       <artifactId>powermock-module-junit3</artifactId>
-      <version>1.0</version>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+   </dependency>
+   <dependency>
+      <groupId>org.powermock.api</groupId>
+      <artifactId>powermock-api-easymock</artifactId>
+      <version>${powermock.version}</version>
       <scope>test</scope>
    </dependency>
    <dependency>
