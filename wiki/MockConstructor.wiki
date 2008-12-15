@@ -7,8 +7,8 @@
   # Use the `@PrepareForTest(ClassThatCreatesTheNewInstance.class)` annotation at the class-level of the test case.
   # Use `PowerMock.createMock(NewInstanceClass.class)` to create a mock object of the class that should be constructed (let's call it `mockObject`).
   # Use `PowerMock.expectNew(NewInstanceClass.class).andReturn(mockObject)` to expect a new construction of an object of type `NewInstanceClass.class` but instead return the mock object.
-  # Use `PowerMock.replay(mockObject, NewInstanceClass.class)` to change the mock object and class to replay mode.
-  # Use `PowerMock.verify(mockObject, NewInstanceClass.class)` to change the mock object and class to verify mode.
+  # Use `PowerMock.replay(mockObject, NewInstanceClass.class)` to change the mock object and class to replay mode, alternatively use `PowerMock.replayAll()` method.
+  # Use `PowerMock.verify(mockObject, NewInstanceClass.class)` to change the mock object and class to verify mode, alternatively use `PowerMock.verifyAll()` method.
 
 === Example ===
 Let's say you have a class like this:
