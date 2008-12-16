@@ -1,0 +1,21 @@
+== Annotation-based Mocking ==
+
+=== Quick summary ===
+
+  # Use `@PowerMockTestListener(AnnotationEnabler.class)` at the class-level of your test to enable the annotation support.
+    # Use `@Mock` on a field to allow PowerMock to create and inject a mock of the same type as the field.
+    # Use `@MockNice` on a field to allow PowerMock to create and inject a nice mock of the same type as the fieldprivate constructor.
+    # Use `@MockStrict` on a field to allow PowerMock to create and inject a strict mock of the same type as the field
+    # Use `@Mock("methodName")` on a field to allow PowerMock to create and inject a partial mock of the same type as the field mocking only the method called `methodName`.
+
+=== Example ===
+
+
+=== References === 
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ServiceHolderTest.java ServiceHolderTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ServiceHolder.java ServiceHolder]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportGeneratorTest.java ReportGeneratorTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportGenerator.java ReportGenerator]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportDaoTest.java ReportDaoTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportDao.java ReportDao]
+  * [http://code.google.com/p/powermock/source/browse/trunk/reflect/src/test/java/org/powermock/reflect/WhiteBoxTest.java WhiteboxTest]
