@@ -13,9 +13,3 @@
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ServiceHolderTest.java ServiceHolderTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ServiceHolder.java ServiceHolder]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportGeneratorTest.java ReportGeneratorTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportGenerator.java ReportGenerator]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportDaoTest.java ReportDaoTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportDao.java ReportDao]
-  * [http://code.google.com/p/powermock/source/browse/trunk/reflect/src/test/java/org/powermock/reflect/WhiteBoxTest.java WhiteboxTest]
