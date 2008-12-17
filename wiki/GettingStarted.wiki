@@ -1,5 +1,5 @@
 == API's == 
-PowerMock consists of two extension API's. One for EasyMock and one for Mockito (which is currently in its infancy). To use PowerMock you need to depend on one of these API's as well as a test runner. Currently PowerMock only supports the JUnit test runners. There are three different JUnit test runners available, one for JUnit 4.4+, one for JUnit 4.0-4.3 and one for JUnit 3.
+PowerMock consists of two extension API's. One for EasyMock and one for Mockito (which is currently in its infancy). To use PowerMock you need to depend on one of these API's as well as a test framework. Currently PowerMock only supports the JUnit. There are three different JUnit test executors available, one for JUnit 4.4+, one for JUnit 4.0-4.3 and one for JUnit 3.
 
 == Writing tests ==
 
