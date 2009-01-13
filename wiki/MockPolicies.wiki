@@ -79,7 +79,7 @@ A mock policy implementation can for example suppress some methods, suppress sta
 
 Since mock policies can be chained subsequent policies can override behavior of a previous policy. To avoid accidental overrides it's recommended _add_ behavior instead of _setting_ behavior since the latter overrides all previous configurations.
 
-Let's clear things up with an example. Imagine that we have a class looks like this:
+Let's clear things up with an example. Imagine that we have a class that looks like this:
 {{{
 public class Dependency {
 
