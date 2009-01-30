@@ -87,4 +87,4 @@ public class MyTest {
   # Does PowerMock work with TestNG?
       At the moment PowerMock doesn't support TestNG. We hope to able to do so in the future.
   # Is PowerMock a fork of EasyMock?
-      No. PowerMock extends EasyMock with powerful capabilities such as static mocking.
+      No. PowerMock extends other mock frameworks such as EasyMock with powerful capabilities such as static mocking.
