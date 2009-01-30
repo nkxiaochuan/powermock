@@ -12,12 +12,38 @@ Note: At the moment this only works for *non-final* system classes.
 
 === Example ===
 
-PowerMock 1.2 and above supports mocking static methods in Java system classes such as those located in java.lang and java.net etc if they are not final (support for final classes may be supported in the future as well). This works without modifying your JVM or IDE settings! The way to go about mocking these classes are a bit different than usual though. Normally you would prepare the class that contains the static methods (let's call it X) you like to mock but because it's impossible for PowerMock to prepare a system class for testing another approach has to be taken. So instead of preparing X (`@PrepareForTest(X.class)`) you prepare the class that calls the static methods in X _and_ the test case! Let's look at a simple example:
+PowerMock 1.2 and above supports mocking static methods in Java system classes such as those located in java.lang and java.net etc if they are not final (support for final classes may be supported in the future as well). This works without modifying your JVM or IDE settings! The way to go about mocking these classes are a bit different than usual though. Normally you would prepare the class that contains the static methods (let's call it X) you like to mock but because it's impossible for PowerMock to prepare a system class for testing another approach has to be taken. So instead of preparing X you prepare the class that calls the static methods in X _and_ the test case! Let's look at a simple example:
 
 
+{{{
+public class SystemClassUser {
+
+	public String performEncode() throws UnsupportedEncodingException {
+		return URLEncoder.encode("string", "enc");
+	}
+}
+}}}
+
+Here we'd like to mock the static method call to `java.net.URLEncoder#encode(..)` which is normally not possible. Since the URLEncoder class is a system class we should prepare the `SystemClassUser` for test since this is the class calling the encode method of the `URLEncoder`. But this is not enough because in order for our expectations to work we must also prepare the actual test. I.e. 
+{{{
+@RunWith(PowerMockRunner.class)
+@PrepareForTest( { SystemClassUser.class, SystemClassUserTest.class })
+public class SystemClassUserTest {
+
+	@Test
+	public void assertThatMockingOfNonFinalSystemClassesWorks() throws Exception {
+		mockStatic(URLEncoder.class);
+
+		expect(URLEncoder.encode("string", "enc")).andReturn("something");
+		replayAll();
+
+		assertEquals("something", new SystemClassUser().performEncode());
+
+		verifyAll();
+	}
+}}}
 
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/ServiceRegistrator.java ServiceRegistrator]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/IdGenerator.java IdGenerator]
+  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples/junit4/system/SystemClassUserTest.java SystemClassUserTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/tests/utils/src/main/java/samples/system/SystemClassUser.java SystemClassUser]
