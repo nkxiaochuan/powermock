@@ -1,0 +1,23 @@
+== Mocking system classes ==
+
+=== Quick summary ===
+
+  # Use the `@RunWith(PowerMockRunner.class)` annotation at the class-level of the test case.
+  # Use the `@PrepareForTest({ClassThatCallsTheSystemClass.class, YourTest.class})` annotation at the class-level of the test case.
+  # Use `mockStatic(SystemClass.class)` to mock the system class then setup the expectations as normally.
+  # Use `PowerMock.replayAll()` to change to replay mode.
+  # Use `PowerMock.verifyAll()` to change to verify mode.
+
+Note: At the moment this only works for *non-final* system classes.
+
+=== Example ===
+
+PowerMock 1.2 and above supports mocking static methods in Java system classes such as those located in java.lang and java.net etc if they are not final (support for final classes may be supported in the future as well). This works without modifying your JVM or IDE settings! The way to go about mocking these classes are a bit different than usual though. Normally you would prepare the class that contains the static methods (let's call it X) you like to mock but because it's impossible for PowerMock to prepare a system class for testing another approach has to be taken. So instead of preparing X (`@PrepareForTest(X.class)`) you prepare the class that calls the static methods in X _and_ the test case! Let's look at a simple example:
+
+
+
+
+=== References === 
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/staticmocking/ServiceRegistratorTest.java ServiceRegistratorTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/ServiceRegistrator.java ServiceRegistrator]
+  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/staticmocking/IdGenerator.java IdGenerator]
