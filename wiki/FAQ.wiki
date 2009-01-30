@@ -42,7 +42,7 @@ log4j:ERROR Could not instantiate configurator
 [org.apache.log4j.xml.DOMConfigurator].
 }}}
       There are a couple of different solutions to this:
-        # If you're using PowerMock 1.1 you should use the `@MockPolicy` annotation and specify a mock policy. For example if you're using slf4j in combination with log4j use `@MockPolicy(Slf4jMockPolicy.class)` or if you're using Log4j stand-alone use `@MockPolicy(Log4jMockPolicy.class)`. This is the recommended way. For example:
+        # If you're using PowerMock 1.1 or above you should use the `@MockPolicy` annotation and specify a mock policy. For example if you're using slf4j in combination with log4j use `@MockPolicy(Slf4jMockPolicy.class)` or if you're using Log4j stand-alone use `@MockPolicy(Log4jMockPolicy.class)`. This is the recommended way. For example:
 {{{
 @RunWith(PowerMockRunner.class)
 @MockPolicy(Log4jMockPolicy.class)
