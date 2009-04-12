@@ -7,7 +7,7 @@
 
 === Example ===
 
-A Mock Policy can be used to make it easier to unit test some code with PowerMock in isolation from a certain framework. A mock policy implementation can for example suppress some methods, suppress static initializers or intercept method calls and change their return value (for example to return a mock object) for a certain framework or set of classes or interfaces. A mock policy can for example be implemented to avoid writing repetitive setup code for your tests. Say that you're using a framework X that in order for you to test it requires that certain methods should always return a mock implementation. Perhaps some static initializers must be suppressed as well. Instead of copying this code between tests it would be a good idea to write a reusable mock policy.
+A Mock Policy can be used to make it easier to unit test some code with PowerMock in isolation from a certain framework. A mock policy implementation can for example suppress some methods, suppress static initializers or intercept method calls and change their return value (for example to return a mock object) for a certain framework or set of classes or interfaces. A mock policy can for example be implemented to avoid writing repetitive setup code for your tests. Say that you're using a framework X and that in order for you to test it requires that certain methods should always return a mock implementation. Perhaps some static initializers must be suppressed as well. Instead of copying this code between tests it would be a good idea to write a reusable mock policy.
 
 PowerMock 1.1 provides three mock policies out of the box for mocking slf4j, java common-logging and log4j. Let's pick slf4j as an example and let's say you have a class that looks like this:
 {{{
