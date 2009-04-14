@@ -12,7 +12,7 @@ Communication with the framework is done through static methods (for example Jav
 
 Without PowerMock: Wrap all static method calls in a separate class and use dependency injection to mock this object. This will create an extra layer of unnecessary classes in your application. However, this can of course be useful if you want to encapsulate the framework to be able to replace it.
 
-The framework require you to subclass classes that contains static initializers (Eclipse) or constructors (Wicket). PowerMock allows you to remove static initializers and suppress constructors. It also allows you to mock classes inside a signed jar file (old Acegi, Eclipse).
+The framework require you to subclass classes that contains static initializers (Eclipse) or constructors (Wicket). PowerMock allows you to remove static initializers and suppress constructors. It also allows you to mock classes inside a signed jar file (old Acegi, Eclipse), even if the classes are package-private.
 
 Without PowerMock: Move all your code into a delegate and let the framework class simply delegate all method calls.
 
