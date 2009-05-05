@@ -149,6 +149,12 @@ int sum = (Integer) Whitebox.invokeMethod(MyClass.class, "sum", 1, 2);
 
 if the method was defined in a class called `MyClass`.
 
+Since PowerMock 1.2.5 you can also invoke methods without specifying a method name which can be good for refactoring purposes. E.g. 
+{{{
+Whitebox.invokeMethod(myInstance, param1, param2);
+}}}
+Note that this only works if PowerMock can locate a unique method based on the parameter types.
+
 
 === Instantiate a class with a private constructor ===
 
