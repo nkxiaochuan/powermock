@@ -26,8 +26,7 @@ java.lang.SecurityException: class "org.junit.internal.runners.TestClass"'s sign
   </build>
 }}}
   # I cannot mock classes in from `java.lang`, `java.net`, `java.io` or other system classes, why?
-    This is because they're loaded by Java's bootstrap classloader and cannot be byte-code manipulated by PowerMock's classloader. Since PowerMock 1.2.5 there's a work-around, please have a look at [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples/junit4/system/SystemClassUserTest.java this] simple example to see how it's done. We're working on a solution for final system classes as well.
-
+    This is because they're loaded by Java's bootstrap classloader and cannot be byte-code manipulated by PowerMock's classloader. Since PowerMock 1.2.5 there's a work-around, please have a look at [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples/junit4/system/SystemClassUserTest.java this] simple example to see how it's done.
   # When running a PowerMock test log4j gives me the following (or something similar) error, what now? 
 {{{
 log4j:ERROR A "org.apache.log4j.xml.DOMConfigurator" object is not
