@@ -27,6 +27,15 @@ java.lang.SecurityException: class "org.junit.internal.runners.TestClass"'s sign
 }}}
   # I cannot mock classes in from `java.lang`, `java.net`, `java.io` or other system classes, why?
     This is because they're loaded by Java's bootstrap classloader and cannot be byte-code manipulated by PowerMock's classloader. Since PowerMock 1.2.5 there's a work-around, please have a look at [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples/junit4/system/SystemClassUserTest.java this] simple example to see how it's done.
+  # When mocking Hibernate you get an error similar to:
+{{{
+java.lang.ClassCastException: org.hibernate.ejb.HibernatePersistence cannot be cast to javax.persistence.spi.PersistenceProvider
+    at javax.persistence.Persistence.findAllProviders(Persistence.java:80)
+    at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:49)
+    at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:34)
+    ...
+}}}
+    Solution: Use `@PowerMockIgnore(""javax.persistence")` at the class-level of your test.
   # When running a PowerMock test log4j gives me the following (or something similar) error, what now? 
 {{{
 log4j:ERROR A "org.apache.log4j.xml.DOMConfigurator" object is not
