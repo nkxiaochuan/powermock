@@ -35,7 +35,7 @@ java.lang.ClassCastException: org.hibernate.ejb.HibernatePersistence cannot be c
     at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:34)
     ...
 }}}
-    Solution: Use `@PowerMockIgnore(""javax.persistence")` at the class-level of your test.
+    Solution: Use `@PowerMockIgnore("javax.persistence")` at the class-level of your test.
   # When running a PowerMock test log4j gives me the following (or something similar) error, what now? 
 {{{
 log4j:ERROR A "org.apache.log4j.xml.DOMConfigurator" object is not
