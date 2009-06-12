@@ -1,0 +1,55 @@
+== Test Listeners ==
+
+=== Quick summary ===
+
+  # Use the `@RunWith(PowerMockRunner.class)` annotation at the class-level of the test case.
+  # Use the `@PowerMockListener({Listener1.class, Listener2.class})` annotation at the class-level of the test case.
+
+=== Example ===
+
+PowerMock 1.1 has a notion of Test Listeners. Test listeners can be used to get events from the test framework such as when a test method starts and ends and the result of a test execution. The purpose of these test listeners is to provide a test-framework independent way to get and react to these notifications by implementing the `org.powermock.core.spi.PowerMockTestListener` and pass it to the `PowerMockListener` annotation. PowerMock has some built-in test listeners for you to use.
+
+=== AnnotationEnabler ===
+This test listener implementation let's you use annotations to create mock objects. For example consider the following piece of code:
+{{{
+@RunWith(PowerMockRunner.class)
+@PowerMockListener(AnnotationEnabler.class)
+ public class PersonServiceTest {
+
+ 	@Mock
+  	private PersonDao personDaoMock;
+
+  	private PersonService classUnderTest;
+
+  	@Before
+  	public void setUp() {
+  		classUnderTest = new PersonService(personDaoMock);
+  	}
+   ...
+  }
+}}}
+
+Using the @Mock annotation eliminates the need to setup and tear-down mocks manually which minimizes repetitive test code and makes the test more readable. The AnnotationEnabler works for both the EasyMock and Mockito API's. You can also supply the names of the methods that you wish to mock if you want to create a partial mock, for example:
+
+{{{
+@RunWith(PowerMockRunner.class)
+@PowerMockListener(AnnotationEnabler.class)
+ public class PersonServiceTest {
+
+ 	@Mock("getPerson")
+  	private PersonDao personDaoMock;
+
+  	private PersonService classUnderTest;
+
+  	@Before
+  	public void setUp() {
+  		classUnderTest = new PersonService(personDaoMock);
+  	}
+   ...
+  }
+}}}
+This piece of code will instruct PowerMock to create a partial mock of the `PersonDao` where only the "getPerson" method is mocked. Since EasyMock has support for nice and strict mocks you can use the `@MockNice` and `@MockStrict` annotations to get the benefits of this.
+
+
+=== References === 
+  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples/junit4/annotationbased/AnnotationDemoWithSetupMethodTest.java AnnotationDemoWithSetupMethodTest]
