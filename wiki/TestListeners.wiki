@@ -9,7 +9,7 @@
 
 PowerMock 1.1 has a notion of Test Listeners. Test listeners can be used to get events from the test framework such as when a test method starts and ends and the result of a test execution. The purpose of these test listeners is to provide a test-framework independent way to get and react to these notifications by implementing the `org.powermock.core.spi.PowerMockTestListener` and pass it to the `PowerMockListener` annotation. PowerMock has some built-in test listeners for you to use.
 
-=== AnnotationEnabler ===
+==== AnnotationEnabler ====
 This test listener implementation let's you use annotations to create mock objects. For example consider the following piece of code:
 {{{
 @RunWith(PowerMockRunner.class)
