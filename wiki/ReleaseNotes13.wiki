@@ -54,7 +54,7 @@ PowerMock 1.3 is one of biggest releases to date and there's been lots of change
 
 
 == Removed deprecations ==
-
+  * Removed the deprecated classes "org.powermock.PowerMock" and "org.powermock.Whitebox"
 
 == Minor changes ==
 See change log for more details
