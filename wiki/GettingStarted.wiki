@@ -34,4 +34,4 @@ Download the [http://powermock.googlecode.com/files/powermock-1.3-with-easymock-
 *Mockito* 
 Download the [http://powermock.googlecode.com/files/powermock-1.3-with-mockito-dependencies.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
 
- You could also download the [http://powermock.googlecode.com/files/powermock-1.3-full.jar jar-file] with all PowerMock code in a single file and then download the dependencies separately.
+You could also download the [http://powermock.googlecode.com/files/powermock-1.3-full.jar jar-file] with all PowerMock code in a single file and then download the dependencies separately.
