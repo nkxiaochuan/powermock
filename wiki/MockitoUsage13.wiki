@@ -1,0 +1,160 @@
+=Using PowerMock with Mockito=
+*Note: PowerMock 1.3 only works with Mockito 1.8. PowerMock 1.2.5 works with 1.7*
+
+Basically, PowerMock provides a class called "PowerMockito" for creating mock/object/class and initiating verification, and expecations, everything else you can still use Mockito to setup and verify expectation (e.g. times(), anyInt()).
+
+All usages require `@RunWith(PowerMockRunner.class)` and `@PrepareForTest` annotated at class level. 
+
+==Mocking Static Method==
+How to mock and stub:
+  # Add `@PrepareForTest` at class level.
+  {{{
+   @PrepareForTest(Static.class); // Static.class contains static methods
+  }}}
+  # Call `PowerMockito.mockStatic()` to mock a static class (use `PoweMockito.spyStatic(class)` to mock a specific method):
+  {{{
+        PowerMockito.mockStatic(Static.class);
+  }}}
+  # Just use Mockito.when() to setup your expectation: 
+  {{{
+        Mockito.when(Static.firstStaticMethod(param)).thenReturn(value);
+  }}}
+
+===How to verify behavior===
+  # Call `PowerMockito.verifyStatic() `to start verifying behavior (Important: You need to call `verifyStatic()` per method verification):
+  {{{
+        PowerMockito.verifyStatic();
+  }}}
+  # Use EasyMock-like semantic to verify behavior:
+  {{{
+        Static.firstStaticMethod(param);
+  }}}
+
+===How to use argument matchers===
+Mockito matchers are may still applied to a PowerMock mock.  For example, using custom argument matchers per mocked static method:
+{{{
+PowerMockito.verifyStatic(Static.class);
+Static.thirdStaticMethod(Mockito.anyInt());
+}}}
+
+===How to verify exact number of calls===
+You can still use Mockito.VerificationMode (e.g Mockito.times(x)) with `PowerMockito.verifyStatic(Mockito.times(2))`:
+{{{
+PowerMockito.verifyStatic(Mockito.times(1));
+}}}
+
+===How to stub void static method to throw exception===
+If not private do:
+{{{
+PowerMockito.doThrow(new ArrayStoreException("Mock error")).when(StaticService.class);
+StaticService.executeMethod();
+}}}
+Note that you can do the same for final classes/methods:
+{{{
+PowerMockito.doThrow(new ArrayStoreException("Mock error")).when(myFinalMock).myFinalMethod();
+}}}
+For private methods use PowerMockito.when, e.g.:
+{{{
+when(tested, "methodToExpect", argument).thenReturn(myReturnValue);
+}}}
+
+
+===A full example for mocking, stubbing & verifying static method===
+{{{
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(Static.class)
+public class YourTestCase {
+    @Test
+    public void testMethodThatCallsStaticMethod() {
+        // mock all the static methods in a class called "Static"
+        PowerMockito.mockStatic(Static.class);
+        // use Mockito to set up your expectation
+        Mockito.when(Static.firstStaticMethod(param)).thenReturn(value);
+        Mockito.when(Static.secondStaticMethod()).thenReturn(123);
+
+        // execute your test
+        classCallStaticMethodObj.execute();
+
+        // Different from Mockito, always use PowerMockito.verifyStatic() first
+        PowerMockito.verifyStatic(Mockito.times(2));
+        // Use EasyMock-like verification semantic per static method invocation
+        Static.firstStaticMethod(param);
+
+        // Remember to call verifyStatic() again
+        PowerMockito.verifyStatic(); // default times is once
+        Static.secondStaticMethod();
+
+        // Again, remember to call verifyStatic()
+        PowerMockito.verifyStatic(Mockito.never());
+        Static.thirdStaticMethod();
+    }
+}
+}}}
+
+==Partial Mocking==
+You can use PowerMockito to partially mock a method using PowerMockito.spy or PowerMockito.spyStatic if you want to 
+
+===How to mock and stub===
+  # Use PowerMockito.mockPartial(): (You can also use Annotation `@Mock("methodToMock")` or `PowerMockito.mock()` for a method with specific parameters)
+  {{{
+  PartialMockClass mockObj = PowerMockito.mockPartial(PartialMockClass.class, "methodToMock");
+  }}}
+  # Just use `Mockito.when()` to setup expectation:
+  {{{
+  Mockito.when(mockObj.methodToMock()).thenReturn(123);
+  }}}
+
+==How to verify behavior==
+
+Just use Mockito.vertify() for standard verification:
+{{{
+    Mockito.verify(mockObj, times(2)).methodToMock();
+}}}
+
+==How to verify private behavior==
+Use PowerMockito.verifyPrivate(), e.g.
+{{{
+    verifyPrivate(tested).invoke("privateMethodName", argument1);
+}}}
+This also works for private static methods.
+
+==How to mock construction of new objects==
+Use PowerMockito.whenNew, e.g.
+{{{
+  whenNew(MyClass.class).withNoArguments().thenThrow(new IOException("error message"));
+}}}
+
+
+==How to verify construction of new objects==
+Use PowerMockito.verifyNew, e.g.
+{{{
+   verifyNew(MyClass.class).withNoArguments();
+}}}
+
+==How to argument matchers==
+Mockito matchers are may still applied to a PowerMock mock:
+{{{
+    Mockito.verify(mockObj).methodToMockToo(Mockito.anyInt());  
+}}}
+
+
+==A full example of partial mocking==
+{{{
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(PartialMockClass.class)
+public class YourTestCase {
+    @Test
+    public void testPartialMock() {
+        // create a partially mocked object for method "methodToMock"
+        PartialMockClass mockObj = PowerMockito.spyl(PartialMockClass.class);
+        // use Mockito to set up your expectation
+        Mockito.when(mockObj.methodToMock()).thenReturn(value);
+
+        // execute your test
+        classCallPartialMockObj.execute();
+
+        // Use Mockito.verify() to verify result
+        Mockito.verify(mockObj, times(2)).methodToMock();
+    }
+}
+}}}
