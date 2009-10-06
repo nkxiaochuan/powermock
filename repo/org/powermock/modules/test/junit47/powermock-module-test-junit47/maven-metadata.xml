@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+  <groupId>org.powermock.modules.test.junit47</groupId>
+  <artifactId>powermock-module-test-junit47</artifactId>
+  <version>1.3</version>
+  <versioning>
+    <versions>
+      <version>1.3</version>
+    </versions>
+    <lastUpdated>20091006192232</lastUpdated>
+  </versioning>
+</metadata>
