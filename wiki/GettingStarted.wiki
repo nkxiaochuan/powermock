@@ -1,5 +1,5 @@
 == API's == 
-PowerMock consists of two extension API's. One for EasyMock and one for Mockito (which is currently in its infancy). To use PowerMock you need to depend on one of these API's as well as a test framework. Currently PowerMock only supports JUnit. There are three different JUnit test executors available, one for JUnit 4.4+, one for JUnit 4.0-4.3 and one for JUnit 3.
+PowerMock consists of two extension API's. One for EasyMock and one for Mockito. To use PowerMock you need to depend on one of these API's as well as a test framework. Currently PowerMock only supports JUnit. There are three different JUnit test executors available, one for JUnit 4.4+, one for JUnit 4.0-4.3 and one for JUnit 3.
 
 == Writing tests ==
 
@@ -28,6 +28,10 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 
 == Non maven users ==
  
- Download the [http://powermock.googlecode.com/files/powermock-1.2.5-with-dependencies.zip zip-file] with PowerMock and all its dependencies and add those to your project.
+*EasyMock* 
+Download the [http://powermock.googlecode.com/files/powermock-1.3-with-easymock-dependencies.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
 
- You could also download the [http://powermock.googlecode.com/files/powermock-1.2.5-full.jar jar-file] with all PowerMock code in a single file and then download the dependencies separately.
+*Mockito* 
+Download the [http://powermock.googlecode.com/files/powermock-1.3-with-mockito-dependencies.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
+
+ You could also download the [http://powermock.googlecode.com/files/powermock-1.3-full.jar jar-file] with all PowerMock code in a single file and then download the dependencies separately.
