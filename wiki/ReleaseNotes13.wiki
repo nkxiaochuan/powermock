@@ -22,6 +22,9 @@ PowerMock 1.3 is one of biggest releases to date and there's been lots of change
 *Mockito API specific*
   * Upgraded the Mockito extension to use Mockito 1.8  
   * Mocking of static methods in final system classes now works
+  * When using the PowerMock Mock annotation with Mockito the method names (previously used for partial mocking) are ignored. They are no longer needed, just use PowerMockito.spy instead.
+  * Support for private method expectations using `PowerMockito.when(..)`
+
 
 *Common*
   * Classes prepared for test in parent test classes are now automatically prepared for test as well. I.e. if Test Case A extends Test Case B and A prepares X.class and B prepares Y.class then both X and Y will be prepared for test. Before only X was prepared for test.
@@ -30,6 +33,8 @@ PowerMock 1.3 is one of biggest releases to date and there's been lots of change
 
 == Deprecation ==
   * Deprecated `Whitebox#getInternalState(Object object, String fieldName, Class<?> where, Class<T> type)`. Use `"Whitebox.<Type> getInternalState(Object object, String fieldName, Class<?> where)"` instead.
+  * Deprecated `org.powermock.core.classloader.annotations.Mock`, you should now use the Mock annotation in respective extension API instead. For EasyMock this is `org.powermock.api.easymock.annotation.Mock` and for Mockito it's `org.mockito.Mock`.
+
 
 == Removed deprecations ==
 
