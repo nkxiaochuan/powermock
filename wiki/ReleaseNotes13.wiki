@@ -19,6 +19,8 @@ PowerMock 1.3 is one of biggest releases to date and there's been lots of change
 
 
 *Mockito API specific*
+  * Upgraded the Mockito extension to use Mockito 1.8
+  * Removed `mockStatic(Class<?> type, Method method, Method... methods)`, `mockStaticPartial`, `mockPartial`, `mock(Class<T> type, Method... methods)` & `mock(Class<T> type, Method... methods)` from the Mockito extension API. You should use PowerMockito.spy instead
   * Mocking of static methods in final system classes now works
 
 *Common*
