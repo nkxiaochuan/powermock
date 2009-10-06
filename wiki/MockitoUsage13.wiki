@@ -92,17 +92,7 @@ public class YourTestCase {
 }}}
 
 ==Partial Mocking==
-You can use PowerMockito to partially mock a method using PowerMockito.spy or PowerMockito.spyStatic if you want to 
-
-===How to mock and stub===
-  # Use PowerMockito.mockPartial(): (You can also use Annotation `@Mock("methodToMock")` or `PowerMockito.mock()` for a method with specific parameters)
-  {{{
-  PartialMockClass mockObj = PowerMockito.mockPartial(PartialMockClass.class, "methodToMock");
-  }}}
-  # Just use `Mockito.when()` to setup expectation:
-  {{{
-  Mockito.when(mockObj.methodToMock()).thenReturn(123);
-  }}}
+You can use PowerMockito to partially mock a method using PowerMockito.spy or PowerMockito.spyStatic.
 
 ==How to verify behavior==
 
@@ -158,3 +148,6 @@ public class YourTestCase {
     }
 }
 }}}
+
+==Further information==
+Have a look at the [http://code.google.com/p/powermock/source/browse/#svn/tags/powermock-1.3/modules/module-test/powermockito/junit4/src/test/java/samples/powermockito/junit4 source] in subversion for examples.
