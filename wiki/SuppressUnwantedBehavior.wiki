@@ -9,6 +9,10 @@
   # Use the `@PrepareForTest(ClassWithEvilMethod.class)` annotation at the class-level of the test case in combination with `suppress(method(ClassWithEvilMethod.class, "methodName"))` to suppress the method with name "methodName" in the ClassWithEvilMethod class.
   # Use the `@PrepareForTest(ClassWithEvilField.class)` annotation at the class-level of the test case in combination with `suppress(field(ClassWithEvilField.class, "fieldName"))` to suppress the field with name "fieldName" in the ClassWithEvilField class.
 
+You'll find the member modification and member matcher methods here:
+  * `org.powermock.api.support.membermodification.MemberModifier`
+  * `org.powermock.api.support.membermodification.MemberMatcher`
+
 === Example ===
 Sometimes you want or even need to suppress the behavior of certain constructors, methods or static initializers in order to unit test your own code. A classic example is when your class need to extend from another class in third-party framework of some kind. The problem arise when this 3rd party class does something in its constructor that prevents you from unit testing your own code. For example the framework may try to load a dll or access the network or file system for some reason. Let's take a look at some examples of this. 
 
