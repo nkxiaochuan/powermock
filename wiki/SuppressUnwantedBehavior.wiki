@@ -39,7 +39,7 @@ public class EvilParent {
 }}}
 This parent class tries to load a dll file which will not be present when you run a unit test for the `ExampleWithEvilParent` class. With PowerMock you can just suppress the constructor of the EvilParent so that you can unit test the ExampleWithEvilParent class. This is done by using the `suppressConstructor` method of the PowerMock API. In this case we would do:
 {{{
-suppressConstructor(EvilParent.class);
+suppress(constructor(EvilParent.class));
 }}}
 You must also prepare the ExampleWithEvilParent for testing (because it is from this class that the constructor of the EvilParent is called). You do this by passing the `ExampleWithEvilParent.class` to the `@PrepareForTest` annotation: 
 
@@ -56,7 +56,7 @@ public class ExampleWithEvilParentTest {
 
 	@Test
 	public void testSuppressConstructorOfEvilParent() throws Exception {
-		suppressConstructor(EvilParent.class);
+		suppress(constructor(EvilParent.class));
 		final String message = "myMessage";
 		ExampleWithEvilParent tested = new ExampleWithEvilParent(message);
 		assertEquals(message, tested.getMessage());
@@ -65,12 +65,12 @@ public class ExampleWithEvilParentTest {
 }}}
 If the super class have several constructors it's possible to tell PowerMock to only suppress a specific one. Let's say you have a class called `ClassWithSeveralConstructors` that has one constructor that takes a `String` and another constructor that takes an `int` as an argument and you only want to suppress the `String` constructor. You can do this using the
 {{{
-suppressSpecificConstructor(ClassWithSeveralConstructors.class, String.class);
+suppress(constructor(ClassWithSeveralConstructors.class, String.class));
 }}}
 method.
 
 ==== Suppress own constructor ====
-The example above only works when suppressing superclass constructors, you cannot do this for the class under test. If this is what you want, e.g. if your own code does something in its constructor that makes it difficult to unit test you can use the `Whitebox.newInstance` method. This instantiates the class without invoking the constructor at all. For example let's say you want to unit-test the following class:
+The example above works when suppressing superclass constructors and class under test. Another way to achieve to suppress the constructor under test is to use the `Whitebox.newInstance` method. E.g. if your own code does something in its constructor that makes it difficult to unit test. This instantiates the class without invoking the constructor at all. For example let's say you want to unit-test the following class:
 {{{
 public class ExampleWithEvilConstructor {
 
@@ -124,9 +124,9 @@ public class ExampleWithEvilMethod {
 	}
 }
 }}}
-If the `System.loadLibrary("evil.dll")` statement is executed when testing the `getMessage()` method the test will fail. One simple way to avoid this is to simply suppress the `getEvilMessage` method. You do this by using the `suppressMethod` method of the PowerMock API, in this case you would do:
+If the `System.loadLibrary("evil.dll")` statement is executed when testing the `getMessage()` method the test will fail. One simple way to avoid this is to simply suppress the `getEvilMessage` method. You do this by using the `suppress(method(..))` method of the PowerMock API, in this case you would do:
 {{{
-suppressMethod(ExampleWithEvilMethod.class, "getEvilMessage");
+suppress(method(ExampleWithEvilMethod.class, "getEvilMessage"));
 }}}
 The full test looks like this: 
 {{{
@@ -136,7 +136,7 @@ public class ExampleWithEvilMethodTest {
 
 	@Test
 	public void testSuppressMethod() throws Exception {
-		suppressMethod(ExampleWithEvilMethod.class, "getEvilMessage");
+		suppress(method(ExampleWithEvilMethod.class, "getEvilMessage"));
 		final String message = "myMessage";
 		ExampleWithEvilMethod tested = new ExampleWithEvilMethod(message);
 		assertEquals(message, tested.getMessage());
@@ -198,7 +198,7 @@ public class MyClass {
 
 To suppress the `myObject` field above you can do:
 {{{
-suppressField(MyClass.class, "myObject");
+suppress(field(MyClass.class, "myObject"));
 }}}
 Invoking the `getMyObject()` will then return `null` for every instance of `MyClass` when it has been prepared for test.
 
