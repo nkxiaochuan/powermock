@@ -136,7 +136,7 @@ public class YourTestCase {
     @Test
     public void testPartialMock() {
         // create a partially mocked object for method "methodToMock"
-        PartialMockClass mockObj = PowerMockito.spy(PartialMockClass.class);
+        PartialMockClass mockObj = PowerMockito.spy(new PartialMockClass());
         // use Mockito to set up your expectation
         Mockito.when(mockObj.methodToMock()).thenReturn(value);
 
