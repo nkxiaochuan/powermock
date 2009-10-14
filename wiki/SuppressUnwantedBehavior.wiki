@@ -41,7 +41,7 @@ public class EvilParent {
 	}
 }
 }}}
-This parent class tries to load a dll file which will not be present when you run a unit test for the `ExampleWithEvilParent` class. With PowerMock you can just suppress the constructor of the EvilParent so that you can unit test the ExampleWithEvilParent class. This is done by using the `suppressConstructor` method of the PowerMock API. In this case we would do:
+This parent class tries to load a dll file which will not be present when you run a unit test for the `ExampleWithEvilParent` class. With PowerMock you can just suppress the constructor of the EvilParent so that you can unit test the ExampleWithEvilParent class. This is done by using the `suppress` method of the PowerMock API. In this case we would do:
 {{{
 suppress(constructor(EvilParent.class));
 }}}
@@ -188,7 +188,7 @@ public class ExampleWithEvilStaticInitializerTest {
 }}}
 
 ==== Suppress fields ====
-You can also suppress fields using `PowerMock.suppressField(..)`. For example let's say you have to following class:
+You can also suppress fields using `suppress(..)`. For example let's say you have to following class:
 {{{
 public class MyClass {
 	private MyObject myObject = new MyObject();
