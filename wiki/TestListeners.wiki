@@ -32,7 +32,7 @@ This test listener implementation let's you use annotations to create mock objec
   }
 }}}
 
-Using the @Mock annotation eliminates the need to setup and tear-down mocks manually which minimizes repetitive test code and makes the test more readable. The AnnotationEnabler works for both the EasyMock and Mockito API's. You can also supply the names of the methods that you wish to mock if you want to create a partial mock, for example:
+Using the @Mock annotation eliminates the need to setup and tear-down mocks manually which minimizes repetitive test code and makes the test more readable. The AnnotationEnabler works for both the EasyMock and Mockito API's. In the EasyMock version you can also supply the names of the methods that you wish to mock if you want to create a partial mock, for example:
 
 {{{
 @RunWith(PowerMockRunner.class)
@@ -52,6 +52,8 @@ Using the @Mock annotation eliminates the need to setup and tear-down mocks manu
   }
 }}}
 This piece of code will instruct PowerMock to create a partial mock of the `PersonDao` where only the "getPerson" method is mocked. Since EasyMock has support for nice and strict mocks you can use the `@MockNice` and `@MockStrict` annotations to get the benefits of this.
+
+In Mockito you simply use `spy(..)` to partially mock a class or instance.
 
 ==== FieldDefaulter ====
 This test listener implementation can be used to set the default value for each member-field in a junit test after each test. For many developers it's more or less a standard procedure to create a tearDown method and null out all references when using JUnit (you can read more about this issue [http://blogs.atlassian.com/developer/2005/12/reducing_junit_memory_usage.html here]). But instead it would be possible to use the FieldDefaulter to accomplish this automatically. As an example let's say you have 5 collaborators that you want to mock in your test and you want to make sure each of them are set to null after each test to allow them to be garbage collected. So instead of doing:
