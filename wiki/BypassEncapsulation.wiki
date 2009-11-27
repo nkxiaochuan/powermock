@@ -40,7 +40,7 @@ public void testAddService() throws Exception {
 	tested.addService(service);
 
         // This is how you get the private services set using PowerMock
-	Set<String> services = (Set<String>) Whitebox.getInternalState(tested,
+	Set<String> services = Whitebox.getInternalState(tested,
 			"services");
 
 	assertEquals("Size of the \"services\" Set should be 1", 1, services
@@ -137,14 +137,14 @@ private int myMethod(Integer id) {
 
 This is of course a naive example but you could still use `Whitebox.invokeMethod(..)` to call both these methods. For the `myMethod(int id)` case you'd do like this: 
 {{{
-int result = (Integer) Whitebox.invokeMethod(myInstance, new Class<?>[]{int.class}, "myMethod", 1);
+int result = Whitebox.<Integer> invokeMethod(myInstance, new Class<?>[]{int.class}, "myMethod", 1);
 }}}
 
 Here we explicitly tell PowerMock to expect the call to the `myMethod` that takes an `int` as parameter. But in the majority of cases you don't need to specify the parameter type since PowerMock will find the correct method automatically.
 
 You can also invoke class-level (static) methods. Imagine that the `sum` method was also static, in this case we could invoke it by:
 {{{
-int sum = (Integer) Whitebox.invokeMethod(MyClass.class, "sum", 1, 2);
+int sum = Whitebox.<Integer> invokeMethod(MyClass.class, "sum", 1, 2);
 }}} 
 
 if the method was defined in a class called `MyClass`.
