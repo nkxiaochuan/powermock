@@ -118,7 +118,7 @@ private int sum(int a, int b) {
 }}}
 To do this you simply do: 
 {{{
-int sum = (Integer) Whitebox.invokeMethod(myInstance, "sum", 1, 2);
+int sum = Whitebox.<Integer> invokeMethod(myInstance, "sum", 1, 2);
 }}}
 Printing the sum would then of course display 3. 
 
