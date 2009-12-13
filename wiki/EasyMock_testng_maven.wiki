@@ -1,3 +1,4 @@
+#labels usage
 == Maven setup for the EasyMock API with TestNG == 
 Add the following to your pom.xml
 
