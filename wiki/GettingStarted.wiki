@@ -23,8 +23,12 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 
 
 == Maven setup ==
- * [EasyMock_maven EasyMock maven setup]
- * [Mockito_maven Mockito maven setup]
+=== JUnit ===
+ * [EasyMock_maven EasyMock JUnit Maven setup]
+ * [Mockito_maven Mockito JUnit Maven setup]
+=== TestNG ===
+ * [EasyMock_testng_maven EasyMock JUnit Maven setup]
+ * [Mockito_testng_maven Mockito JUnit Maven setup]
 
 == Non maven users ==
  
