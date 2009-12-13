@@ -43,4 +43,5 @@ TestNG:
 Download the [http://powermock.googlecode.com/files/powermock-mockito-testng-1.3.5.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
 
 *Or*
+
 You could also download the [http://powermock.googlecode.com/files/powermock-easymock-1.3.5-full.jar EasyMock jar-file] or [http://powermock.googlecode.com/files/powermock-mockito-1.3.5-full.jar Mockito jar-file] in a single file and then download the dependencies separately.
