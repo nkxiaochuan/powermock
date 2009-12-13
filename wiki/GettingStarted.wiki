@@ -29,11 +29,18 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 == Non maven users ==
  
 *EasyMock* 
+JUnit:
+Download the [http://powermock.googlecode.com/files/powermock-easymock-junit-1.3.5.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
 
-Download the [http://powermock.googlecode.com/files/powermock-1.3.5-with-easymock-dependencies.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
+TestNG:
+Download the [http://powermock.googlecode.com/files/powermock-easymock-testng-1.3.5.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
 
 *Mockito* 
+JUnit:
+Download the [http://powermock.googlecode.com/files/powermock-mockito-junit-1.3.5.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
 
-Download the [http://powermock.googlecode.com/files/powermock-1.3.5-with-mockito-dependencies.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
+TestNG:
+Download the [http://powermock.googlecode.com/files/powermock-mockito-testng-1.3.5.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
 
-You could also download the [http://powermock.googlecode.com/files/powermock-1.3.5-full.jar jar-file] with all PowerMock code in a single file and then download the dependencies separately.
+*Or*
+You could also download the [http://powermock.googlecode.com/files/powermock-easymock-1.3.5-full.jar EasyMock jar-file] or [http://powermock.googlecode.com/files/powermock-mockito-1.3.5-full.jar Mockito jar-file] in a single file and then download the dependencies separately.
