@@ -29,6 +29,7 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 == Non maven users ==
  
 *EasyMock* 
+
 JUnit:
 Download the [http://powermock.googlecode.com/files/powermock-easymock-junit-1.3.5.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
 
@@ -36,6 +37,7 @@ TestNG:
 Download the [http://powermock.googlecode.com/files/powermock-easymock-testng-1.3.5.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
 
 *Mockito* 
+
 JUnit:
 Download the [http://powermock.googlecode.com/files/powermock-mockito-junit-1.3.5.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
 
