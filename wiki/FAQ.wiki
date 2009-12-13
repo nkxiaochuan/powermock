@@ -102,6 +102,6 @@ public class MyTest {
 }}}
         # You could try using the `@PrepareEverythingForTest` annotation (not recommended).
   # Does PowerMock work with TestNG?
-      At the moment PowerMock doesn't support TestNG. We hope to able to do so in the future.
+      Yes, since version 1.3.5 PowerMock does have basic TestNG support.
   # Is PowerMock a fork of EasyMock?
       No. PowerMock extends other mock frameworks such as EasyMock with powerful capabilities such as static mocking.
