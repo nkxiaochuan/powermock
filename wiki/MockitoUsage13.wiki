@@ -21,14 +21,12 @@ How to mock and stub:
   }}}
 
 ===How to verify behavior===
-  # Call `PowerMockito.verifyStatic() `to start verifying behavior (Important: You need to call `verifyStatic()` per method verification):
+  # Verification of a static method is done in two steps. First call `PowerMockito.verifyStatic() `to start verifying behavior and the call the static method you want to verify. E.g.
   {{{
         PowerMockito.verifyStatic();
-  }}}
-  # Use EasyMock-like semantic to verify behavior:
-  {{{
         Static.firstStaticMethod(param);
   }}}
+Important: You need to call `verifyStatic()` per method verification.
 
 ===How to use argument matchers===
 Mockito matchers are may still applied to a PowerMock mock.  For example, using custom argument matchers per mocked static method:
