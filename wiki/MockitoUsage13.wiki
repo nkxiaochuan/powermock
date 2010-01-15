@@ -122,7 +122,7 @@ Use PowerMockito.verifyNew, e.g.
 ==How to argument matchers==
 Mockito matchers are may still applied to a PowerMock mock:
 {{{
-    Mockito.verify(mockObj).methodToMockToo(Mockito.anyInt());  
+    Mockito.verify(mockObj).methodToMock(Mockito.anyInt());  
 }}}
 
 
