@@ -35,7 +35,8 @@ public class MyTestClass {
 
 For this to work you need to tell TestNG to use the PowerMock object factory as seen below:
 
-== Configure suite.xml to use the PowerMock object factory==
+== Configure TestNG to use the PowerMock object factory == 
+=== Using suite.xml ===
 In your `suite.xml` add the following in the suite tag:
 {{{
 object-factory="org.powermock.modules.testng.PowerMockObjectFactory"
@@ -53,4 +54,13 @@ e.g.
 </suite>
 }}}
 
-Without specifying this object factory the tests will fail.
+=== Programmatically ===
+Add a method like this to your test class:
+{{{
+@ObjectFactory
+public IObjectFactory getObjectFactory() {
+    return new org.powermock.modules.testng.PowerMockObjectFactory();
+}
+}}}
+
+For an example of this check out [http://svn.xp-dev.com/svn/Powermock-Examples/trunk/powermock-examples/testng/src/test/java/me/scrobble/example/powermock/testng/ObjectFactoryExample.java the example] made by Adrian Moerchen.
