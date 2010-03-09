@@ -28,7 +28,7 @@ How to mock and stub:
         Mockito.when(Static.firstStaticMethod(param)).thenReturn(value);
   }}}
 
-Note: If you need to mock classes loaded by the java system/bootstrap classloader (those defined in the java.lang or java.net etc) you need a use [MockSystem this] approach.
+Note: If you need to mock classes loaded by the java system/bootstrap classloader (those defined in the java.lang or java.net etc) you need to use [MockSystem this] approach.
 
 ===How to verify behavior===
   # Verification of a static method is done in two steps. First call `PowerMockito.verifyStatic() `to start verifying behavior and the call the static method you want to verify. E.g.
