@@ -100,7 +100,19 @@ public class YourTestCase {
 }}}
 
 ==Partial Mocking==
-You can use PowerMockito to partially mock a method using PowerMockito.spy.
+You can use PowerMockito to partially mock a method using PowerMockito.spy. Be careful (the following is taken from the Mockito docs and applies to PowerMockito as well):
+
+Sometimes it's impossible to use the standard `when(..)` method for stubbing spies. Example:
+
+{{{
+List list = new LinkedList();
+List spy = spy(list);
+//Impossible: real method is called so spy.get(0) throws IndexOutOfBoundsException (the list is yet empty)
+when(spy.get(0)).thenReturn("foo");
+
+//You have to use doReturn() for stubbing
+doReturn("foo").when(spy).get(0);
+}}}
 
 ==How to verify behavior==
 
@@ -136,24 +148,47 @@ Mockito matchers are may still applied to a PowerMock mock:
 }}}
 
 
-==A full example of partial mocking==
+==A full example of spying ==
 {{{
 @RunWith(PowerMockRunner.class)
+// We prepare PartialMockClass for test because it's final
 @PrepareForTest(PartialMockClass.class)
 public class YourTestCase {
     @Test
-    public void testPartialMock() {        
-        PartialMockClass mockObj = PowerMockito.spy(new PartialMockClass());
-        ClassUnderTest classUnderTest = new ClassUnderTest(mockObj);
+    public void spyingWithPowerMock() {        
+        PartialMockClass classUnderTest = PowerMockito.spy(new PartialMockClass());
 
         // use Mockito to set up your expectation
-        Mockito.when(mockObj.methodToMock()).thenReturn(value);
+        Mockito.when(classUnderTest.methodToMock()).thenReturn(value);
 
         // execute your test
         classUnderTest.execute();
 
         // Use Mockito.verify() to verify result
         Mockito.verify(mockObj, times(2)).methodToMock();
+    }
+}
+}}}
+
+==A full example of partial mocking of a private method ==
+(Available in PowerMock version 1.3.6+)
+{{{
+@RunWith(PowerMockRunner.class)
+// We prepare PartialMockClass for test because it's final
+@PrepareForTest(PartialMockClass.class)
+public class YourTestCase {
+    @Test
+    public void privatePartialMockingWithPowerMock() {        
+        PartialMockClass classUnderTest = PowerMockito.spy(new PartialMockClass());
+
+        // use PowerMockito to set up your expectation
+        PowerMockito.doReturn(value).when(classUnderTest, "methodToMock", "parameter1");
+
+        // execute your test
+        classUnderTest.execute();
+
+        // Use PowerMockito.verify() to verify result
+        PowerMockito.verifyPrivate(classUnderTest, times(2)).invoke("methodToMock", "parameter1");
     }
 }
 }}}
