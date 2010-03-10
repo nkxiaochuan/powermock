@@ -1,0 +1,19 @@
+= Release Notes for PowerMock 1.3.6 =
+
+== Highlights ==
+Support for Mockito 1.3.6 and EasyMock 2.5.2.
+
+== (Possibly) Non-backward compatible changes ==
+  * Fixed a bug in the Wildcard matcher which resulted in that classes located in packages containing "junit.", "java.", "sun." in their name was never prepared for test (issue 225).
+
+== Mockito API specific ==
+  * Upgraded the Mockito extension to use Mockito 1.8.3  
+  * Added support for Mockito annotations @Spy, @Captor and @InjectMocks
+  * Mockito extension now supports real partial mocking for private (and private final) methods (both static and instance methods) using PowerMockito.doReturn(..), PowerMockito.doThrow(..) etc
+  * Added support for MockSettings and Answers when creating class or instance mocks in Mockito extension, e.g. "FinalClass mock = mock(FinalClass.class, Mockito.RETURNS_MOCKS);"
+
+== EasyMock API specific ==
+  * Upgraded the EasyMock extension to use EasyMock 2.5.2
+
+== Minor changes ==
+See [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for more details
