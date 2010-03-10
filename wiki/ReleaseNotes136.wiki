@@ -5,7 +5,7 @@ Support for Mockito 1.8.3 and EasyMock 2.5.2.
 
 == (Possibly) Non-backward compatible changes ==
   * Fixed a bug in the Wildcard matcher which resulted in that classes located in packages containing "junit.", "java.", "sun." in their name was never prepared for test (issue 225).
-  * The PowerMock API extension to EasyMock is not backward compatible with EasyMock class extension versions prior to 2.5.2 because of internal changes in the EasyMock project.
+  * The PowerMock API extension to EasyMock is not backward compatible with EasyMock class extension versions prior to 2.5.2 because of internal changes in this project.
 
 == Mockito API specific ==
   * Upgraded the Mockito extension to use Mockito 1.8.3  
