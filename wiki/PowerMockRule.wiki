@@ -13,3 +13,7 @@ Since version 1.3.7 it's possible to bootstrap PowerMock using a [http://www.inf
         ...
    }
 }}}
+
+=== References ===
+
+Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-impl/junit4-rule/src/test/java/org/powermock/modules subversion].
