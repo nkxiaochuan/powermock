@@ -14,6 +14,18 @@ Since version 1.3.7 it's possible to bootstrap PowerMock using a [http://www.inf
    }
 }}}
 
+== Using PowerMockRule with Maven ==
+You need to depend on this project:
+{{{
+<dependency>
+	<groupId>org.powermock.modules.junit4.rule</groupId>
+	<artifactId>powermock-module-junit4-rule</artifactId>
+	<version>${powermock.version}</version>
+	<scope>test</scope>
+</dependency>
+}}}
+where `${powermock.version}` is the version of PowerMock you're currently using.
+
 === References ===
 
 Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-impl/junit4-rule/src/test/java/org/powermock/modules subversion].
