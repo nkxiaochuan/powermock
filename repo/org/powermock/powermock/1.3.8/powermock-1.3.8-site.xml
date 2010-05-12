@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><project xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd" name="PowerMock" xmlns="http://maven.apache.org/DECORATION/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <bannerLeft>
+    <name>PowerMock</name>
+    <src>images/logos/powermock.png</src>
+    <href>http://powermock.org/</href>
+  </bannerLeft>
+  <bannerRight>
+    <src></src>
+  </bannerRight>
+  <publishDate position="left" format="yyyy-MM-dd" />
+  <poweredBy>
+    <logo img="images/logos/maven-feather.png" name="Build with Maven 2" href="http://maven.apache.org" />
+    <logo img="images/logos/jayway.png" name="Sponsored by Jayway" href="http://www.jayway.com" />
+  </poweredBy>
+  <body>
+    <links>
+      <item name="JUnit" href="http://junit.org/" />
+      <item name="EasyMock" href="http://easymock.org/" />
+      <item name="MockME" href="http://mockme.org/" />
+    </links>
+    <menu name="Overview">
+      <item name="Home" href="/" />
+      <item name="Google code" href="http://code.google.com/p/powermock/" />
+      <item name="Downloads" href="http://sourceforge.net/project/showfiles.php?group_id=224812" />
+    </menu>
+    <menu name="Documentation">
+      <item name="Gettng started" href="docs/gettingStarted.html" />
+      <item name="Installing" href="docs/installing.html" />
+      <item name="Motivation" href="docs/motivation.html" />
+      <item name="API" href="apidocs/index.html" />
+    </menu>
+    <menu name="Reports" ref="reports" />
+  </body>
+</project>

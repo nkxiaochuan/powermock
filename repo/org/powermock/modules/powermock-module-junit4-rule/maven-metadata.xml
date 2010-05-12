@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.powermock.modules</groupId>
+  <artifactId>powermock-module-junit4-rule</artifactId>
+  <version>1.3.8</version>
+  <versioning>
+    <versions>
+      <version>1.3.8</version>
+    </versions>
+    <lastUpdated>20100512201021</lastUpdated>
+  </versioning>
+</metadata>
