@@ -20,7 +20,7 @@ This is an example of what needs to be done to release PowerMock (version 0.9 is
   # If you performed step 7, do svn revert pom.xml for the root pom.xml file that you just changed.
   # Enter the repo folder and type `svn add * --force` followed by svn ci -m "Releasing powermock 0.9"
   # Checkout the docs folder from svn into a new folder called docs, i.e. checkout svn/docs.
-  # Go back to the powermock-0.9 folder and type "mvn site:site -Prelease"
+  # Go back to the powermock-0.9 folder and type "mvn javadoc:javadoc -Prelease"
   # Copy everything from powermock-0.9\target\site\apidocs to the docs\powermock-0.9\apidocs (create this folder) folder you checked out.
   # Do `svn add * --force` in the docs folder
   # Now we need to change the mime-type for the html files so that they are readable from the web-site. Goto the parent folder of the docs folder and:
