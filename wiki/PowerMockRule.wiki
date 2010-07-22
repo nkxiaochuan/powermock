@@ -24,7 +24,7 @@ You need to depend on this project:
 	<scope>test</scope>
 </dependency>
 }}}
-where `${powermock.version}` is the version of PowerMock you're currently using.
+where `${powermock.version}` is the version of PowerMock you're currently using. _Warning:_ Use version PowerMock 1.4 (or later) of PowerMock since prior to this version the rule didn't actually executed any test methods (but it looked like it did).
 
 === References ===
 
