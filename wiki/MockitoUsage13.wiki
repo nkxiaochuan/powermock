@@ -143,7 +143,7 @@ Use PowerMockito.verifyNew, e.g.
    verifyNew(MyClass.class).withNoArguments();
 }}}
 
-==How to argument matchers==
+==How to use argument matchers==
 Mockito matchers are may still applied to a PowerMock mock:
 {{{
     Mockito.verify(mockObj).methodToMock(Mockito.anyInt());  
