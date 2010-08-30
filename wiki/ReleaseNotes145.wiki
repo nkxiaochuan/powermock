@@ -5,7 +5,6 @@
   * Upgraded the TestNG module to TestNG 5.13.1
 
 == Common ==
-
   * Added the "toThrow" method to the stubber API. You can now do e.g. "stub(method("methodName")).toThrow(new Exception());" (issue 182)
   * Fixed an issue that was introduced in version 1.4 when support for partial mocking of instance methods in final system classes not having a default constructor was added. The bug caused an javassist.CannotCompileException exception when mocking certain classes such as java.lang.Console (issue 272)
 
