@@ -1,12 +1,13 @@
 == Mocking system classes ==
+Note: The same technique applies to the Mocktio API extension as well although all examples shown here are made with the EasyMock API extension.
 
 === Quick summary ===
 
   # Use the `@RunWith(PowerMockRunner.class)` annotation at the class-level of the test case.
   # Use the `@PrepareForTest({ClassThatCallsTheSystemClass.class})` annotation at the class-level of the test case.
   # Use `mockStatic(SystemClass.class)` to mock the system class then setup the expectations as normally.
-  # Use `PowerMock.replayAll()` to change to replay mode.
-  # Use `PowerMock.verifyAll()` to change to verify mode.
+  # EasyMock only: Use `PowerMock.replayAll()` to change to replay mode.
+  # EasyMock only: Use `PowerMock.verifyAll()` to change to verify mode.
 
 === Example ===
 
