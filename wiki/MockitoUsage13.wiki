@@ -19,7 +19,7 @@ All usages require `@RunWith(PowerMockRunner.class)` and `@PrepareForTest` annot
 How to mock and stub:
   # Add `@PrepareForTest` at class level.
   {{{
-   @PrepareForTest(Static.class); // Static.class contains static methods
+   @PrepareForTest(Static.class) // Static.class contains static methods
   }}}
   # Call `PowerMockito.mockStatic()` to mock a static class (use `PoweMockito.spy(class)` to mock a specific method):
   {{{
