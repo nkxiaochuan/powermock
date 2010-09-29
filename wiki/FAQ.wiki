@@ -13,7 +13,7 @@ java.lang.SecurityException: class "org.junit.internal.runners.TestClass"'s sign
    You're probably using the wrong PowerMockRunner. There's one runner made for JUnit 4.4 and above and a second runner made for JUnit 4.0-4.3 (although the latter also works for some older minor versions of JUnit 4.4). Try switching from the `org.powermock.modules.junit4.PowerMockRunner` to `org.powermock.modules.junit4.legacy.PowerMockRunner` or vice versa. Look at the [GettingStarted getting started] guide to see how to configure this in maven.
   # Cobertura gives me errors or produces strange results when running PowerMock tests in Maven, how do I solve this?
     Either:
-    # Upgrade to Cobertura 1.4 or,
+    # Upgrade to Cobertura 2.4+ or,
     # Follow the instructions on [http://www.jsfblog.info/2010/02/cobertura-code-coverage-with-maven-and-powermock/ this blog] or, 
     # Add the following to your pom.xml file:
 {{{ 
