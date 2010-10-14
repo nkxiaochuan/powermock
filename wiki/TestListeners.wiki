@@ -99,4 +99,4 @@ public class MyTest {
 
 === References === 
   * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples/junit4/annotationbased/AnnotationDemoWithSetupMethodTest.java AnnotationDemoWithSetupMethodTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/powermock/junit4-test/src/test/java/samples/junit4/annotationbased/FinalDemoWithAnnotationInjectionAndFieldDefaulterTest.java FinalDemoWithAnnotationInjectionAndFieldDefaulterTest]
+  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/annotationbased/FinalDemoWithAnnotationInjectionAndFieldDefaulterTest.java FinalDemoWithAnnotationInjectionAndFieldDefaulterTest]
