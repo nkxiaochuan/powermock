@@ -22,4 +22,4 @@ Add the following to your pom.xml
 </dependencies>
 }}}
 
-If you're looking for an a version prior to PowerMock 1.4.6 have a look [Mockito_testng_maven_legacy here].
+If you're looking for a version prior to PowerMock 1.4.6 have a look [Mockito_testng_maven_legacy here].
