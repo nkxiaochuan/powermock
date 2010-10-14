@@ -11,17 +11,10 @@ This is an example of what needs to be done to release PowerMock (version 0.9 is
      # mvn release:prepare -Dresume
   # Copy the powermock-0.9-full.jar, powermock-0.9-src.zip and powermock-0.9-with-dependencies.zip to a new temp folder. 
   # mvn release:perform
-  # Log in to [https://oss.sonatype.org Sonatype].
-   Delete the release projects so that they're not synced to maven central
+  # Log in to [https://oss.sonatype.org Sonatype] and delete the release projects so that they're not synced to maven central
   # Check out the tag that was just created to a new folder, e.g. svn/tags/powermock-0.9 to powermock-0.9
-  # Check out the the repo folder from svn to a new folder (repo), i.e. svn/repo
-  # Edit the root pom and temporarily change from "./../repo" to file:<path to repo> (i.e. the path to the repo folder) if needed. (do the same thing for the tutorial project if needed)
-  # In the new powermock-0.9 folder type "mvn deploy -Prelease -Dmaven.test.skip=true"
-   If this was successful you should now have a maven repository for the powermock 0.9 version located under c:/target/repo (if windows) or in the target folder (unix)
-  # If you performed step 7, do svn revert pom.xml for the root pom.xml file that you just changed.
-  # Enter the repo folder and type `svn add * --force` followed by svn ci -m "Releasing powermock 0.9"
   # Checkout the docs folder from svn into a new folder called docs, i.e. checkout svn/docs.
-  # Go back to the powermock-0.9 folder and type "mvn javadoc:javadoc -Prelease"
+  # Go back to the powermock-0.9 folder and type "mvn javadoc:javadoc"
   # Copy everything from powermock-0.9\target\site\apidocs to the docs\powermock-0.9\apidocs (create this folder) folder you checked out.
   # Do `svn add * --force` in the docs folder
   # Now we need to change the mime-type for the html files so that they are readable from the web-site. Goto the parent folder of the docs folder and:
