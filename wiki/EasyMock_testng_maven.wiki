@@ -22,4 +22,4 @@ Add the following to your pom.xml
 </dependencies>
 }}}
 
-If you're looking for a version prior to PowerMock 1.4.6 have a look [EasyMock_testng_maven_legacy here].
+If you're looking for the setup for a version prior to PowerMock 1.4.6 you have to look [EasyMock_testng_maven_legacy here].
