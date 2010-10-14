@@ -11,7 +11,8 @@ This is an example of what needs to be done to release PowerMock (version 0.9 is
      # mvn release:prepare -Dresume
   # Copy the powermock-0.9-full.jar, powermock-0.9-src.zip and powermock-0.9-with-dependencies.zip to a new temp folder. 
   # mvn release:perform
-   If it fails just do mvn release:clean
+  # Log in to [https://oss.sonatype.org Sonatype].
+    Delete the release projects so that they're not synced to maven central
   # Check out the tag that was just created to a new folder, e.g. svn/tags/powermock-0.9 to powermock-0.9
   # Check out the the repo folder from svn to a new folder (repo), i.e. svn/repo
   # Edit the root pom and temporarily change from "./../repo" to file:<path to repo> (i.e. the path to the repo folder) if needed. (do the same thing for the tutorial project if needed)
