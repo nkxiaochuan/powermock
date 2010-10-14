@@ -1,4 +1,4 @@
-== Maven setup for the Mockito API with TestNG for PowerMock version less then or equal to 1.4.5 == 
+== Maven setup for the Mockito API with TestNG for PowerMock versions up to 1.4.5 == 
 Add the following to your pom.xml
 
 {{{
