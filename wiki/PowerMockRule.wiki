@@ -18,7 +18,7 @@ Since version 1.4 it's possible to bootstrap PowerMock using a [http://www.infoq
 You need to depend on this project:
 {{{
 <dependency>
-	<groupId>org.powermock.modules</groupId>
+	<groupId>org.powermock</groupId>
 	<artifactId>powermock-module-junit4-rule</artifactId>
 	<version>${powermock.version}</version>
 	<scope>test</scope>
