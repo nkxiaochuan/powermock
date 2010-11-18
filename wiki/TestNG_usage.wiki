@@ -61,7 +61,7 @@ e.g.
 </suite>
 }}}
 
-If you're using Maven you may need to add the file to Surefire:
+If you're using Maven you may need to point out the file to Surefire:
 {{{
 <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
