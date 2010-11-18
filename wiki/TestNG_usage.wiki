@@ -61,6 +61,19 @@ e.g.
 </suite>
 }}}
 
+If you're using Maven you may need to add the file to Surefire:
+{{{
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+	<configuration>
+	    <suiteXmlFiles>
+		<suiteXmlFile>suite.xml</suiteXmlFile>
+	    </suiteXmlFiles>
+	</configuration>
+</plugin>
+}}}
+
 === Programmatically ===
 Add a method like this to your test class:
 {{{
