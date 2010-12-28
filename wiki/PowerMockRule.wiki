@@ -48,3 +48,5 @@ How ever this version is not as stable as the xstream version but it doesn't req
 === References ===
 
 Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-test/mockito/junit4-rule-xstream/src/test/java/org/powermock/modules/test/junit4/rule/xstream subversion].
+
+Or check out the Spring Integration Test with PowerMock and Mockito [http://code.google.com/p/powermock/source/browse/#svn%2Ftrunk%2Fexamples%2Fspring-mockito example].
