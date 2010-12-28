@@ -29,7 +29,8 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 === TestNG ===
  * [EasyMock_testng_maven EasyMock TestNG Maven setup]
  * [Mockito_testng_maven Mockito TestNG Maven setup]
-
+=== Need to bootstrap using a JUnit rule? === 
+ * The [PowerMockRule PowerMockRule] makes this happen
 == Non maven users ==
  
 *EasyMock* 
