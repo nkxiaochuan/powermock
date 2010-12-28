@@ -45,6 +45,9 @@ How ever this version is not as stable as the xstream version but it doesn't req
 <br/>
 *Warning:* Use version PowerMock 1.4 (or later) since prior to this version the rule didn't actually execute any test methods (but it looked like it did).
 
+== Using PowerMockRule without Maven ==
+You need to download [http://repo1.maven.org/maven2/org/powermock/powermock-classloading-xstream/1.4.7/powermock-classloading-xstream-1.4.7.jar powermock-classloading-xstream] or [http://repo1.maven.org/maven2/org/powermock/powermock-classloading-objenesis/1.4.7/powermock-classloading-objenesis-1.4.7.jar powermock-classloading-objenesis] and put it in your classpath.
+
 === References ===
 
 Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-test/mockito/junit4-rule-xstream/src/test/java/org/powermock/modules/test/junit4/rule/xstream subversion].
