@@ -28,10 +28,7 @@ You need to depend on this project:
 	<scope>test</scope>
 </dependency>
 }}}
-where `${powermock.version}` is the version of PowerMock you're currently using. 
-<br/>
-<br/>
-You can also replace `powermock-classloading-xstream` with an Objenesis version:
+where `${powermock.version}` is the version of PowerMock you're currently using. You can also replace `powermock-classloading-xstream` with an Objenesis version:
 {{{
 <dependency>
 	<groupId>org.powermock</groupId>
@@ -41,8 +38,7 @@ You can also replace `powermock-classloading-xstream` with an Objenesis version:
 </dependency>
 }}}
 How ever this version is not as stable as the xstream version but it doesn't require any additional dependencies.
-<br/>
-<br/>
+<br>
 *Warning:* Use version PowerMock 1.4 (or later) since prior to this version the rule didn't actually execute any test methods (but it looked like it did).
 
 == Using PowerMockRule without Maven ==
