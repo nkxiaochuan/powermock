@@ -29,8 +29,6 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 === TestNG ===
  * [EasyMock_testng_maven EasyMock TestNG Maven setup]
  * [Mockito_testng_maven Mockito TestNG Maven setup]
-=== Need to bootstrap using a JUnit rule? === 
- * The [PowerMockRule PowerMockRule] makes this happen
 == Non maven users ==
  
 *EasyMock* 
@@ -52,3 +50,6 @@ Download the [http://powermock.googlecode.com/files/powermock-mockito-testng-1.4
 *Or*
 
 You could also download the [http://powermock.googlecode.com/files/powermock-easymock-1.4.7-full.jar EasyMock jar-file] or [http://powermock.googlecode.com/files/powermock-mockito-1.4.7-full.jar Mockito jar-file] in a single file and then download the dependencies separately.
+
+== Need to bootstrap using a JUnit rule? ==
+ * The [PowerMockRule PowerMockRule] makes this happen
