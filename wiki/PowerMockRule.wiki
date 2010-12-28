@@ -1,6 +1,4 @@
 = Bootstrapping using a JUnit Rule =
-*Note: This is experimental and API may change in the future. Our aim is that this should be the default way of bootstrapping PowerMock in the future.*
-
 Since version 1.4 it's possible to bootstrap PowerMock using a [http://www.infoq.com/news/2009/07/junit-4.7-rules JUnit Rule] instead of using the PowerMockRunner and the RunWith annotation. This allows you to use other JUnit runners while still benefiting from PowerMock's functionality. You do this by specifying:
 
 {{{
@@ -23,12 +21,30 @@ You need to depend on this project:
 	<version>${powermock.version}</version>
 	<scope>test</scope>
 </dependency>
+<dependency>
+	<groupId>org.powermock</groupId>
+	<artifactId>powermock-classloading-xstream</artifactId>
+	<version>${powermock.version}</version>
+	<scope>test</scope>
+</dependency>
 }}}
 where `${powermock.version}` is the version of PowerMock you're currently using. 
+<br/>
+<br/>
+You can also replace `powermock-classloading-xstream` with an Objenesis version:
+{{{
+<dependency>
+	<groupId>org.powermock</groupId>
+	<artifactId>powermock-classloading-objenesis</artifactId>
+	<version>${powermock.version}</version>
+	<scope>test</scope>
+</dependency>
+}}}
+How ever this version is not as stable as the xstream version but it doesn't require any additional dependencies.
 <br/>
 <br/>
 *Warning:* Use version PowerMock 1.4 (or later) since prior to this version the rule didn't actually execute any test methods (but it looked like it did).
 
 === References ===
 
-Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-impl/junit4-rule/src/test/java/org/powermock/modules subversion].
+Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-test/mockito/junit4-rule-xstream/src/test/java/org/powermock/modules subversion].
