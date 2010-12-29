@@ -13,7 +13,7 @@ Since version 1.4 it's possible to bootstrap PowerMock using a [http://www.infoq
 }}}
 
 == Using PowerMockRule with Maven ==
-You need to depend on this project:
+You need to depend on these projects:
 {{{
 <dependency>
 	<groupId>org.powermock</groupId>
