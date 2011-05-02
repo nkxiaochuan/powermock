@@ -27,6 +27,12 @@ public class MyTest {
 }}} 
 
 == TestNG ==
+To bootstrap the Agent in TestNG you should extend from `PowerMockTestCase` in the `powermock-module-testng-common` project and you need to have the jar file from `powermock-module-testng-agent` in classpath. For example:
+{{{
+@PrepareForTest( { StaticService.class, StaticHelper.class })
+public class SomeTest extends PowerMockTestCase {
+    ...
+}}
 
 == Maven ==
 ==== JUnit ====
