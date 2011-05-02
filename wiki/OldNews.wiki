@@ -1,2 +1,3 @@
+ * 2010-12-28: PowerMock 1.4.7 has been released, see [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for details.
  * 2010-10-14: PowerMock 1.4.6 has been released and is now *available in the Maven Central* repository. The groupId has changed for most artifacts, have a look at the [GettingStarted getting started page] for information. Please refer to the [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for other details.
  * 2010-08-30: PowerMock 1.4.5 has been released. Please refer to the [ReleaseNotes145 release notes] for more information.
