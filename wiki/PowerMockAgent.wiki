@@ -29,8 +29,8 @@ Since version 1.4.9 it's possible to bootstrap PowerMock using a Java agent inst
 === Non-Maven users ===
 
 === Current known limitations ===
-* No way of suppressing static initializers
-* Cannot change value of static final fields
+  * No way of suppressing static initializers
+  * Cannot change value of static final fields
 
 === References ===
 
