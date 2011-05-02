@@ -1,7 +1,7 @@
 = Bootstrapping using a Java agent =
 Since version 1.4.9 it's possible to bootstrap PowerMock using a Java agent instead of using the PowerMockRunner and the RunWith annotation. This allows you to use e.g. other JUnit runners while still benefiting from PowerMock's functionality. The main difference between the agent based bootstrapper and the classloading based bootstrapper is that you don't run into classloading issues when using XML frameworks etc. It's recommended to use this way of bootstrapping when using PowerMock for integration testing larger parts of the system.
 
-=== JUnit ===
+== JUnit ==
 To bootstrap the Agent in JUnit you can use the `PowerMockRule` in the `powermock-module-junit4-rule-agent` project. For example:
 
 {{{
@@ -26,9 +26,9 @@ public class MyTest {
 }
 }}} 
 
-=== TestNG ===
+== TestNG ==
 
-=== Maven ===
+== Maven ==
 ==== JUnit ====
 {{{
 <dependency>
@@ -71,14 +71,14 @@ In some cases (such as mocking final classes) it may be necessary to load the Po
 
 You can have a look at a working example [http://powermock.googlecode.com/svn/tags/powermock-1.4.9/modules/module-test/mockito/junit4-agent here].
 
-=== Non-Maven users ===
+== Non-Maven users ==
 TODO
 
-=== Current known limitations ===
+== Current known limitations ==
   * No way of suppressing static initializers
   * Cannot change value of static final fields
 
-=== References ===
+== References ==
 
 Refer to the subversion examples for  [http://code.google.com/p/powermock/source/browse/#svn%2Ftags%2Fpowermock-1.4.9%2Fmodules%2Fmodule-test%2Fmockito%2Fjunit4-agent%2Fsrc%2Ftest%2Fjava%2Fpowermock%2Fmodules%2Ftest%2Fmockito%2Fjunit4%2Fagent JUnit] or [http://code.google.com/p/powermock/source/browse/#svn%2Ftags%2Fpowermock-1.4.9%2Fmodules%2Fmodule-test%2Feasymock%2Ftestng-agent-test%2Fsrc%2Ftest%2Fjava%2Fsamples%2Ftestng%2Fagent TestNG].
 
