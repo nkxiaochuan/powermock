@@ -15,6 +15,9 @@ All usages require `@RunWith(PowerMockRunner.class)` and `@PrepareForTest` annot
   <tr><td>1.7 </td><td> </td><td>1.2.5</td></tr>
 </table>
 
+== Note ==
+In the examples below we don't use static imports for the method in the Mockito or PowerMockito API for better understanding of where the methods are located. How ever we strongly encourage you to statically import the methods in your real test cases for improved readability.
+
 ==Mocking Static Method==
 How to mock and stub:
   # Add `@PrepareForTest` at class level.
