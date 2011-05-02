@@ -22,7 +22,7 @@ Add the following to your pom.xml if you're using JUnit 4.4 or above:
 </dependencies>
 }}}
 
- Add the following to your pom.xml if you're using JUnit 4.0-4.3:
+Add the following to your pom.xml if you're using JUnit 4.0-4.3:
 
 {{{
 <properties>
@@ -44,7 +44,7 @@ Add the following to your pom.xml if you're using JUnit 4.4 or above:
 </dependencies>
 }}}
 
- Add the following to your pom.xml if you're using JUnit 3:
+Add the following to your pom.xml if you're using JUnit 3:
 
 {{{
 <properties>
