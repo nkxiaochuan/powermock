@@ -43,6 +43,6 @@ Since version 1.4.9 it's possible to bootstrap PowerMock using a Java agent inst
 
 === References ===
 
-Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-test/mockito/junit4-rule-xstream/src/test/java/org/powermock/modules/test/junit4/rule/xstream subversion].
+Refer to the subversion examples for  [hhttp://code.google.com/p/powermock/source/browse/#svn%2Ftags%2Fpowermock-1.4.9%2Fmodules%2Fmodule-test%2Fmockito%2Fjunit4-agent%2Fsrc%2Ftest%2Fjava%2Fpowermock%2Fmodules%2Ftest%2Fmockito%2Fjunit4%2Fagent JUnit] or [http://code.google.com/p/powermock/source/browse/#svn%2Ftags%2Fpowermock-1.4.9%2Fmodules%2Fmodule-test%2Feasymock%2Ftestng-agent-test%2Fsrc%2Ftest%2Fjava%2Fsamples%2Ftestng%2Fagent TestNG].
 
-Or check out the Spring Integration Test with PowerMock and Mockito [http://powermock.googlecode.com/svn/tags/powermock-1.4.8/examples/spring-mockito example].
+Or check out the Spring Integration Test with PowerMock and Mockito [http://powermock.googlecode.com/svn/tags/powermock-1.4.9/examples/spring-mockito-xml-agent example].
