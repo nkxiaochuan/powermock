@@ -1,0 +1,39 @@
+= Bootstrapping using a Java agent =
+Since version 1.4.9 it's possible to bootstrap PowerMock using a Java agent instead of using the PowerMockRunner and the RunWith annotation. This allows you to use other JUnit runners while still benefiting from PowerMock's functionality. The difference between the standard [PowerMockRule|PowerMockRule] and this one is that you 
+
+=== JUnit ===
+{{{
+   @PrepareForTest(X.class);
+   public class MyTest {
+        @Rule
+        PowerMockRule rule = new PowerMockRule();
+
+        // Tests goes here
+        ...
+   }
+}}}
+
+=== TestNG ===
+
+=== Maven boostrapping ===
+{{{
+<dependency>
+	<groupId>org.powermock</groupId>
+	<artifactId>powermock-module-junit4-rule-agent</artifactId>
+	<version>${powermock.version}</version>
+	<scope>test</scope>
+</dependency>
+}}}
+
+
+=== Non-Maven users ===
+
+=== Current known limitations ===
+* No way of suppressing static initializers
+* Cannot change value of static final fields
+
+=== References ===
+
+Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-test/mockito/junit4-rule-xstream/src/test/java/org/powermock/modules/test/junit4/rule/xstream subversion].
+
+Or check out the Spring Integration Test with PowerMock and Mockito [http://powermock.googlecode.com/svn/tags/powermock-1.4.8/examples/spring-mockito example].
