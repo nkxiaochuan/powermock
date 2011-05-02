@@ -32,7 +32,7 @@ To bootstrap the Agent in TestNG you should extend from `PowerMockTestCase` in t
 @PrepareForTest( { StaticService.class, StaticHelper.class })
 public class SomeTest extends PowerMockTestCase {
     ...
-}}
+}}}
 
 == Maven ==
 ==== JUnit ====
