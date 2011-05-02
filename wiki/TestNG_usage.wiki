@@ -83,4 +83,12 @@ public IObjectFactory getObjectFactory() {
 }
 }}}
 
+or to be on the safe side you can also extend from the `PowerMockTestCase`:
+{{{
+@PrepareForTest(IdGenerator.class)
+public class MyTestClass extends PowerMockTestCase {
+   ...
+}
+}}}
+
 For an example of this check out [http://svn.xp-dev.com/svn/Powermock-Examples/trunk/powermock-examples/testng/src/test/java/me/scrobble/example/powermock/testng/ObjectFactoryExample.java the example] made by Adrian Moerchen.
