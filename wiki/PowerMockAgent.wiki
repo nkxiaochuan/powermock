@@ -60,7 +60,7 @@ In some cases (such as mocking final classes) it may be necessary to load the Po
                 <version>2.4</version>
                 <configuration>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/powermock/powermock-module-javaagent/${project.version}/powermock-module-javaagent-${project.version}.jar
+                        -javaagent:${settings.localRepository}/org/powermock/powermock-module-javaagent/1.4.9/powermock-module-javaagent-1.4.9.jar
                     </argLine>
                     <useSystemClassloader>true</useSystemClassloader>
                 </configuration>
