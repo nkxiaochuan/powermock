@@ -71,6 +71,7 @@ In some cases (such as mocking final classes) it may be necessary to load the Po
 }}}
 
 === Non-Maven users ===
+TODO
 
 === Current known limitations ===
   * No way of suppressing static initializers
