@@ -28,7 +28,7 @@ public class MyTest {
 
 === TestNG ===
 
-=== Maven boostrapping ===
+=== Maven ===
 ==== JUnit ====
 {{{
 <dependency>
