@@ -66,9 +66,10 @@ In some cases (such as mocking final classes) it may be necessary to load the Po
                 </configuration>
             </plugin>
         </plugins>
-</build>
-  
+</build>  
 }}}
+
+You can have a look at a working example [http://powermock.googlecode.com/svn/tags/powermock-1.4.9/modules/module-test/mockito/junit4-agent here]..
 
 === Non-Maven users ===
 TODO
