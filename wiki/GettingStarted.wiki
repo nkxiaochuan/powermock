@@ -53,3 +53,6 @@ You could also download the [http://powermock.googlecode.com/files/powermock-eas
 
 == Need to bootstrap using a JUnit rule? ==
  * The [PowerMockRule PowerMockRule] makes this happen
+
+== Java agent based bootstrapping ==
+Use the [PowerMockAgent PowerMock Java Agent] if you're having classloading problems when using PowerMock.
