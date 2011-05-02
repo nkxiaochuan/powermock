@@ -1,5 +1,5 @@
 = Bootstrapping using a Java agent =
-Since version 1.4.9 it's possible to bootstrap PowerMock using a Java agent instead of using the PowerMockRunner and the RunWith annotation. This allows you to use other JUnit runners while still benefiting from PowerMock's functionality. The difference between the standard [PowerMockRule] and this one is that you 
+Since version 1.4.9 it's possible to bootstrap PowerMock using a Java agent instead of using the PowerMockRunner and the RunWith annotation. This allows you to use e.g. other JUnit runners while still benefiting from PowerMock's functionality. The main difference between the agent based bootstrapper and the classloading based bootstrapper is that you don't run into classloading issues when using XML frameworks etc. It's recommended to use this way of bootstrapping when using PowerMock for integration testing larger parts of the system.
 
 === JUnit ===
 {{{
@@ -16,6 +16,7 @@ Since version 1.4.9 it's possible to bootstrap PowerMock using a Java agent inst
 === TestNG ===
 
 === Maven boostrapping ===
+==== JUnit ====
 {{{
 <dependency>
 	<groupId>org.powermock</groupId>
@@ -24,7 +25,15 @@ Since version 1.4.9 it's possible to bootstrap PowerMock using a Java agent inst
 	<scope>test</scope>
 </dependency>
 }}}
-
+==== TestNG ====
+{{{
+<dependency>
+	<groupId>org.powermock</groupId>
+	<artifactId>powermock-module-testng-agent</artifactId>
+	<version>${powermock.version}</version>
+	<scope>test</scope>
+</dependency>
+}}}
 
 === Non-Maven users ===
 
