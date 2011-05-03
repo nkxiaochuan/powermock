@@ -26,6 +26,8 @@ public class MyTest {
 }
 }}} 
 
+It's recommended that you put `powermock-module-junit4-rule-agent` _before_ junit in the classpath.
+
 == TestNG ==
 To bootstrap the Agent in TestNG you should extend from `PowerMockTestCase` in the `powermock-module-testng-common` project and you need to have the jar file from `powermock-module-testng-agent` in classpath. For example:
 {{{
