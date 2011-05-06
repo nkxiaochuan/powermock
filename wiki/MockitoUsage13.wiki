@@ -24,7 +24,7 @@ How to mock and stub:
   {{{
    @PrepareForTest(Static.class) // Static.class contains static methods
   }}}
-  # Call `PowerMockito.mockStatic()` to mock a static class (use `PoweMockito.spy(class)` to mock a specific method):
+  # Call `PowerMockito.mockStatic()` to mock a static class (use `PowerMockito.spy(class)` to mock a specific method):
   {{{
         PowerMockito.mockStatic(Static.class);
   }}}
