@@ -64,6 +64,7 @@ Invalid class loader hierarchy.  You have more than one version of
       There are a couple of different solutions to this:
         # Upgrade to PowerMock 1.3+
         # Make use of the @PowerMockIgnore annotation at the class-level of the test. For example if using log4j, use `@PowerMockIgnore("org.apache.log4j.*")` if using commons logging, use `@PowerMockIgnore("org.apache.commons.logging.*")`.
+        # Add `-Dlog4j.ignoreTCL=true` as VM-Arguments to your test-run-configuration.
         # If you're using PowerMock 1.1 or above you should use the `@MockPolicy` annotation and specify a mock policy. For example if you're using slf4j in combination with log4j use `@MockPolicy(Slf4jMockPolicy.class)` or if you're using Log4j stand-alone use `@MockPolicy(Log4jMockPolicy.class)`. This is the recommended way. For example:
 {{{
 @RunWith(PowerMockRunner.class)
