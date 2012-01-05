@@ -9,7 +9,7 @@ Since version 1.3.5 PowerMock has basic support for TestNG. Supported versions a
 </table>
 
 == Using PowerMock 1.4.9 and 1.4.10 without Maven == 
-There was a bug in the release process which excluded the PowerMockTestCase from the full release build. Please download the missing dependency [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-common/1.4.10/powermock-module-testng-common-1.4.10.jar here] ([http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-common/1.4.10/powermock-module-testng-common-1.4.10-sources.jar sources], [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-common/1.4.10/powermock-module-testng-common-1.4.10-javadoc.jar javadoc]).
+There was a bug in the release process which excluded the PowerMockTestCase from the full release build. Please download the missing dependency [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-common/1.4.11/powermock-module-testng-common-1.4.11.jar here] ([http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-common/1.4.11/powermock-module-testng-common-1.4.11-sources.jar sources], [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-common/1.4.11/powermock-module-testng-common-1.4.11-javadoc.jar javadoc]).
 
 == How to write tests ==
 Just as with the JUnit runners you need to prepare the classes that are normally not mockable by using the `@PrepareForTest` annotation. A full example using the Mockito API extension:
