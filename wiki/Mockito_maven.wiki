@@ -4,7 +4,7 @@ Add the following to your pom.xml if you're using JUnit 4.4 or above:
 
 {{{
 <properties>
-    <powermock.version>1.4.10</powermock.version>
+    <powermock.version>1.4.11</powermock.version>
 </properties>
 <dependencies>
    <dependency>
@@ -26,7 +26,7 @@ Add the following to your pom.xml if you're using JUnit 4.0-4.3:
 
 {{{
 <properties>
-    <powermock.version>1.4.10</powermock.version>
+    <powermock.version>1.4.11</powermock.version>
 </properties>
 <dependencies>
    <dependency>
@@ -48,7 +48,7 @@ Add the following to your pom.xml if you're using JUnit 3:
 
 {{{
 <properties>
-    <powermock.version>1.4.10</powermock.version>
+    <powermock.version>1.4.11</powermock.version>
 </properties>
 <dependencies>
    <dependency>
