@@ -1,3 +1,4 @@
+ * 2011-05-19: Johan blogs about the experimental [PowerMockAgent Java agent] support in 1.4.9 at the Jayway [http://blog.jayway.com/2011/05/19/powermock-for-integration-testing/ blog].
   * 2011-05-02: PowerMock 1.4.9 has been released with experimental support for bootstrapping using a [PowerMockAgent Java agent] to avoid classloading issues, better TestNG support and various other fixes. See [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for details.
   * 2011-02-26: PowerMock 1.4.8 has been released, see [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for details.
   * 2010-12-28: Johan blogs on how to use PowerMock with unsupported frameworks such as JMock at the Jayway [http://blog.jayway.com/2010/12/28/powermock-with-unsupported-frameworks-such-as-jmock/ blog].
