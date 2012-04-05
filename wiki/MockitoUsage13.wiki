@@ -200,4 +200,4 @@ public class YourTestCase {
 }}}
 
 ==Further information==
-Have a look at the [http://code.google.com/p/powermock/source/browse/#svn/tags/powermock-1.4.10/modules/module-test/mockito/junit4/src/test/java/samples/powermockito/junit4 source] in subversion for examples. Also read the PowerMockito related [http://blog.jayway.com/2009/10/28/untestable-code-with-mockito-and-powermock/ blog] at the [http://blog.jayway.com/ Jayway team blog].
+Have a look at the [http://code.google.com/p/powermock/source/browse/#svn/tags/powermock-1.4.12/modules/module-test/mockito/junit4/src/test/java/samples/powermockito/junit4 source] in subversion for examples. Also read the PowerMockito related [http://blog.jayway.com/2009/10/28/untestable-code-with-mockito-and-powermock/ blog] at the [http://blog.jayway.com/ Jayway team blog].
