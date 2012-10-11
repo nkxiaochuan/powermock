@@ -11,7 +11,7 @@ Note: The same technique applies to the Mocktio API extension as well although a
 
 === Example ===
 
-PowerMock 1.2.5 and above supports mocking static methods in Java system classes such as those located in java.lang and java.net etc. This works without modifying your JVM or IDE settings! The way to go about mocking these classes are a bit different than usual though. Normally you would prepare the class that contains the static methods (let's call it X) you like to mock but because it's impossible for PowerMock to prepare a system class for testing another approach has to be taken. So instead of preparing X you prepare the class that calls the static methods in X! Let's look at a simple example:
+PowerMock 1.2.5 and above supports mocking static methods in Java system classes such as those located in java.lang and java.net etc. This works without modifying your JVM or IDE settings! The way to go about mocking these classes are a bit different than usual though. Normally you would prepare the class that contains the static methods (let's call it X) you like to mock but because it's impossible for PowerMock to prepare a system class for testing so another approach has to be taken. So instead of preparing X you prepare the class that calls the static methods in X! Let's look at a simple example:
 
 
 {{{
