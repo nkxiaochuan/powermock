@@ -34,22 +34,22 @@ JUnit 3 requires a different setup by creating a suite, since test runners are n
 *EasyMock* 
 
 JUnit:
-Download the [http://powermock.googlecode.com/files/powermock-easymock-junit-1.4.12.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
+Download the [http://powermock.googlecode.com/files/powermock-easymock-junit-1.5.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
 
 TestNG:
-Download the [http://powermock.googlecode.com/files/powermock-easymock-testng-1.4.12.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
+Download the [http://powermock.googlecode.com/files/powermock-easymock-testng-1.5.zip EasyMock] zip-file with PowerMock and all its dependencies and add those to your project.
 
 *Mockito* 
 
 JUnit:
-Download the [http://powermock.googlecode.com/files/powermock-mockito-junit-1.4.12.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
+Download the [http://powermock.googlecode.com/files/powermock-mockito-junit-1.5.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
 
 TestNG:
-Download the [http://powermock.googlecode.com/files/powermock-mockito-testng-1.4.12.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
+Download the [http://powermock.googlecode.com/files/powermock-mockito-testng-1.5.zip Mockito] zip-file with PowerMock and all its dependencies and add those to your project.
 
 *Or*
 
-You could also download the [http://powermock.googlecode.com/files/powermock-easymock-1.4.12-full.jar EasyMock jar-file] or [http://powermock.googlecode.com/files/powermock-mockito-1.4.12-full.jar Mockito jar-file] in a single file and then download the dependencies separately.
+You could also download the [http://powermock.googlecode.com/files/powermock-easymock-1.5-full.jar EasyMock jar-file] or [http://powermock.googlecode.com/files/powermock-mockito-1.5-full.jar Mockito jar-file] in a single file and then download the dependencies separately.
 
 == Need to bootstrap using a JUnit rule? ==
  * The [PowerMockRule PowerMockRule] makes this happen
