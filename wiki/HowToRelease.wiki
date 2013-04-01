@@ -24,9 +24,7 @@ This is an example of what needs to be done to release PowerMock (version 0.9 is
      * If windows copy the following line to a new bat file:
         `@for /f %%a IN ('dir docs\powermock-0.9\*.html /s/b') do svn propset svn:mime-type text/html %%a`, then execute this file.
      * If unix/linux/mac:
-      `find . -name '*.html' | xargs svn propset svn:mime-type text/html`
-
-      `find . -name '*.css' | xargs svn propset svn:mime-type text/css`
+      `find . -name '*.html' | xargs svn propset svn:mime-type text/html` and `find . -name '*.css' | xargs svn propset svn:mime-type text/css`
   # Step into the docs folder again and do svn ci -m "Releasing PowerMock 0.9"
   # At the powermock website, upload the artifacts copied in step 3 and write an appropriate description. Don't forget to add powermock-0.9-full.jar and powermock-0.9-src.zip as featured.
   # Update the documentation on the wiki! Don't forget updating all the links, news etc.
