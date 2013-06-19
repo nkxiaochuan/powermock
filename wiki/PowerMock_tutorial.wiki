@@ -1,4 +1,4 @@
 #labels Usage
   # Check out the tutorial project from subversion using:
-       _svn checkout https://powermock.googlecode.com/svn/tags/powermock-1.5/examples/tutorial powermock-tutorial_
-  # Follow the instructions in the [https://powermock.googlecode.com/svn/tags/powermock-1.5/examples/tutorial/readme.txt readme.txt] in the root-folder.
+       _svn checkout https://powermock.googlecode.com/svn/tags/powermock-1.5.1/examples/tutorial powermock-tutorial_
+  # Follow the instructions in the [https://powermock.googlecode.com/svn/tags/powermock-1.5.1/examples/tutorial/readme.txt readme.txt] in the root-folder.
