@@ -1,5 +1,5 @@
-=Using PowerMock with Mockito 1.7=
-*Note: PowerMock 1.2.5 only works with Mockito 1.7. [MockitoUsage13 PowerMock 1.3 works with 1.8]*
+=Using PowerMock 1.2.5 with Mockito 1.7=
+*Note: PowerMock 1.2.5 only works with Mockito 1.7. [MockitoUsage13 PowerMock 1.3+ works with 1.8+]*
 
 Basically, PowerMock provides a class called "PowerMockito" for creating mock object/class and initiating verification, everything else you can still use Mockito to setup and verify expectation (e.g. when(), times(), anyInt()).
 
