@@ -100,7 +100,18 @@ Be aware that you can only create mocks in before and test methods when you use 
 {{{
 public class SomeTest extends PowerMockTestCase{
     
-    MyClass myClassMock = createMock(MyClass.class); // This is not guaranteed to work!
+    MyClass myClassMock = mock(MyClass.class); // This is not guaranteed to work!
     ...
 }
+}}}
+
+It's also currently not possible to create mocks inside static before methods, e.g. 
+
+{{{
+@BeforeMethod
+public static void beforeMethod() throws Exception {
+
+        MyClass myClassMock = mock(MyClass.class); // This is not guaranteed to work!
+       
+ }
 }}}
