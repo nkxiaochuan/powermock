@@ -96,7 +96,7 @@ public class MyTestClass extends PowerMockTestCase {
 For an example of this check out [http://svn.xp-dev.com/svn/Powermock-Examples/trunk/powermock-examples/testng/src/test/java/me/scrobble/example/powermock/testng/ObjectFactoryExample.java the example] made by Adrian Moerchen.
 
 === Mock initialization ===
-Be aware that you can only create mocks in before and test methods when you use PowerMock. You cannot create mocks during field initialization. For example the following is not guaranteed to work:
+Be aware that you can only create mocks in non-static "before" and "test" methods when you use PowerMock and TestNG. You cannot create mocks during field initialization. For example the following is not guaranteed to work:
 {{{
 public class SomeTest extends PowerMockTestCase{
     
