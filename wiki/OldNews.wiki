@@ -1,3 +1,4 @@
+  * 2013-03-05: Johan blogs about the PowerMock stubbing API support at the Jayway [http://www.jayway.com/2013/03/05/beyond-mocking-with-powermock/ blog].
   * 2012-12-04: PowerMock 1.5 has finally been released with better support for Java 7 and support for Mockito 1.9.5. Big thanks to the community for helping out with bug fixes and bug tracking. See [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for more details.
   * 2012-04-05: PowerMock 1.4.12 has been released. See [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for details.
   * 2012-01-05: PowerMock 1.4.11 has been released. See [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for details.
