@@ -1,0 +1,22 @@
+<assembly>
+    <id>full</id>
+    <formats>
+        <format>dir</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory></outputDirectory>
+            <outputFileNameMapping></outputFileNameMapping>
+            <unpack>true</unpack>
+			<unpackOptions>
+				<excludes>
+					<exclude>META-INF/*</exclude>
+					<exclude>META-INF/**/*</exclude>
+					<exclude>META-INF</exclude>
+				</excludes>
+			</unpackOptions>     
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+        </dependencySet>
+    </dependencySets>
+</assembly>
