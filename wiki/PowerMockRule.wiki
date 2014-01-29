@@ -42,11 +42,11 @@ How ever this version is not as stable as the xstream version but it doesn't req
 *Warning:* Use version PowerMock 1.4 (or later) since prior to this version the rule didn't actually execute any test methods (but it looked like it did).
 
 == Using PowerMockRule without Maven ==
-You need to download [http://repo1.maven.org/maven2/org/powermock/powermock-module-junit4-rule/1.5.3/powermock-module-junit4-rule-1.5.3.jar powermock-module-junit4-rule], [http://repo1.maven.org/maven2/org/powermock/powermock-classloading-base/1.5.3/powermock-classloading-base-1.5.3.jar powermock-classloading-base] and one of 
-[http://repo1.maven.org/maven2/org/powermock/powermock-classloading-xstream/1.5.3/powermock-classloading-xstream-1.5.3.jar powermock-classloading-xstream] or [http://repo1.maven.org/maven2/org/powermock/powermock-classloading-objenesis/1.5.3/powermock-classloading-objenesis-1.5.3.jar powermock-classloading-objenesis] and put it in your classpath.
+You need to download [http://repo1.maven.org/maven2/org/powermock/powermock-module-junit4-rule/1.5.4/powermock-module-junit4-rule-1.5.4.jar powermock-module-junit4-rule], [http://repo1.maven.org/maven2/org/powermock/powermock-classloading-base/1.5.4/powermock-classloading-base-1.5.4.jar powermock-classloading-base] and one of 
+[http://repo1.maven.org/maven2/org/powermock/powermock-classloading-xstream/1.5.4/powermock-classloading-xstream-1.5.4.jar powermock-classloading-xstream] or [http://repo1.maven.org/maven2/org/powermock/powermock-classloading-objenesis/1.5.4/powermock-classloading-objenesis-1.5.4.jar powermock-classloading-objenesis] and put it in your classpath.
 
 === References ===
 
 Refer to the examples in [http://code.google.com/p/powermock/source/browse/#svn/trunk/modules/module-test/mockito/junit4-rule-xstream/src/test/java/org/powermock/modules/test/junit4/rule/xstream subversion].
 
-Or check out the Spring Integration Test with PowerMock and Mockito [http://powermock.googlecode.com/svn/tags/powermock-1.5.3/examples/spring-mockito example].
+Or check out the Spring Integration Test with PowerMock and Mockito [http://powermock.googlecode.com/svn/tags/powermock-1.5.4/examples/spring-mockito example].
