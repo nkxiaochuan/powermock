@@ -12,4 +12,4 @@ Google no longer accept uploading of new binaries to the Google Code page so the
 || [http://dl.bintray.com/johanhaleby/generic/powermock-mockito-1.5.4-full.jar powermock-mockito-1.5.4-full.jar]  ||	PowerMock 1.5.4 with Mockito API extension (including source but excluding dependencies)  ||
 
 == Legacy versions ==
-If you're looking for legacy versions of PowerMock (version 1.5.4 and below) have a look in the old  <a href="https://code.google.com/p/powermock/downloads/list?can=1&q=&colspec=Filename+Summary+Uploaded+ReleaseDate+Size+DownloadCount">download page</a>.
+If you're looking for legacy versions of PowerMock (version 1.5.3 and below) have a look in the old  <a href="https://code.google.com/p/powermock/downloads/list?can=1&q=&colspec=Filename+Summary+Uploaded+ReleaseDate+Size+DownloadCount">download page</a>.
