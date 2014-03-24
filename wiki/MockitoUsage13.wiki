@@ -48,7 +48,7 @@ Important: You need to call `verifyStatic()` per method verification.
 ===How to use argument matchers===
 Mockito matchers are may still applied to a PowerMock mock.  For example, using custom argument matchers per mocked static method:
 {{{
-PowerMockito.verifyStatic(Static.class);
+PowerMockito.verifyStatic();
 Static.thirdStaticMethod(Mockito.anyInt());
 }}}
 
