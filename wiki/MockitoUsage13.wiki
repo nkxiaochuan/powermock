@@ -18,7 +18,7 @@ All usages require `@RunWith(PowerMockRunner.class)` and `@PrepareForTest` annot
 </table>
 
 == Note ==
-In the examples below we don't use static imports for the method in the Mockito or PowerMockito API for better understanding of where the methods are located. How ever we strongly encourage you to statically import the methods in your real test cases for improved readability.
+In the examples below we don't use static imports for the method in the Mockito or PowerMockito API for better understanding of where the methods are located. However we strongly encourage you to statically import the methods in your real test cases for improved readability.
 
 ==Mocking Static Method==
 How to mock and stub:
