@@ -45,5 +45,5 @@ public class SystemClassUserTest {
 
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/system/SystemClassUserTest.java SystemClassUserTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/tests/utils/src/main/java/samples/system/SystemClassUser.java SystemClassUser]
+  * [https://github.com/jayway/powermock/blob/master/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/system/SystemClassUserTest.java SystemClassUserTest]
+  * [https://github.com/jayway/powermock/blob/master/tests/utils/src/main/java/samples/system/SystemClassUser.java SystemClassUser]
