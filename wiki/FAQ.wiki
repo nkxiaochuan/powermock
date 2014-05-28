@@ -1,7 +1,8 @@
 #labels faq
 = Frequently asked questions =
 
-  # PowerMockRunner throws a 
+<ol>
+  <li>PowerMockRunner throws a 
   {{{
   java.lang.NoClassDefFoundError: org/junit/internal/runners/BeforeAndAfterRunner
   }}} 
@@ -9,14 +10,16 @@
   {{{
 java.lang.SecurityException: class "org.junit.internal.runners.TestClass"'s signer information does not match signer information of other classes in the same package
   }}}
-  exception. What's wrong?
-    You're probably using the wrong PowerMockRunner. There's one runner made for JUnit 4.4 and above and a second runner made for JUnit 4.0-4.3 (although the latter also works for some older minor versions of JUnit 4.4). Try switching from the `org.powermock.modules.junit4.PowerMockRunner` to `org.powermock.modules.junit4.legacy.PowerMockRunner` or vice versa. Look at the [GettingStarted getting started] guide to see how to configure this in maven.
-  # Cobertura gives me errors or produces strange results when running PowerMock tests in Maven, how do I solve this?
+  exception. What's wrong? 
+
+  You're probably using the wrong PowerMockRunner. There's one runner made for JUnit 4.4 and above and a second runner made for JUnit 4.0-4.3 (although the latter also works for some older minor versions of JUnit 4.4). Try switching from the `org.powermock.modules.junit4.PowerMockRunner` to `org.powermock.modules.junit4.legacy.PowerMockRunner` or vice versa. Look at the [GettingStarted getting started] guide to see how to configure this in maven.</li>
+  
+<li>Cobertura gives me errors or produces strange results when running PowerMock tests in Maven, how do I solve this?
     Either:
     # Upgrade to Cobertura 2.4+ or,
     # Follow the instructions on [http://www.jsfblog.info/2010/02/cobertura-code-coverage-with-maven-and-powermock/ this blog] or, 
     # Add the following to your pom.xml file:
-{{{ 
+  {{{ 
  <build>
   <plugins>
      <plugin>
@@ -27,12 +30,14 @@ java.lang.SecurityException: class "org.junit.internal.runners.TestClass"'s sign
       </plugin>
      </plugins>
   </build>
-}}}
-  # I get a ClassCastException from DocumentBuilderFactory, SaxParserFactory or other XML related classes
+  }}}
+</li>
+<li>I get a ClassCastException from DocumentBuilderFactory, SaxParserFactory or other XML related classes
      The reason is that the XML framework tries to instantiate classes using reflection and does this from the thread context classloader (PowerMock's classloader) but then tries to assign the created object to a field not loaded by the same classloader. When this happens you need to make use of the @PowerMockIgnore annotation to tell PowerMock to defer the loading of a certain package to the system classloader. What you need to ignore is case specific but usually it's the XML framework or some packages that interact with it. E.g. `@PowerMockIgnore({"org.xml.*", "javax.xml.*"})`. Another option would be to try to bootstrap using our [PowerMockAgent Java Agent].
   # I cannot mock classes in from `java.lang`, `java.net`, `java.io` or other system classes, why?
     This is because they're loaded by Java's bootstrap classloader and cannot be byte-code manipulated by PowerMock's classloader. Since PowerMock 1.2.5 there's a work-around, please have a look at [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/mockito/junit4/src/test/java/samples/powermockito/junit4/system/SystemClassUserTest.java this] simple example to see how it's done.
-  # When mocking Hibernate you get an error similar to:
+</li>
+<li>When mocking Hibernate you get an error similar to:
 {{{
 java.lang.ClassCastException: org.hibernate.ejb.HibernatePersistence cannot be cast to javax.persistence.spi.PersistenceProvider
     at javax.persistence.Persistence.findAllProviders(Persistence.java:80)
@@ -41,7 +46,8 @@ java.lang.ClassCastException: org.hibernate.ejb.HibernatePersistence cannot be c
     ...
 }}}
     Solution: Upgrade to PowerMock 1.3+ or use `@PowerMockIgnore("javax.persistence.*")` at the class-level of your test.
-  # When running a PowerMock test log4j gives me the following (or something similar) error, what now? 
+</li>
+<li>When running a PowerMock test log4j gives me the following (or something similar) error, what now? 
 {{{
 log4j:ERROR A "org.apache.log4j.xml.DOMConfigurator" object is not
 assignable to a "org.apache.log4j.spi.Configurator" variable.
@@ -54,18 +60,18 @@ log4j:ERROR "org.apache.log4j.xml.DOMConfigurator" was loaded by
 log4j:ERROR Could not instantiate configurator
 [org.apache.log4j.xml.DOMConfigurator].
 }}}
-  or  
+or  
 {{{
 Caused by: org.apache.commons.logging.LogConfigurationException:
 Invalid class loader hierarchy.  You have more than one version of
 'org.apache.commons.logging.Log' visible, which is not allowed.
 }}}
 
-      There are a couple of different solutions to this:
-        # Upgrade to PowerMock 1.3+
-        # Make use of the @PowerMockIgnore annotation at the class-level of the test. For example if using log4j, use `@PowerMockIgnore("org.apache.log4j.*")` if using commons logging, use `@PowerMockIgnore("org.apache.commons.logging.*")`.
-        # Add `-Dlog4j.ignoreTCL=true` as VM-Arguments to your test-run-configuration.
-        # If you're using PowerMock 1.1 or above you should use the `@MockPolicy` annotation and specify a mock policy. For example if you're using slf4j in combination with log4j use `@MockPolicy(Slf4jMockPolicy.class)` or if you're using Log4j stand-alone use `@MockPolicy(Log4jMockPolicy.class)`. This is the recommended way. For example:
+There are a couple of different solutions to this:
+  # Upgrade to PowerMock 1.3+
+  # Make use of the @PowerMockIgnore annotation at the class-level of the test. For example if using log4j, use `@PowerMockIgnore("org.apache.log4j.*")` if using commons logging, use `@PowerMockIgnore("org.apache.commons.logging.*")`.
+  # Add `-Dlog4j.ignoreTCL=true` as VM-Arguments to your test-run-configuration.
+  # If you're using PowerMock 1.1 or above you should use the `@MockPolicy` annotation and specify a mock policy. For example if you're using slf4j in combination with log4j use `@MockPolicy(Slf4jMockPolicy.class)` or if you're using Log4j stand-alone use `@MockPolicy(Log4jMockPolicy.class)`. This is the recommended way. For example:
 {{{
 @RunWith(PowerMockRunner.class)
 @MockPolicy(Log4jMockPolicy.class)
@@ -73,7 +79,7 @@ public class MyTest {
 
 }
 }}}
-        # Create a nice mock of the Logger class and set the the Logger field to this instance. If the field is static suppress the static initializer for the class (using the `@SuppressStaticInitializerFor` annotation) and then set the logger field to the mock you just created. Next prepare the `org.apache.log4j.Appender` for testing using the @PrepareForTest annotation. For example:
+  # Create a nice mock of the Logger class and set the the Logger field to this instance. If the field is static suppress the static initializer for the class (using the `@SuppressStaticInitializerFor` annotation) and then set the logger field to the mock you just created. Next prepare the `org.apache.log4j.Appender` for testing using the @PrepareForTest annotation. For example:
 {{{
 @RunWith(PowerMockRunner.class)
 @SuppressStaticInitializationFor("org.myapp.MyClassUsingLog4J")
@@ -89,7 +95,7 @@ public class MyTest {
   ...
 }
 }}}
-        # Follow the same procedure as in the previous step but instead of adding the `org.apache.log4j.Appender` class to the `@PrepareForTest` annotation you add `"org.apache.log4j.LogManager"` to the `@SuppressStaticInitializerFor` annotation. For example:
+  # Follow the same procedure as in the previous step but instead of adding the `org.apache.log4j.Appender` class to the `@PrepareForTest` annotation you add `"org.apache.log4j.LogManager"` to the `@SuppressStaticInitializerFor` annotation. For example:
 {{{
 @RunWith(PowerMockRunner.class)
 @SuppressStaticInitializationFor( {
@@ -106,10 +112,32 @@ public class MyTest {
   ...
 }
 }}}
-        # You could try using the `@PrepareEverythingForTest` annotation (not recommended).
-  # Does PowerMock work with TestNG?
-      Yes, since version 1.3.5 PowerMock does have basic TestNG support.
-  # Is PowerMock a fork of EasyMock?
-      No. PowerMock extends other mock frameworks such as EasyMock with powerful capabilities such as static mocking.
-  # Can you use PowerMock with other frameworks that uses a JUnit runner?
-      Yes, you can make use of the [http://code.google.com/p/powermock/wiki/PowerMockRule PowerMockRule].
+  # You could try using the `@PrepareEverythingForTest` annotation (not recommended).
+</li>
+<li>Does PowerMock work with TestNG?
+
+Yes, since version 1.3.5 PowerMock does have basic TestNG support.
+</li>
+<li>Is PowerMock a fork of EasyMock?
+
+No. PowerMock extends other mock frameworks such as EasyMock with powerful capabilities such as static mocking.
+</li>
+<li>Can you use PowerMock with other frameworks that uses a JUnit runner?
+
+Yes, you can make use of the [http://code.google.com/p/powermock/wiki/PowerMockRule PowerMockRule].
+</li>
+<li>I'm using the Java Agent and Java 7 run into errors like "Unable to load Java agent", what to do?
+
+You can try the following work-around:
+ {{{
+ <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.14</version>
+        <configuration>
+            <argLine>-javaagent:${settings.localRepository}/org/powermock/powermock-module-javaagent/${powermock.version}/powermock-module-javaagent-${powermock.version}.jar -XX:-UseSplitVerifier</argLine>
+        </configuration>
+</plugin> 
+}}}
+</li>
+</ol>
