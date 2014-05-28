@@ -214,10 +214,10 @@ Here we explicitly tell PowerMock to expect the call to the constructor that tak
 All of these things can be achieved without using PowerMock, this is just normal Java reflection. However reflection requires much boiler-plate code and can be error prone and thus PowerMock provides you with these utility methods instead. PowerMock gives you a choice on whether to refactor your code and add getter/setter methods for checking/altering internal state or whether to use its utility methods to accomplish the same thing without changing the production code. It's up to you!
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ServiceHolderTest.java ServiceHolderTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ServiceHolder.java ServiceHolder]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportGeneratorTest.java ReportGeneratorTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportGenerator.java ReportGenerator]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportDaoTest.java ReportDaoTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportDao.java ReportDao]
-  * [http://code.google.com/p/powermock/source/browse/trunk/reflect/src/test/java/org/powermock/reflect/WhiteBoxTest.java WhiteboxTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ServiceHolderTest.java ServiceHolderTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ServiceHolder.java ServiceHolder]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportGeneratorTest.java ReportGeneratorTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportGenerator.java ReportGenerator]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/bypassencapsulation/ReportDaoTest.java ReportDaoTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/bypassencapsulation/ReportDao.java ReportDao]
+  * [https://github.com/jayway/powermock/blob/master/reflect/src/test/java/org/powermock/reflect/WhiteBoxTest.java WhiteboxTest]
