@@ -106,8 +106,8 @@ public void testReplaceData() throws Exception {
 }}}
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/privatemocking/DataServiceTest.java DataServiceTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/privatemocking/DataService.java DataService]
-  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/privatemocking/PrivateMethodDemoTest.java PrivateMethodDemoTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/tests/utils/src/main/java/samples/privatemocking/PrivateMethodDemo.java PrivateMethodDemo]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/privatemocking/DataServiceTest.java DataServiceTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/privatemocking/DataService.java DataService]
+  * [https://github.com/jayway/powermock/blob/master/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/privatemocking/PrivateMethodDemoTest.java PrivateMethodDemoTest]
+  * [https://github.com/jayway/powermock/blob/master/tests/utils/src/main/java/samples/privatemocking/PrivateMethodDemo.java PrivateMethodDemo]
   
