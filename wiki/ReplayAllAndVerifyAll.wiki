@@ -77,5 +77,5 @@ public void testCreateDirectoryStructure_ok_usingEasyMockToCreateTheFileMock() t
 }
 }}}
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/newmocking/PersistenceManagerWithReplayAllAndVerifyAllTest.java PersistenceManagerWithReplayAllAndVerifyAllTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/newmocking/PersistenceManager.java PersistenceManager]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/newmocking/PersistenceManagerWithReplayAllAndVerifyAllTest.java PersistenceManagerWithReplayAllAndVerifyAllTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/newmocking/PersistenceManager.java PersistenceManager]
