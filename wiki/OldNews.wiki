@@ -1,3 +1,4 @@
+  * 2014-01-10: PowerMock 1.5.3 has been released with dependency updates and some bug fixes. See [https://raw.githubusercontent.com/jayway/powermock/master/changelog.txt change log] for details.
   * 2013-11-19: PowerMock 1.5.2 has been released with support for EasyMock 3.2 and various fixes. See [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for details.
   * 2013-06-19: PowerMock 1.5.1 has been released. See [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for details.
   * 2013-03-05: Johan blogs about the PowerMock stubbing API support at the Jayway [http://www.jayway.com/2013/03/05/beyond-mocking-with-powermock/ blog].
