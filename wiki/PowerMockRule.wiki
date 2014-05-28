@@ -47,6 +47,6 @@ You need to download [http://repo1.maven.org/maven2/org/powermock/powermock-modu
 
 === References ===
 
-Refer to the examples in [https://github.com/jayway/powermock/blob/master/modules/module-test/mockito/junit4-rule-xstream/src/test/java/org/powermock/modules/test/junit4/rule/xstream subversion].
+Refer to the examples in [https://github.com/jayway/powermock/blob/master/modules/module-test/mockito/junit4-rule-xstream/src/test/java/org/powermock/modules/test/junit4/rule/xstream git].
 
 Or check out the Spring Integration Test with PowerMock and Mockito [https://github.com/jayway/powermock/blob/master/examples/spring-mockito example].
