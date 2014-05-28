@@ -13,13 +13,13 @@ public class YourTestCase {
 }
 }}}
 
-Sample code is available in subversion:
- * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/singleton/MockStaticTest.java Mocking static methods]
- * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/expectnew/ExpectNewDemoTest.java Expect new instance]
- * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/suppressconstructor/SuppressConstructorDemoTest.java Suppress constructor]
+Sample code is available in git:
+ * [https://github.com/jayway/powermock/blob/master/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/singleton/MockStaticTest.java Mocking static methods]
+ * [https://github.com/jayway/powermock/blob/master/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/expectnew/ExpectNewDemoTest.java Expect new instance]
+ * [https://github.com/jayway/powermock/blob/master/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/suppressconstructor/SuppressConstructorDemoTest.java Suppress constructor]
 
 JUnit 3 requires a different setup by creating a suite, since test runners are not available. Please view some examples:
- * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/easymock/junit3-test/src/test/java/samples/junit3/privateandfinal/PrivateFinalTest.java Mocking private methods with JUnit 3]
+ * [https://github.com/jayway/powermock/blob/master/modules/module-test/easymock/junit3-test/src/test/java/samples/junit3/privateandfinal/PrivateFinalTest.java Mocking private methods with JUnit 3]
 
 
 == Maven setup ==
