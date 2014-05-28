@@ -207,12 +207,12 @@ suppress(field(MyClass.class, "myObject"));
 Invoking the `getMyObject()` will then return `null` for every instance of `MyClass` when it has been prepared for test.
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilParentTest.java ExampleWithEvilParentTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilConstructorTest.java ExampleWithEvilConstructorTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/method/ExampleWithEvilMethodTest.java ExampleWithEvilMethodTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/staticinitializer/ExampleWithEvilStaticInitializerTest.java ExampleWithEvilStaticInitializerTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/ExampleWithEvilParent.java ExampleWithEvilParent]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/EvilParent.java EvilParent]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/ExampleWithEvilConstructor.java ExampleWithEvilConstructor]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/method/ExampleWithEvilMethod.java ExampleWithEvilMethod]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/staticinitializer/ExampleWithEvilStaticInitializer.java ExampleWithEvilStaticInitializer]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilParentTest.java ExampleWithEvilParentTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/constructor/ExampleWithEvilConstructorTest.java ExampleWithEvilConstructorTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/method/ExampleWithEvilMethodTest.java ExampleWithEvilMethodTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/suppress/staticinitializer/ExampleWithEvilStaticInitializerTest.java ExampleWithEvilStaticInitializerTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/ExampleWithEvilParent.java ExampleWithEvilParent]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/EvilParent.java EvilParent]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/constructor/ExampleWithEvilConstructor.java ExampleWithEvilConstructor]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/method/ExampleWithEvilMethod.java ExampleWithEvilMethod]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/suppress/staticinitializer/ExampleWithEvilStaticInitializer.java ExampleWithEvilStaticInitializer]
