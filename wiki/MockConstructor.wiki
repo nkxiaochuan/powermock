@@ -114,7 +114,7 @@ expectNew(File.class, "path").andReturn(fileMock).times(2);
 }}}
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/newmocking/PersistenceManagerTest.java PersistenceManagerTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/newmocking/PersistenceManager.java PersistenceManager]
-  * [http://code.google.com/p/powermock/source/browse/trunk/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/expectnew/ExpectNewDemoTest.java ExpectNewDemoTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/tests/utils/src/main/java/samples/expectnew/ExpectNewDemo.java ExpectNewDemo]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/newmocking/PersistenceManagerTest.java PersistenceManagerTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/newmocking/PersistenceManager.java PersistenceManager]
+  * [https://github.com/jayway/powermock/blob/master/modules/module-test/easymock/junit4-test/src/test/java/samples/junit4/expectnew/ExpectNewDemoTest.java ExpectNewDemoTest]
+  * [https://github.com/jayway/powermock/blob/master/tests/utils/src/main/java/samples/expectnew/ExpectNewDemo.java ExpectNewDemo]
