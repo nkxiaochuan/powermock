@@ -67,7 +67,7 @@ public class MyTest {
 Note that subsequent mock policies in the chain can override the behavior of the preceding policies. In this example this means that `MockPolicyY` could potentially override behavior defined by `MockPolicyX`. If writing custom mock policies it's important to keep this in mind.
 
 === Creating custom mock policies ===
-It's possible to create custom mock policies to deal with similar setup and mock behavior. To do this you need to create a class that implements the [http://code.google.com/p/powermock/source/browse/trunk/core/src/main/java/org/powermock/core/spi/PowerMockPolicy.java org.powermock.core.spi.PowerMockPolicy] interface. It contains two methods: 
+It's possible to create custom mock policies to deal with similar setup and mock behavior. To do this you need to create a class that implements the [https://github.com/jayway/powermock/blob/master/core/src/main/java/org/powermock/core/spi/PowerMockPolicy.java org.powermock.core.spi.PowerMockPolicy] interface. It contains two methods: 
 {{{
 void applyClassLoadingPolicy(MockPolicyClassLoadingSettings settings);
 }}}
@@ -146,8 +146,8 @@ public class DependencyUserTest {
 If the mock policy wouldn't have been applied the `dependencyData.getData()` would returned "some data".
 
 === References === 
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/policy/MyCustomMockPolicy.java MyCustomMockPolicy]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/test/java/powermock/examples/mockpolicy/DependencyUserTest.java DependencyUserTest]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/DependencyUser.java DependencyUser]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/nontest/Dependency.java Dependency]
-  * [http://code.google.com/p/powermock/source/browse/trunk/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/nontest/domain/DataObject.java DataObject]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/policy/MyCustomMockPolicy.java MyCustomMockPolicy]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/test/java/powermock/examples/mockpolicy/DependencyUserTest.java DependencyUserTest]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/DependencyUser.java DependencyUser]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/nontest/Dependency.java Dependency]
+  * [https://github.com/jayway/powermock/blob/master/examples/DocumentationExamples/src/main/java/powermock/examples/mockpolicy/nontest/domain/DataObject.java DataObject]
