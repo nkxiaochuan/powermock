@@ -5,9 +5,6 @@ This is an example of what needs to be done to release PowerMock (version 0.9 is
   # `mvn release:prepare -Prelease -DautoVersionSubmodules=true -DdevelopmentVersion=1.0-SNAPSHOT`
    If it fails saying that pom.xml file already exists this is because of a bug in the maven release or SVN tool. 
    A work-around is to do: 
-     # svn up -r head 
-     # mvn release:prepare -Dresume
-   If anything else goes wrong try:
      # mvn install -Dmaven.test.skip=true -o
      # mvn release:prepare -Dresume
   # Copy the powermock-0.9-full.jar, powermock-0.9-src.zip and powermock-0.9-with-dependencies.zip to a new temp folder. 
