@@ -106,4 +106,4 @@ default classpath_ (this is to ensure the agent loads before junit).
 
 Refer to the subversion examples for  [https://github.com/jayway/powermock/tree/master/modules/module-test/mockito/junit4/src/test/java/samples/powermockito/junit4 JUnit] or [https://github.com/jayway/powermock/tree/master/modules/module-test/easymock/testng-agent-test/src/test/java/samples/testng/agent TestNG].
 
-Or check out the Spring Integration Test with PowerMock and Mockito [https://github.com/jayway/powermock/blob/master/modules/examples/spring-mockito-xml-agent example].
+Or check out the Spring Integration Test with PowerMock and Mockito [https://github.com/jayway/powermock/tree/master/examples/spring-mockito-xml-agent example].
