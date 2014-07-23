@@ -3,4 +3,4 @@
        `git clone https://git@github.com/jayway/powermock.git`
   # Check out version 1.5.5:
        `git checkout powermock-1.5.5`
-  # Step into the `examples/tutorial/`folder and follow the instructions in the [https://raw.githubusercontent.com/jayway/powermock/master/examples/tutorial/readme.txt readme.txt] file.
+  # Step into the `examples/tutorial/` folder and follow the instructions in the [https://raw.githubusercontent.com/jayway/powermock/master/examples/tutorial/readme.txt readme.txt] file.
