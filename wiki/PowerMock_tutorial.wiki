@@ -1,6 +1,6 @@
 #labels Usage
   # Clone the project from git using:
-       _git clone https://git@github.com/jayway/powermock.git_
+       `git clone https://git@github.com/jayway/powermock.git`
   # Check out version 1.5.5:
-       _git checkout powermock-1.5.5_
+       `git checkout powermock-1.5.5`
   # Step into the `examples/tutorial/`folder and follow the instructions in the [https://raw.githubusercontent.com/jayway/powermock/master/examples/tutorial/readme.txt readme.txt] file.
