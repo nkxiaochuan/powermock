@@ -1,4 +1,6 @@
 #labels Usage
-  # Check out the tutorial project from subversion using:
-       _svn checkout https://powermock.googlecode.com/svn/tags/powermock-1.5.5/examples/tutorial powermock-tutorial_
-  # Follow the instructions in the [https://powermock.googlecode.com/svn/tags/powermock-1.5.5/examples/tutorial/readme.txt readme.txt] in the root-folder.
+  # Clone the project from git using:
+       _git clone https://git@github.com/jayway/powermock.git_
+  # Check out version 1.5.5:
+       _git checkout powermock-1.5.5_
+  # Step into the `examples/tutorial/`folder and follow the instructions in the [https://raw.githubusercontent.com/jayway/powermock/master/examples/tutorial/readme.txt readme.txt] file.
