@@ -24,15 +24,15 @@ In the examples below we don't use static imports for the method in the Mockito 
 How to mock and stub:
   # Add `@PrepareForTest` at class level.
   {{{
-   @PrepareForTest(Static.class) // Static.class contains static methods
+  @PrepareForTest(Static.class) // Static.class contains static methods
   }}}
   # Call `PowerMockito.mockStatic()` to mock a static class (use `PowerMockito.spy(class)` to mock a specific method):
   {{{
-        PowerMockito.mockStatic(Static.class);
+  PowerMockito.mockStatic(Static.class);
   }}}
   # Just use Mockito.when() to setup your expectation: 
   {{{
-        Mockito.when(Static.firstStaticMethod(param)).thenReturn(value);
+  Mockito.when(Static.firstStaticMethod(param)).thenReturn(value);
   }}}
 
 Note: If you need to mock classes loaded by the java system/bootstrap classloader (those defined in the java.lang or java.net etc) you need to use [MockSystem this] approach.
@@ -40,8 +40,8 @@ Note: If you need to mock classes loaded by the java system/bootstrap classloade
 ===How to verify behavior===
   # Verification of a static method is done in two steps. First call `PowerMockito.verifyStatic() `to start verifying behavior and the call the static method you want to verify. E.g.
   {{{
-        PowerMockito.verifyStatic();
-        Static.firstStaticMethod(param);
+  PowerMockito.verifyStatic();
+  Static.firstStaticMethod(param);
   }}}
 Important: You need to call `verifyStatic()` per method verification.
 
