@@ -1,7 +1,8 @@
 This is an example of what needs to be done to release PowerMock (version 0.9 is used as an example)
 
-  # Use Java 6 (Auto-bootstrapping of Java agent doesn't work in Java 7 or 8 so tests will fail)
+  # Use Java 6 to test ObjenesisDeepClonerTest and easymock/junit4-test (some tests have been disabled for Java 8 due to JVM crash or byte-code issues)
   # Update the changelog.txt and add the date when 0.9 was released to the header.
+  # Switch to JDK 8
   # `mvn release:prepare -Prelease -DautoVersionSubmodules=true -DdevelopmentVersion=1.0-SNAPSHOT`
    If it fails saying that pom.xml file already exists this is because of a bug in the maven release or SVN tool. 
    A work-around is to do: 
