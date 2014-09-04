@@ -4,7 +4,7 @@ Add the following to your pom.xml
 
 {{{
 <properties>
-    <powermock.version>1.5.5</powermock.version>
+    <powermock.version>1.5.6</powermock.version>
 </properties>
 <dependencies>
    <dependency>
