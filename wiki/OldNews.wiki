@@ -1,3 +1,4 @@
+  * 2014-02-17: PowerMock has support for OSGi by using an <a href="https://code.google.com/p/powermock-osgi/">external project</a> maintained by Gabor Liptak. Big thanks for all your help!
   * 2014-01-29: PowerMock 1.5.4 has been released. See [https://raw.githubusercontent.com/jayway/powermock/master/changelog.txt change log] for details.
   * 2014-01-10: PowerMock 1.5.3 has been released with dependency updates and some bug fixes. See [https://raw.githubusercontent.com/jayway/powermock/master/changelog.txt change log] for details.
   * 2013-11-19: PowerMock 1.5.2 has been released with support for EasyMock 3.2 and various fixes. See [http://powermock.googlecode.com/svn/trunk/changelog.txt change log] for details.
