@@ -69,7 +69,7 @@ In some cases (such as mocking final classes) it may be necessary to load the Po
                 <version>2.4</version>
                 <configuration>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/powermock/powermock-module-javaagent/1.5.6/powermock-module-javaagent-1.5.6.jar
+                        -javaagent:${settings.localRepository}/org/powermock/powermock-module-javaagent/1.6.0/powermock-module-javaagent-1.6.0.jar
                     </argLine>
                     <useSystemClassloader>true</useSystemClassloader>
                 </configuration>
@@ -78,10 +78,10 @@ In some cases (such as mocking final classes) it may be necessary to load the Po
 </build>  
 }}}
 
-You can have a look at a working example [http://powermock.googlecode.com/svn/tags/powermock-1.5.6/modules/module-test/mockito/junit4-agent here].
+You can have a look at a working example [http://powermock.googlecode.com/svn/tags/powermock-1.6.0/modules/module-test/mockito/junit4-agent here].
 
 == Non-Maven users ==
-You need to download [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-javaagent/1.5.6/powermock-module-javaagent-1.5.6.jar powermock-java-agent] ([http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-javaagent/1.5.6/powermock-module-javaagent-1.5.6-sources.jar source], [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-javaagent/1.5.6/powermock-module-javaagent-1.5.6-javadoc.jar javadoc]) and either [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-junit4-rule-agent/1.5.6/powermock-module-junit4-rule-agent-1.5.6.jar powermock-module-junit4-rule-agent] ([http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-junit4-rule-agent/1.5.6/powermock-module-junit4-rule-agent-1.5.6-sources.jar sources], [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-junit4-rule-agent/1.5.6/powermock-module-junit4-rule-agent-1.5.6-javadoc.jar javadoc]) if using JUnit or [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-agent/1.5.6/powermock-module-testng-agent-1.5.6.jar powermock-module-testng-agent] ([http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-agent/1.5.6/powermock-module-testng-agent-1.5.6-sources.jar sources], [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-agent/1.5.6/powermock-module-testng-agent-1.5.6-javadoc.jar javadoc]) if using TestNG.
+You need to download [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-javaagent/1.6.0/powermock-module-javaagent-1.6.0.jar powermock-java-agent] ([http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-javaagent/1.6.0/powermock-module-javaagent-1.6.0-sources.jar source], [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-javaagent/1.6.0/powermock-module-javaagent-1.6.0-javadoc.jar javadoc]) and either [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-junit4-rule-agent/1.6.0/powermock-module-junit4-rule-agent-1.6.0.jar powermock-module-junit4-rule-agent] ([http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-junit4-rule-agent/1.6.0/powermock-module-junit4-rule-agent-1.6.0-sources.jar sources], [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-junit4-rule-agent/1.6.0/powermock-module-junit4-rule-agent-1.6.0-javadoc.jar javadoc]) if using JUnit or [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-agent/1.6.0/powermock-module-testng-agent-1.6.0.jar powermock-module-testng-agent] ([http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-agent/1.6.0/powermock-module-testng-agent-1.6.0-sources.jar sources], [http://search.maven.org/remotecontent?filepath=org/powermock/powermock-module-testng-agent/1.6.0/powermock-module-testng-agent-1.6.0-javadoc.jar javadoc]) if using TestNG.
 
 == JUnit ==
 
@@ -90,10 +90,10 @@ You need to download [http://search.maven.org/remotecontent?filepath=org/powermo
 To load the PowerMock agent eagerly with Eclipse and JUnit you must first go into the _Run Configuration dialog_ and add the following JVM
 parameter:
 {{{
--javaagent: <jarpath>/powermock-module-javaagent-1.5.6.jar
+-javaagent: <jarpath>/powermock-module-javaagent-1.6.0.jar
 }}}
 
-Next must also make sure to put powermock-module-javaagent-1.5.6.jar
+Next must also make sure to put powermock-module-javaagent-1.6.0.jar
 in the Run Configuration's classpath, _before the
 default classpath_ (this is to ensure the agent loads before junit).
 
