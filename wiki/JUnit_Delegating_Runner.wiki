@@ -18,14 +18,18 @@ public class FinalDemoTest {
     }
 
     @Test
-    public void assertMockFinalWithNoExpectationsWorks() throws Exception {
+    public void assertMockFinalWithExpectationsWorks() throws Exception {
         final String argument = "hello";
 
         FinalDemo tested = mock(FinalDemo.class);
 
-        assertNull(tested.say(argument));
+        when(tested.say(argument)).thenReturn(expected);
+
+        final String actual = "" + tested.say(argument);
 
         verify(tested).say(argument);
+
+        assertEquals("Expected and actual did not match", expected, actual);
     }
 }
 }}}
