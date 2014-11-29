@@ -34,4 +34,4 @@ public class FinalDemoTest {
 }
 }}}
 
-See examples at <a href="https://github.com/jayway/powermock/tree/master/modules/module-test/mockito/junit4-delegate/src/test/java/powermock/modules/test/mockito/junit4/delegate">github</a> for more details and examples. Also read the <a href="http://www.jayway.com/2014/11/29/using-another-junit-runner-with-powermock/">blog post</a>  at the <a href="http://www.jayway.com/sharing-knowledge/blog/">Jayway Team Blog</a>.
+See examples at <a href="https://github.com/jayway/powermock/tree/master/modules/module-test/mockito/junit4-delegate/src/test/java/powermock/modules/test/mockito/junit4/delegate">github</a> for more details and examples. Also read the <a href="http://www.jayway.com/2014/11/29/using-another-junit-runner-with-powermock/">blog post</a>  at the <a href="http://www.jayway.com/sharing-knowledge/blog/">Jayway Blog</a>.
