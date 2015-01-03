@@ -1,3 +1,4 @@
+  * 2014-09-04: PowerMock 1.5.6 has been released with bug fixes and improvements. See [https://raw.githubusercontent.com/jayway/powermock/master/changelog.txt change log] for details.
   * 2014-05-28: We have finally moved PowerMock's source code to [https://github.com/jayway/powermock github]!  This will hopefully lead to more pull requests and issues being fixed by the community.
   * 2014-05-28: PowerMock 1.5.5 has been released. See [https://raw.githubusercontent.com/jayway/powermock/master/changelog.txt change log] for details.
   * 2014-02-17: PowerMock has support for OSGi by using an <a href="https://code.google.com/p/powermock-osgi/">external project</a> maintained by Gabor Liptak. Big thanks for all your help!
