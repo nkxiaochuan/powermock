@@ -1,3 +1,4 @@
+  * 2014-11-27: PowerMock 1.6.0 has been released with support for Mockito 1.10 as well as delegating the [JUnit_Delegating_Runner PowerMockRunner to another JUnit Runner]. Big thanks to Henrik Kaipe for the excellent pull request. See [https://raw.githubusercontent.com/jayway/powermock/master/changelog.txt change log] for details.
   * 2014-09-04: PowerMock 1.5.6 has been released with bug fixes and improvements. See [https://raw.githubusercontent.com/jayway/powermock/master/changelog.txt change log] for details.
   * 2014-05-28: We have finally moved PowerMock's source code to [https://github.com/jayway/powermock github]!  This will hopefully lead to more pull requests and issues being fixed by the community.
   * 2014-05-28: PowerMock 1.5.5 has been released. See [https://raw.githubusercontent.com/jayway/powermock/master/changelog.txt change log] for details.
