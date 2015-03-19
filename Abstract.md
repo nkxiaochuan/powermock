@@ -1,0 +1,3 @@
+PowerMock is an open source framework that can be used to unit test code normally regarded as untestable! Have you ever heard anyone say that you should never use static or final methods in your code because it makes them impossible to test? Have you ever changed a method from private to protected for the sake of testability? Do you have problems with legacy code or complicated frameworks not designed for unit testing?
+
+PowerMock lets you mock static methods, remove static initializers, mock constructors and much more. All this without changing your build process or leaving your IDE! This presentation will give the audience a good understanding on how to easily unit test your code without the limitations of the common mock frameworks such as EasyMock and JMock.
